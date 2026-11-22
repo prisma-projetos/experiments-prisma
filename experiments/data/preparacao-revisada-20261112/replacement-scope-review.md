@@ -1,0 +1,52 @@
+# Revisão das 20 candidatas substitutas
+
+Registro de 12/11/2026. Foram lidos os textos integrais das 20 notícias de [replacement-report.json](replacement-report.json) no [CSV bruto](../../../data/raw/articles_202608191040.csv), conferindo as entidades contra o [snapshot de prisma-dev](../entidades.yaml). A revisão aplica a decisão de Bea de substituir notícias voltadas a entidades ausentes da lista e a regra D15: descrições genéricas como “a legenda”, “o partido” e “a sigla” não constituem menções partidárias.
+
+Resultado: sete candidatas rejeitadas por foco fora do escopo, uma ambígua e 12 com foco defensável em entidades da lista. “Manter” na tabela avalia somente o foco; os problemas de integridade textual registrados adiante ainda precisam de encaminhamento. A revisão foi feita pelo assistente e não constitui anotação consensual nem verificação da veracidade factual das notícias.
+
+## Classificação por candidata
+
+As referências ao conteúdo são paráfrases, salvo trechos entre aspas. As posições exclusivas seguem a ordem das notícias daquele anotador após as seis compartilhadas.
+
+| ID | Substitui / posição | Título | Classificação e evidência |
+|---:|---|---|---|
+| 178 | 438; compartilhada 2 | Flávio diz que Brasil olha para Brasília “com nojo” | Manter no escopo. Os primeiros parágrafos tratam do discurso de Flávio na abertura de sua campanha e das críticas ao governo Lula. Ambos constam da lista. Há conteúdo agregado repetido, descrito abaixo. |
+| 445 | 129; compartilhada 5 | Tarcísio abre campanha à reeleição com agenda em Osasco | Rejeitar. O título e os três primeiros parágrafos tratam da campanha estadual e das propostas de Tarcísio, ausente do snapshot. O restante repete o mesmo bloco de outras notícias que aparece em 178; essas referências agregadas a presidenciáveis não tornam o evento estadual o objeto do experimento. |
+| 69 | 297; Anderson, exclusiva 1 | Lula promete manter tudo, mas não explica como pagar | Manter no escopo. Analisa o plano de governo de Lula, suas propostas fiscais e a ausência de detalhamento sobre financiamento. Lula é o objeto central. |
+| 266 | 530; Lucas, exclusiva 1 | Afetado por tarifaço dos EUA, setor de máquinas se reúne com Alckmin e se posiciona contra uso da reciprocidade | Manter no escopo. A reunião com Alckmin integra o título e o evento central; o corpo detalha propostas apresentadas ao vice-presidente e a interlocução com o governo. A maior parte das declarações é de José Velloso, fora da lista, mas a participação de Alckmin é substantiva. Critério consistente com a manutenção anterior de 281, sobre reunião da CNseg com Alckmin. |
+| 110 | 364; Beatriz, exclusiva 2 | Bolsonaro diz a aliados que Michelle é ‘incontrolável’ e já mediu forças até com ele | Rejeitar. O eixo é Michelle, sua relação com Jair Bolsonaro e conflitos familiares e partidários; ambos estão fora da lista. Há conteúdo substancial sobre Flávio e PL, mas o texto continua voltado a Michelle, exemplo de exclusão explicitamente dado por Bea. |
+| 202 | 154; Beatriz, exclusiva 3 | Com Lula, a Avibrás, fechada há 5 anos, foi reaberta, lembra Alckmin | Manter no escopo. Alckmin avalia os investimentos e a política industrial do governo Lula em discurso de campanha. Os dois são entidades da lista. |
+| 325 | 351; Lucas, exclusiva 3 | Haddad relata que motorista foi seguido pela PM após deixá-lo em casa | Rejeitar. O texto acompanha o relato de Haddad, seu advogado e a resposta da segurança pública paulista. Haddad não consta do snapshot; a identificação `(PT)` não atende a D10. |
+| 306 | 490; Nicolas, exclusiva 3 | Haddad lança campanha em evento exaltando Lula | Ambígua. Os primeiros parágrafos relatam elogios diretos a Lula no ato de abertura da campanha presidencial. A parte seguinte trata da trajetória de Haddad e da candidatura estadual, ainda relacionada a Lula. Há conteúdo elegível substantivo; não rejeitar apenas por Haddad aparecer no título. A decisão depende do critério pendente de foco principal versus cobertura substancial e deve ser consistente com o tratamento de 344. |
+| 358 | 528; Lucas, exclusiva 4 | Haddad diz que vai questionar gestão Tarcísio após PM seguir de forma ‘ostensiva’ seu motorista | Rejeitar. Relato de Haddad sobre o motorista, pedidos à gestão Tarcísio e resposta da segurança pública estadual. Os personagens centrais estão fora do snapshot. O texto também tem mojibake. |
+| 191 | 538; Anderson, exclusiva 5 | Alckmin posta meia com imagens de lulas e chuchus: ‘Pronto para mais’, diz vice-presidente no primeiro dia de campanha | Manter no escopo. Alckmin e Lula são os objetos centrais, com relato da publicação, da relação política entre eles e da abertura da campanha presidencial. |
+| 94 | 117; Nicolas, exclusiva 5 | Quaest: voto em Lula e Flávio Bolsonaro é o mais consolidado; Zema tem eleitorado menos convicto | Manter no escopo. Compara intenção de voto e convicção dos eleitores de Lula, Flávio, Zema, Caiado e Renan Santos, todos presentes no snapshot. |
+| 501 | 107; Beatriz, exclusiva 6 | Kassio é criticado no TSE por supostos acenos a Flávio Bolsonaro; ministro nega | Manter no escopo. Embora Kassio esteja fora da lista, o objeto é sua atuação em processos e teses da campanha de Flávio; há discussão recorrente do candidato, da campanha e de comparação com Lula. O texto tem mojibake. |
+| 139 | 394; Gustavo, exclusiva 6 | Presidente Lula aponta apenas ele e Jair Bolsonaro como líderes nacionais e lista seis aliados com potencial para 2030 | Manter no escopo. O texto analisa declarações, avaliações e trajetória de Lula. Os aliados externos à lista são objetos das falas do presidente. Há repetição e interrupção de um bloco textual, descritas abaixo. |
+| 57 | 341; Lucas, exclusiva 6 | Lula visitará navio da Petrobras no Amapá para exaltar indícios de petróleo e em gesto a Alcolumbre | Manter no escopo. A agenda, as posições políticas e a estratégia de campanha de Lula são centrais, embora Alcolumbre e outros participantes estejam fora da lista. O texto tem mojibake. |
+| 354 | 423; Anderson, exclusiva 7 | Haddad relata abordagem policial ‘fora do padrão’ e Secretaria de Segurança determina investigação | Rejeitar. O caso de Haddad e seu motorista, a atuação da SSP e os pedidos de investigação dominam o texto. “Candidato do PT” é identificação partidária de um candidato ausente da lista. |
+| 278 | 323; Nicolas, exclusiva 7 | As doações para o PSB de Alckmin | Manter no escopo. O objeto são as doações recebidas pelo PSB, partido do snapshot. A ocorrência “ao PSB” é uma sigla precedida de contração aceita; a decisão não depende de marcar “ao partido”. |
+| 203 | 395; Gustavo, exclusiva 8 | Com Lula e Alckmin, pesquisadores da Unicamp discutem rumos da IA e soberania digital | Manter no escopo. Relata reunião no Planalto e detalha posições de Lula e Alckmin sobre IA, energia e investimentos. Ambos têm participação substantiva no conteúdo. |
+| 333 | 407; Nicolas, exclusiva 8 | MPF instaura inquérito para apurar caso do motorista de Haddad seguido por viatura da PM de SP | Rejeitar. O objeto é a investigação do caso estadual de Haddad e Tarcísio, ambos fora da lista. A coligação liderada pelo PT apresenta a denúncia, mas a notícia permanece centrada no episódio do motorista. |
+| 220 | 290; Lucas, exclusiva 9 | Lula defende soberania sobre minerais críticos e Alckmin destaca reindustrialização do país | Manter no escopo. Relata os discursos de Lula e Alckmin na abertura da campanha presidencial. A extração inclui uma lista final de “Mais lidas”, com assuntos externos. |
+| 390 | 327; Nicolas, exclusiva 9 | Tarcísio começa campanha em Osasco e diz que não houve perseguição de PMs a motorista de Haddad | Rejeitar. Tarcísio, sua campanha estadual e a discussão com Haddad são o foco. Referências ao PT não substituem esse foco por uma entidade elegível. O texto tem mojibake. |
+
+## Encaminhamento dos IDs
+
+O arquivo [rejeitar-candidatas-20261112.txt](rejeitar-candidatas-20261112.txt) contém somente as sete rejeitadas: `445, 110, 325, 358, 354, 333, 390`, na ordem do relatório de substituição. O ID `306` continua fora desse arquivo, aguardando decisão sobre o critério de foco.
+
+As 12 mantidas quanto ao escopo são `178, 69, 266, 202, 191, 94, 501, 139, 57, 278, 203, 220`. Isso não libera automaticamente a distribuição da amostra: os seis casos mistos anteriores continuam pendentes e os alertas de integridade precisam ser tratados antes de congelar os textos.
+
+## Integridade textual
+
+Foco no escopo e integridade do texto são critérios separados. Uma notícia pode tratar de uma entidade elegível e ainda conter extração corrompida ou conteúdo agregado.
+
+- **178 e 445:** depois dos parágrafos iniciais próprios de cada notícia, ambos apresentam o mesmo bloco longo sobre Flávio, tecnologia em São Paulo, outro discurso de Flávio, Caiado e Zema. A repetição literal é observável no CSV; sua origem como bloco de recomendações ou outra estrutura do site é uma hipótese que exige conferência da fonte. A duplicação parcial pode gerar sobreposição entre notícias que passam pelo filtro de igualdade de texto completo. O foco de 178 permanece elegível; 445 foi rejeitada pelo assunto central estadual.
+- **139:** o texto começa com uma versão interrompida durante a lista de aliados, terminando em “ex-de”, e depois reinicia com um novo título e uma versão mais extensa da mesma matéria. Registrar e resolver essa repetição antes da anotação definitiva.
+- **57 e 501:** apresentam mojibake ao longo do corpo, como `AmapÃ¡` e `FlÃ¡vio`. D12 remove acentos na representação de reconhecimento, mas não repara codificação. Os dois foram mantidos quanto ao foco e continuam com pendência de integridade.
+- **358 e 390:** também apresentam mojibake, além da rejeição por foco fora da lista.
+- **220:** a lista final de “Mais lidas” contém assuntos sem relação com a notícia. A presença desse material deve ser considerada na preparação consistente dos textos; esta revisão não o removeu.
+
+Não foi aplicada uma regra geral de exclusão por defeito de extração, porque a decisão anterior de substituir o ID 129 não estabeleceu esse critério para todas as notícias. Reparos ou exclusões adicionais devem ter procedimento documentado e ser aplicados de maneira consistente, antes da anotação e do congelamento dos offsets.
+
+Esta etapa criou apenas o relatório e a lista de rejeições. Não alterou `candidate_ids.txt`, `candidates.csv`, `assignments.csv`, o CSV bruto ou `replacement-report.json`; não executou código nem testes.

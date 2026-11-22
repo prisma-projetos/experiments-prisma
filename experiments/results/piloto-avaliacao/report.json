@@ -1,0 +1,1824 @@
+{
+  "schema_version": 1,
+  "purpose": "avaliação das regras sem treino contra a referência do piloto (D17)",
+  "inputs": {
+    "referencia": {
+      "path": "experiments/results/piloto-referencia-final/referencia.jsonl",
+      "sha256": "73c164be653b04ef4e08eae5ec57dbc0f4bd7ece9bddb9bd34e5fb9240ee3f78"
+    },
+    "entities": {
+      "path": "data/exports/target_entities.yaml",
+      "sha256": "ff74cfb3c03cdee4889d85430007f14721360b0eb62f8ca747f18caa7595431e"
+    },
+    "lexicon": {
+      "path": "config/lexicon.yaml",
+      "sha256": "8c660d06a88e56e9cdfa9d90b564230facccdda64674f2f544ec3a44fac81dd1"
+    },
+    "evaluate_code": {
+      "path": "experiments/evaluate.py",
+      "sha256": "9d072ee4168730088e9f1e4dfe5cd6e0fb6979cfbd24825eb595027f8d204e04"
+    },
+    "metrics_code": {
+      "path": "experiments/metrics.py",
+      "sha256": "97c1181e2a8501a42097e2862187c95e8795c94aeacfafeb469f12753bb70120"
+    },
+    "mentions_code": {
+      "path": "experiments/mentions.py",
+      "sha256": "64bf84b9160baaf26bdb8c24dd416f7025800a6147e939f88af3e43d7c62d7c6"
+    },
+    "teor_code": {
+      "path": "experiments/teor.py",
+      "sha256": "8ee9398d0f3e25fbb23a567d0d5a285060137033ae5a8a64262d1eb555a3ce9e"
+    },
+    "consolidate_code": {
+      "path": "experiments/consolidate.py",
+      "sha256": "37e3bb7ca596706df85b831aaa7b98574af858906270027d9db1b670aea94667"
+    },
+    "agreement_code": {
+      "path": "experiments/agreement.py",
+      "sha256": "7a78261bd622e4c9e52e6a1ce1a603ebeef8413688b9752cffae515f6ec89833"
+    },
+    "entity_matcher_code": {
+      "path": "src/entity_matcher.py",
+      "sha256": "186ba54634dd1525d647f93d9c92fb9f205b1564e6d325df1585fa91ce91642e"
+    },
+    "entities_store_code": {
+      "path": "src/entities_store.py",
+      "sha256": "6cbdead11ec4f07bf36450d110e8c9ba681d653c3c0de3a8d02dbf6b968dbb0a"
+    },
+    "lexicon_code": {
+      "path": "src/lexicon.py",
+      "sha256": "b71fcde2b74a0b442163757fe4f4bd6c823281aff8995ddf731c8c224a57ff9f"
+    }
+  },
+  "inputs_unchanged": true,
+  "settings": {
+    "n_resamples": 1000,
+    "seed": 42,
+    "confidence": 0.95,
+    "include_party_descriptions": false,
+    "fuzzy_threshold": 0.85,
+    "timing_repeats": 7
+  },
+  "article_ids": [
+    "145",
+    "159",
+    "146",
+    "160",
+    "175"
+  ],
+  "entities": {
+    "70": "AVANTE",
+    "27": "DEMOCRACIA CRISTÃ",
+    "35": "DEMOCRATA",
+    "21": "PARTIDO COMUNISTA BRASILEIRO",
+    "29": "PARTIDO DA CAUSA OPERÁRIA",
+    "13": "PARTIDO DOS TRABALHADORES",
+    "22": "PARTIDO LIBERAL",
+    "14": "PARTIDO MISSÃO",
+    "30": "PARTIDO NOVO",
+    "28": "PARTIDO RENOVADOR TRABALHISTA BRASILEIRO",
+    "55": "PARTIDO SOCIAL DEMOCRÁTICO",
+    "16": "PARTIDO SOCIALISTA  DOS TRABALHADORES UNIFICADO",
+    "40": "PARTIDO SOCIALISTA BRASILEIRO",
+    "80": "UNIDADE POPULAR",
+    "016286701775": "ALFREDO GASPAR DE MENDONÇA NETO",
+    "214269110167": "ANTONIO CARLOS SILVA",
+    "040815250400": "AROLDO MEDINA",
+    "098853820116": "AUGUSTO JORGE CURY",
+    "028390471848": "CLARIANA ZACARKIM BARAO",
+    "101707320116": "CLEUSA DOS SANTOS",
+    "000221640132": "EDMILSON SILVA COSTA",
+    "071627330620": "FABIANA CRISTINA TAVARES TORQUATO",
+    "108563260302": "FLAVIO NANTES BOLSONARO",
+    "035204110175": "GERALDO JOSE RODRIGUES ALCKMIN FILHO",
+    "086302290191": "GILBERTO KASSAB",
+    "020750351180": "HERTZ DA CONCEICAO DIAS",
+    "045237680299": "JULIO CESAR DELGADO",
+    "032488231082": "LEONARDO ALVES DE ARAUJO",
+    "033294250795": "LUIS EDUARDO GRANGEIRO GIRÃO",
+    "122418060191": "LUIZ INÁCIO LULA DA SILVA",
+    "049143831023": "PABLO HENRIQUE COSTA MARCAL",
+    "059412101309": "RAQUEL NONATO DE BRICIO",
+    "317965770183": "RENAN ANTONIO FERREIRA DOS SANTOS",
+    "032101610299": "ROMEU ZEMA NETO",
+    "003087571031": "RONALDO RAMOS CAIADO",
+    "099286850183": "RUI COSTA PIMENTA",
+    "167724820272": "SAMARA MARTINS DA SILVA FEITOSA",
+    "026613890310": "SUÊD HAIDAR NOGUEIRA",
+    "084338920205": "VANESSA PORTUGAL BARBOSA",
+    "167826450108": "WILSON GRASSI JUNIOR"
+  },
+  "reference": {
+    "paragraphs": 92,
+    "mentions": {
+      "DIR": 69,
+      "IND": 14
+    },
+    "teor": {
+      "neutro": 59,
+      "negativo": 12,
+      "positivo": 1
+    }
+  },
+  "mentions": {
+    "matcher": {
+      "exact": {
+        "scores": {
+          "overall": {
+            "tp": 41,
+            "fp": 18,
+            "fn": 42,
+            "precision": 0.6949152542372882,
+            "recall": 0.4939759036144578,
+            "f1": 0.5774647887323944
+          },
+          "by_type": {
+            "DIR": {
+              "tp": 41,
+              "fp": 18,
+              "fn": 28,
+              "precision": 0.6949152542372882,
+              "recall": 0.5942028985507246,
+              "f1": 0.640625
+            },
+            "IND": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 14,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            }
+          },
+          "linking": {
+            "matched": 41,
+            "correct": 41,
+            "accuracy": 1.0
+          },
+          "joint": {
+            "tp": 41,
+            "fp": 18,
+            "fn": 42,
+            "precision": 0.6949152542372882,
+            "recall": 0.4939759036144578,
+            "f1": 0.5774647887323944
+          }
+        },
+        "bootstrap": {
+          "overall_f1": {
+            "estimate": 0.5774647887323944,
+            "lower": 0.4949181652859165,
+            "upper": 0.6515151515151515,
+            "confidence": 0.95,
+            "n_articles": 5,
+            "n_resamples": 1000,
+            "seed": 42
+          },
+          "ind_f1": {
+            "estimate": 0.0,
+            "lower": 0.0,
+            "upper": 0.0,
+            "confidence": 0.95,
+            "n_articles": 5,
+            "n_resamples": 1000,
+            "seed": 42
+          }
+        }
+      },
+      "partial": {
+        "scores": {
+          "overall": {
+            "tp": 41,
+            "fp": 18,
+            "fn": 42,
+            "precision": 0.6949152542372882,
+            "recall": 0.4939759036144578,
+            "f1": 0.5774647887323944
+          },
+          "by_type": {
+            "DIR": {
+              "tp": 41,
+              "fp": 18,
+              "fn": 28,
+              "precision": 0.6949152542372882,
+              "recall": 0.5942028985507246,
+              "f1": 0.640625
+            },
+            "IND": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 14,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            }
+          },
+          "linking": {
+            "matched": 41,
+            "correct": 41,
+            "accuracy": 1.0
+          },
+          "joint": {
+            "tp": 41,
+            "fp": 18,
+            "fn": 42,
+            "precision": 0.6949152542372882,
+            "recall": 0.4939759036144578,
+            "f1": 0.5774647887323944
+          }
+        },
+        "bootstrap": {
+          "overall_f1": {
+            "estimate": 0.5774647887323944,
+            "lower": 0.4949181652859165,
+            "upper": 0.6515151515151515,
+            "confidence": 0.95,
+            "n_articles": 5,
+            "n_resamples": 1000,
+            "seed": 42
+          },
+          "ind_f1": {
+            "estimate": 0.0,
+            "lower": 0.0,
+            "upper": 0.0,
+            "confidence": 0.95,
+            "n_articles": 5,
+            "n_resamples": 1000,
+            "seed": 42
+          }
+        }
+      }
+    },
+    "recency": {
+      "exact": {
+        "scores": {
+          "overall": {
+            "tp": 50,
+            "fp": 26,
+            "fn": 33,
+            "precision": 0.6578947368421053,
+            "recall": 0.6024096385542169,
+            "f1": 0.6289308176100629
+          },
+          "by_type": {
+            "DIR": {
+              "tp": 41,
+              "fp": 1,
+              "fn": 28,
+              "precision": 0.9761904761904762,
+              "recall": 0.5942028985507246,
+              "f1": 0.7387387387387387
+            },
+            "IND": {
+              "tp": 9,
+              "fp": 25,
+              "fn": 5,
+              "precision": 0.2647058823529412,
+              "recall": 0.6428571428571429,
+              "f1": 0.375
+            }
+          },
+          "linking": {
+            "matched": 50,
+            "correct": 45,
+            "accuracy": 0.9
+          },
+          "joint": {
+            "tp": 45,
+            "fp": 31,
+            "fn": 38,
+            "precision": 0.5921052631578947,
+            "recall": 0.5421686746987951,
+            "f1": 0.5660377358490566
+          }
+        },
+        "bootstrap": {
+          "overall_f1": {
+            "estimate": 0.6289308176100629,
+            "lower": 0.574468085106383,
+            "upper": 0.7289719626168224,
+            "confidence": 0.95,
+            "n_articles": 5,
+            "n_resamples": 1000,
+            "seed": 42
+          },
+          "ind_f1": {
+            "estimate": 0.375,
+            "lower": 0.06451612903225806,
+            "upper": 0.6060606060606061,
+            "confidence": 0.95,
+            "n_articles": 5,
+            "n_resamples": 1000,
+            "seed": 42
+          }
+        }
+      },
+      "partial": {
+        "scores": {
+          "overall": {
+            "tp": 51,
+            "fp": 25,
+            "fn": 32,
+            "precision": 0.6710526315789473,
+            "recall": 0.6144578313253012,
+            "f1": 0.6415094339622641
+          },
+          "by_type": {
+            "DIR": {
+              "tp": 41,
+              "fp": 1,
+              "fn": 28,
+              "precision": 0.9761904761904762,
+              "recall": 0.5942028985507246,
+              "f1": 0.7387387387387387
+            },
+            "IND": {
+              "tp": 10,
+              "fp": 24,
+              "fn": 4,
+              "precision": 0.29411764705882354,
+              "recall": 0.7142857142857143,
+              "f1": 0.4166666666666667
+            }
+          },
+          "linking": {
+            "matched": 51,
+            "correct": 46,
+            "accuracy": 0.9019607843137255
+          },
+          "joint": {
+            "tp": 46,
+            "fp": 30,
+            "fn": 37,
+            "precision": 0.6052631578947368,
+            "recall": 0.5542168674698795,
+            "f1": 0.5786163522012578
+          }
+        },
+        "bootstrap": {
+          "overall_f1": {
+            "estimate": 0.6415094339622641,
+            "lower": 0.5971563981042654,
+            "upper": 0.7317073170731707,
+            "confidence": 0.95,
+            "n_articles": 5,
+            "n_resamples": 1000,
+            "seed": 42
+          },
+          "ind_f1": {
+            "estimate": 0.4166666666666667,
+            "lower": 0.1935483870967742,
+            "upper": 0.6060606060606061,
+            "confidence": 0.95,
+            "n_articles": 5,
+            "n_resamples": 1000,
+            "seed": 42
+          }
+        }
+      }
+    }
+  },
+  "teor_isolado": {
+    "labels": [
+      "positivo",
+      "negativo",
+      "neutro"
+    ],
+    "per_class": {
+      "positivo": {
+        "tp": 0,
+        "fp": 4,
+        "fn": 1,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0
+      },
+      "negativo": {
+        "tp": 4,
+        "fp": 7,
+        "fn": 8,
+        "precision": 0.36363636363636365,
+        "recall": 0.3333333333333333,
+        "f1": 0.34782608695652173
+      },
+      "neutro": {
+        "tp": 48,
+        "fp": 9,
+        "fn": 11,
+        "precision": 0.8421052631578947,
+        "recall": 0.8135593220338984,
+        "f1": 0.8275862068965517
+      }
+    },
+    "macro_f1": 0.3918040979510245,
+    "confusion_matrix": [
+      [
+        0,
+        0,
+        1
+      ],
+      [
+        0,
+        4,
+        8
+      ],
+      [
+        4,
+        7,
+        48
+      ]
+    ],
+    "missing_predictions": {
+      "positivo": 0,
+      "negativo": 0,
+      "neutro": 0
+    },
+    "coverage": {
+      "gold_pairs": 72,
+      "predicted_pairs": 72,
+      "gold_indeterminado_excluded": 0,
+      "outside_gold_predictions": 0,
+      "abstentions": 0
+    },
+    "entity_balance": {
+      "003087571031": {
+        "positivo": {
+          "gold": 0,
+          "predicted": 1,
+          "absolute_difference": 1
+        },
+        "negativo": {
+          "gold": 0,
+          "predicted": 0,
+          "absolute_difference": 0
+        },
+        "neutro": {
+          "gold": 3,
+          "predicted": 2,
+          "absolute_difference": 1
+        }
+      },
+      "016286701775": {
+        "positivo": {
+          "gold": 0,
+          "predicted": 0,
+          "absolute_difference": 0
+        },
+        "negativo": {
+          "gold": 0,
+          "predicted": 1,
+          "absolute_difference": 1
+        },
+        "neutro": {
+          "gold": 4,
+          "predicted": 3,
+          "absolute_difference": 1
+        }
+      },
+      "032101610299": {
+        "positivo": {
+          "gold": 0,
+          "predicted": 0,
+          "absolute_difference": 0
+        },
+        "negativo": {
+          "gold": 0,
+          "predicted": 0,
+          "absolute_difference": 0
+        },
+        "neutro": {
+          "gold": 1,
+          "predicted": 1,
+          "absolute_difference": 0
+        }
+      },
+      "086302290191": {
+        "positivo": {
+          "gold": 0,
+          "predicted": 1,
+          "absolute_difference": 1
+        },
+        "negativo": {
+          "gold": 0,
+          "predicted": 0,
+          "absolute_difference": 0
+        },
+        "neutro": {
+          "gold": 1,
+          "predicted": 0,
+          "absolute_difference": 1
+        }
+      },
+      "108563260302": {
+        "positivo": {
+          "gold": 1,
+          "predicted": 1,
+          "absolute_difference": 0
+        },
+        "negativo": {
+          "gold": 5,
+          "predicted": 5,
+          "absolute_difference": 0
+        },
+        "neutro": {
+          "gold": 34,
+          "predicted": 34,
+          "absolute_difference": 0
+        }
+      },
+      "122418060191": {
+        "positivo": {
+          "gold": 0,
+          "predicted": 1,
+          "absolute_difference": 1
+        },
+        "negativo": {
+          "gold": 6,
+          "predicted": 3,
+          "absolute_difference": 3
+        },
+        "neutro": {
+          "gold": 6,
+          "predicted": 8,
+          "absolute_difference": 2
+        }
+      },
+      "13": {
+        "positivo": {
+          "gold": 0,
+          "predicted": 0,
+          "absolute_difference": 0
+        },
+        "negativo": {
+          "gold": 1,
+          "predicted": 1,
+          "absolute_difference": 0
+        },
+        "neutro": {
+          "gold": 2,
+          "predicted": 2,
+          "absolute_difference": 0
+        }
+      },
+      "22": {
+        "positivo": {
+          "gold": 0,
+          "predicted": 0,
+          "absolute_difference": 0
+        },
+        "negativo": {
+          "gold": 0,
+          "predicted": 0,
+          "absolute_difference": 0
+        },
+        "neutro": {
+          "gold": 7,
+          "predicted": 7,
+          "absolute_difference": 0
+        }
+      },
+      "317965770183": {
+        "positivo": {
+          "gold": 0,
+          "predicted": 0,
+          "absolute_difference": 0
+        },
+        "negativo": {
+          "gold": 0,
+          "predicted": 1,
+          "absolute_difference": 1
+        },
+        "neutro": {
+          "gold": 1,
+          "predicted": 0,
+          "absolute_difference": 1
+        }
+      }
+    }
+  },
+  "fim_a_fim": {
+    "matcher": {
+      "labels": [
+        "positivo",
+        "negativo",
+        "neutro"
+      ],
+      "per_class": {
+        "positivo": {
+          "tp": 0,
+          "fp": 2,
+          "fn": 1,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        },
+        "negativo": {
+          "tp": 3,
+          "fp": 6,
+          "fn": 9,
+          "precision": 0.3333333333333333,
+          "recall": 0.25,
+          "f1": 0.2857142857142857
+        },
+        "neutro": {
+          "tp": 25,
+          "fp": 20,
+          "fn": 34,
+          "precision": 0.5555555555555556,
+          "recall": 0.423728813559322,
+          "f1": 0.4807692307692308
+        }
+      },
+      "macro_f1": 0.2554945054945055,
+      "confusion_matrix": [
+        [
+          0,
+          0,
+          1
+        ],
+        [
+          0,
+          3,
+          6
+        ],
+        [
+          2,
+          4,
+          25
+        ]
+      ],
+      "missing_predictions": {
+        "positivo": 0,
+        "negativo": 3,
+        "neutro": 28
+      },
+      "coverage": {
+        "gold_pairs": 72,
+        "predicted_pairs": 56,
+        "gold_indeterminado_excluded": 0,
+        "outside_gold_predictions": 15,
+        "abstentions": 0
+      },
+      "entity_balance": {
+        "003087571031": {
+          "positivo": {
+            "gold": 0,
+            "predicted": 0,
+            "absolute_difference": 0
+          },
+          "negativo": {
+            "gold": 0,
+            "predicted": 0,
+            "absolute_difference": 0
+          },
+          "neutro": {
+            "gold": 3,
+            "predicted": 1,
+            "absolute_difference": 2
+          }
+        },
+        "016286701775": {
+          "positivo": {
+            "gold": 0,
+            "predicted": 0,
+            "absolute_difference": 0
+          },
+          "negativo": {
+            "gold": 0,
+            "predicted": 0,
+            "absolute_difference": 0
+          },
+          "neutro": {
+            "gold": 4,
+            "predicted": 3,
+            "absolute_difference": 1
+          }
+        },
+        "032101610299": {
+          "positivo": {
+            "gold": 0,
+            "predicted": 0,
+            "absolute_difference": 0
+          },
+          "negativo": {
+            "gold": 0,
+            "predicted": 0,
+            "absolute_difference": 0
+          },
+          "neutro": {
+            "gold": 1,
+            "predicted": 1,
+            "absolute_difference": 0
+          }
+        },
+        "086302290191": {
+          "positivo": {
+            "gold": 0,
+            "predicted": 0,
+            "absolute_difference": 0
+          },
+          "negativo": {
+            "gold": 0,
+            "predicted": 0,
+            "absolute_difference": 0
+          },
+          "neutro": {
+            "gold": 1,
+            "predicted": 0,
+            "absolute_difference": 1
+          }
+        },
+        "108563260302": {
+          "positivo": {
+            "gold": 1,
+            "predicted": 1,
+            "absolute_difference": 0
+          },
+          "negativo": {
+            "gold": 5,
+            "predicted": 2,
+            "absolute_difference": 3
+          },
+          "neutro": {
+            "gold": 34,
+            "predicted": 11,
+            "absolute_difference": 23
+          }
+        },
+        "122418060191": {
+          "positivo": {
+            "gold": 0,
+            "predicted": 1,
+            "absolute_difference": 1
+          },
+          "negativo": {
+            "gold": 6,
+            "predicted": 3,
+            "absolute_difference": 3
+          },
+          "neutro": {
+            "gold": 6,
+            "predicted": 7,
+            "absolute_difference": 1
+          }
+        },
+        "13": {
+          "positivo": {
+            "gold": 0,
+            "predicted": 0,
+            "absolute_difference": 0
+          },
+          "negativo": {
+            "gold": 1,
+            "predicted": 1,
+            "absolute_difference": 0
+          },
+          "neutro": {
+            "gold": 2,
+            "predicted": 5,
+            "absolute_difference": 3
+          }
+        },
+        "214269110167": {
+          "positivo": {
+            "gold": 0,
+            "predicted": 0,
+            "absolute_difference": 0
+          },
+          "negativo": {
+            "gold": 0,
+            "predicted": 0,
+            "absolute_difference": 0
+          },
+          "neutro": {
+            "gold": 0,
+            "predicted": 1,
+            "absolute_difference": 1
+          }
+        },
+        "22": {
+          "positivo": {
+            "gold": 0,
+            "predicted": 0,
+            "absolute_difference": 0
+          },
+          "negativo": {
+            "gold": 0,
+            "predicted": 2,
+            "absolute_difference": 2
+          },
+          "neutro": {
+            "gold": 7,
+            "predicted": 14,
+            "absolute_difference": 7
+          }
+        },
+        "317965770183": {
+          "positivo": {
+            "gold": 0,
+            "predicted": 0,
+            "absolute_difference": 0
+          },
+          "negativo": {
+            "gold": 0,
+            "predicted": 1,
+            "absolute_difference": 1
+          },
+          "neutro": {
+            "gold": 1,
+            "predicted": 0,
+            "absolute_difference": 1
+          }
+        },
+        "55": {
+          "positivo": {
+            "gold": 0,
+            "predicted": 0,
+            "absolute_difference": 0
+          },
+          "negativo": {
+            "gold": 0,
+            "predicted": 0,
+            "absolute_difference": 0
+          },
+          "neutro": {
+            "gold": 0,
+            "predicted": 2,
+            "absolute_difference": 2
+          }
+        }
+      }
+    },
+    "recency": {
+      "labels": [
+        "positivo",
+        "negativo",
+        "neutro"
+      ],
+      "per_class": {
+        "positivo": {
+          "tp": 0,
+          "fp": 2,
+          "fn": 1,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        },
+        "negativo": {
+          "tp": 3,
+          "fp": 5,
+          "fn": 9,
+          "precision": 0.375,
+          "recall": 0.25,
+          "f1": 0.3
+        },
+        "neutro": {
+          "tp": 28,
+          "fp": 22,
+          "fn": 31,
+          "precision": 0.56,
+          "recall": 0.4745762711864407,
+          "f1": 0.5137614678899083
+        }
+      },
+      "macro_f1": 0.27125382262996944,
+      "confusion_matrix": [
+        [
+          0,
+          0,
+          1
+        ],
+        [
+          0,
+          3,
+          6
+        ],
+        [
+          2,
+          5,
+          28
+        ]
+      ],
+      "missing_predictions": {
+        "positivo": 0,
+        "negativo": 3,
+        "neutro": 24
+      },
+      "coverage": {
+        "gold_pairs": 72,
+        "predicted_pairs": 60,
+        "gold_indeterminado_excluded": 0,
+        "outside_gold_predictions": 15,
+        "abstentions": 0
+      },
+      "entity_balance": {
+        "003087571031": {
+          "positivo": {
+            "gold": 0,
+            "predicted": 0,
+            "absolute_difference": 0
+          },
+          "negativo": {
+            "gold": 0,
+            "predicted": 0,
+            "absolute_difference": 0
+          },
+          "neutro": {
+            "gold": 3,
+            "predicted": 1,
+            "absolute_difference": 2
+          }
+        },
+        "016286701775": {
+          "positivo": {
+            "gold": 0,
+            "predicted": 0,
+            "absolute_difference": 0
+          },
+          "negativo": {
+            "gold": 0,
+            "predicted": 1,
+            "absolute_difference": 1
+          },
+          "neutro": {
+            "gold": 4,
+            "predicted": 5,
+            "absolute_difference": 1
+          }
+        },
+        "032101610299": {
+          "positivo": {
+            "gold": 0,
+            "predicted": 0,
+            "absolute_difference": 0
+          },
+          "negativo": {
+            "gold": 0,
+            "predicted": 0,
+            "absolute_difference": 0
+          },
+          "neutro": {
+            "gold": 1,
+            "predicted": 1,
+            "absolute_difference": 0
+          }
+        },
+        "086302290191": {
+          "positivo": {
+            "gold": 0,
+            "predicted": 0,
+            "absolute_difference": 0
+          },
+          "negativo": {
+            "gold": 0,
+            "predicted": 0,
+            "absolute_difference": 0
+          },
+          "neutro": {
+            "gold": 1,
+            "predicted": 0,
+            "absolute_difference": 1
+          }
+        },
+        "108563260302": {
+          "positivo": {
+            "gold": 1,
+            "predicted": 1,
+            "absolute_difference": 0
+          },
+          "negativo": {
+            "gold": 5,
+            "predicted": 2,
+            "absolute_difference": 3
+          },
+          "neutro": {
+            "gold": 34,
+            "predicted": 23,
+            "absolute_difference": 11
+          }
+        },
+        "122418060191": {
+          "positivo": {
+            "gold": 0,
+            "predicted": 1,
+            "absolute_difference": 1
+          },
+          "negativo": {
+            "gold": 6,
+            "predicted": 3,
+            "absolute_difference": 3
+          },
+          "neutro": {
+            "gold": 6,
+            "predicted": 10,
+            "absolute_difference": 4
+          }
+        },
+        "13": {
+          "positivo": {
+            "gold": 0,
+            "predicted": 0,
+            "absolute_difference": 0
+          },
+          "negativo": {
+            "gold": 1,
+            "predicted": 1,
+            "absolute_difference": 0
+          },
+          "neutro": {
+            "gold": 2,
+            "predicted": 2,
+            "absolute_difference": 0
+          }
+        },
+        "214269110167": {
+          "positivo": {
+            "gold": 0,
+            "predicted": 0,
+            "absolute_difference": 0
+          },
+          "negativo": {
+            "gold": 0,
+            "predicted": 0,
+            "absolute_difference": 0
+          },
+          "neutro": {
+            "gold": 0,
+            "predicted": 1,
+            "absolute_difference": 1
+          }
+        },
+        "22": {
+          "positivo": {
+            "gold": 0,
+            "predicted": 0,
+            "absolute_difference": 0
+          },
+          "negativo": {
+            "gold": 0,
+            "predicted": 0,
+            "absolute_difference": 0
+          },
+          "neutro": {
+            "gold": 7,
+            "predicted": 7,
+            "absolute_difference": 0
+          }
+        },
+        "317965770183": {
+          "positivo": {
+            "gold": 0,
+            "predicted": 0,
+            "absolute_difference": 0
+          },
+          "negativo": {
+            "gold": 0,
+            "predicted": 1,
+            "absolute_difference": 1
+          },
+          "neutro": {
+            "gold": 1,
+            "predicted": 0,
+            "absolute_difference": 1
+          }
+        }
+      }
+    }
+  },
+  "cost": {
+    "repeats": 7,
+    "paragraphs": 92,
+    "systems": {
+      "matcher": {
+        "seconds": [
+          0.015597833087667823,
+          0.015218332875519991,
+          0.0152237918227911,
+          0.015165666118264198,
+          0.015149999875575304,
+          0.015134083107113838,
+          0.015126707963645458
+        ],
+        "median_seconds": 0.015165666118264198,
+        "seconds_per_1000_paragraphs": 0.1648441969376543
+      },
+      "recency": {
+        "seconds": [
+          0.3778920001350343,
+          0.37815108406357467,
+          0.37704437505453825,
+          0.3781271248590201,
+          0.37844512495212257,
+          0.37835683301091194,
+          0.3769155000336468
+        ],
+        "median_seconds": 0.3781271248590201,
+        "seconds_per_1000_paragraphs": 4.110077444119784
+      },
+      "lexico_pares_referencia": {
+        "seconds": [
+          0.0024798749946057796,
+          0.0023131249472498894,
+          0.0022822909522801638,
+          0.002277374966070056,
+          0.0022520411293953657,
+          0.002343792002648115,
+          0.0022635830100625753
+        ],
+        "median_seconds": 0.0022822909522801638,
+        "seconds_per_1000_paragraphs": 0.024807510350871347
+      },
+      "matcher_lexico": {
+        "seconds": [
+          0.017691625049337745,
+          0.01734575000591576,
+          0.017521042143926024,
+          0.01781641598790884,
+          0.01804912486113608,
+          0.01761829201132059,
+          0.017577124992385507
+        ],
+        "median_seconds": 0.01761829201132059,
+        "seconds_per_1000_paragraphs": 0.19150317403609338
+      },
+      "recency_lexico": {
+        "seconds": [
+          0.38251591683365405,
+          0.38093362492509186,
+          0.37954033399000764,
+          0.381070792209357,
+          0.3806904579978436,
+          0.37952812504954636,
+          0.3805142499040812
+        ],
+        "median_seconds": 0.3806904579978436,
+        "seconds_per_1000_paragraphs": 4.137939760846127
+      }
+    },
+    "machine": {
+      "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+      "machine": "arm64",
+      "cpu": "Apple M4",
+      "cpu_count": 10,
+      "python": "3.14.3"
+    }
+  },
+  "errors": {
+    "ind_perdidas": {
+      "matcher": [
+        {
+          "paragraph_id": "145-1",
+          "text": "O bolsonarista",
+          "start": 0,
+          "end": 14,
+          "entity_id": "108563260302",
+          "predicted_overlap": null,
+          "context": "O bolsonarista discursou aos apoiadores de um trio elétrico, usa…"
+        },
+        {
+          "paragraph_id": "145-3",
+          "text": "O senador",
+          "start": 0,
+          "end": 9,
+          "entity_id": "108563260302",
+          "predicted_overlap": null,
+          "context": "O senador escolheu a praia de Copacabana, na zona sul do Ri…"
+        },
+        {
+          "paragraph_id": "145-4",
+          "text": "Ele",
+          "start": 89,
+          "end": 92,
+          "entity_id": "108563260302",
+          "predicted_overlap": null,
+          "context": "…ando um colete à prova de balas sob uma camiseta. Ele estava acompanhado do seu vice na chapa, Alfredo …"
+        },
+        {
+          "paragraph_id": "145-5",
+          "text": "O senador",
+          "start": 0,
+          "end": 9,
+          "entity_id": "108563260302",
+          "predicted_overlap": null,
+          "context": "O senador se apresentou como uma continuidade do projeto po…"
+        },
+        {
+          "paragraph_id": "145-6",
+          "text": "ele",
+          "start": 129,
+          "end": 132,
+          "entity_id": "108563260302",
+          "predicted_overlap": null,
+          "context": "… e fez críticas ao governo Lula (PT) que, segundo ele, briga com todo mundo, mas não é capaz de enfrent…"
+        },
+        {
+          "paragraph_id": "145-8",
+          "text": "o único candidato",
+          "start": 41,
+          "end": 58,
+          "entity_id": "108563260302",
+          "predicted_overlap": null,
+          "context": "Na política externa, se classificou como o único candidato capaz de negociar com grandes potências como Esta…"
+        },
+        {
+          "paragraph_id": "159-1",
+          "text": "O senador",
+          "start": 0,
+          "end": 9,
+          "entity_id": "108563260302",
+          "predicted_overlap": null,
+          "context": "O senador e candidato à Presidência, Flávio Bolsonaro (PL),…"
+        },
+        {
+          "paragraph_id": "159-5",
+          "text": "Candidato",
+          "start": 0,
+          "end": 9,
+          "entity_id": "108563260302",
+          "predicted_overlap": null,
+          "context": "Candidato do PL disse que vai classificar milícias como org…"
+        },
+        {
+          "paragraph_id": "159-5",
+          "text": "ele",
+          "start": 324,
+          "end": 327,
+          "entity_id": "108563260302",
+          "predicted_overlap": null,
+          "context": "…cretário de Estado dos EUA, Marco Rubio, com quem ele esteve reunido na Casa Branca. O governo Lula é c…"
+        },
+        {
+          "paragraph_id": "159-9",
+          "text": "o seu candidato",
+          "start": 16,
+          "end": 31,
+          "entity_id": "016286701775",
+          "predicted_overlap": null,
+          "context": "Flávio defendeu o seu candidato a vice, Alfredo Gaspar (PL), da acusação de estup…"
+        },
+        {
+          "paragraph_id": "159-10",
+          "text": "ele",
+          "start": 102,
+          "end": 105,
+          "entity_id": "016286701775",
+          "predicted_overlap": null,
+          "context": "…ausa de seu trabalho na CPMI do INSS, uma vez que ele estava investigando o filho do presidente Lula. G…"
+        },
+        {
+          "paragraph_id": "159-10",
+          "text": "Ele",
+          "start": 203,
+          "end": 206,
+          "entity_id": "016286701775",
+          "predicted_overlap": null,
+          "context": "… Gaspar diz que é inocente e alvo de uma armação. Ele afirma estar disposto a fazer teste de DNA e se c…"
+        },
+        {
+          "paragraph_id": "160-18",
+          "text": "senador",
+          "start": 223,
+          "end": 230,
+          "entity_id": "108563260302",
+          "predicted_overlap": null,
+          "context": "…ara um público amplo nas redes sociais do PL e do senador."
+        },
+        {
+          "paragraph_id": "175-10",
+          "text": "O candidato",
+          "start": 0,
+          "end": 11,
+          "entity_id": "108563260302",
+          "predicted_overlap": null,
+          "context": "O candidato afirmou que pretende organizar as contas públicas…"
+        }
+      ],
+      "recency": [
+        {
+          "paragraph_id": "145-1",
+          "text": "O bolsonarista",
+          "start": 0,
+          "end": 14,
+          "entity_id": "108563260302",
+          "predicted_overlap": null,
+          "context": "O bolsonarista discursou aos apoiadores de um trio elétrico, usa…"
+        },
+        {
+          "paragraph_id": "145-5",
+          "text": "O senador",
+          "start": 0,
+          "end": 9,
+          "entity_id": "108563260302",
+          "predicted_overlap": {
+            "text": "O senador",
+            "entity_id": "016286701775",
+            "type": "IND"
+          },
+          "context": "O senador se apresentou como uma continuidade do projeto po…"
+        },
+        {
+          "paragraph_id": "145-6",
+          "text": "ele",
+          "start": 129,
+          "end": 132,
+          "entity_id": "108563260302",
+          "predicted_overlap": {
+            "text": "ele",
+            "entity_id": "122418060191",
+            "type": "IND"
+          },
+          "context": "… e fez críticas ao governo Lula (PT) que, segundo ele, briga com todo mundo, mas não é capaz de enfrent…"
+        },
+        {
+          "paragraph_id": "145-8",
+          "text": "o único candidato",
+          "start": 41,
+          "end": 58,
+          "entity_id": "108563260302",
+          "predicted_overlap": null,
+          "context": "Na política externa, se classificou como o único candidato capaz de negociar com grandes potências como Esta…"
+        },
+        {
+          "paragraph_id": "159-1",
+          "text": "O senador",
+          "start": 0,
+          "end": 9,
+          "entity_id": "108563260302",
+          "predicted_overlap": {
+            "text": "O senador",
+            "entity_id": "122418060191",
+            "type": "IND"
+          },
+          "context": "O senador e candidato à Presidência, Flávio Bolsonaro (PL),…"
+        },
+        {
+          "paragraph_id": "159-5",
+          "text": "Candidato",
+          "start": 0,
+          "end": 9,
+          "entity_id": "108563260302",
+          "predicted_overlap": null,
+          "context": "Candidato do PL disse que vai classificar milícias como org…"
+        },
+        {
+          "paragraph_id": "159-5",
+          "text": "ele",
+          "start": 324,
+          "end": 327,
+          "entity_id": "108563260302",
+          "predicted_overlap": {
+            "text": "ele",
+            "entity_id": "22",
+            "type": "IND"
+          },
+          "context": "…cretário de Estado dos EUA, Marco Rubio, com quem ele esteve reunido na Casa Branca. O governo Lula é c…"
+        },
+        {
+          "paragraph_id": "159-9",
+          "text": "o seu candidato",
+          "start": 16,
+          "end": 31,
+          "entity_id": "016286701775",
+          "predicted_overlap": null,
+          "context": "Flávio defendeu o seu candidato a vice, Alfredo Gaspar (PL), da acusação de estup…"
+        },
+        {
+          "paragraph_id": "159-10",
+          "text": "Ele",
+          "start": 203,
+          "end": 206,
+          "entity_id": "016286701775",
+          "predicted_overlap": {
+            "text": "Ele",
+            "entity_id": "122418060191",
+            "type": "IND"
+          },
+          "context": "… Gaspar diz que é inocente e alvo de uma armação. Ele afirma estar disposto a fazer teste de DNA e se c…"
+        }
+      ]
+    },
+    "recency_fp_exato": [
+      {
+        "paragraph_id": "145-3",
+        "text": "o ex-presidente",
+        "start": 140,
+        "end": 155,
+        "type": "IND",
+        "entity_id": "108563260302",
+        "fp_partial": true,
+        "context": "…etindo os moldes de campanha utilizados pelo pai, o ex-presidente Jair Bolsonaro (PL)."
+      },
+      {
+        "paragraph_id": "145-4",
+        "text": "do candidato",
+        "start": 152,
+        "end": 164,
+        "type": "IND",
+        "entity_id": "016286701775",
+        "fp_partial": true,
+        "context": "…ompanhado do seu vice na chapa, Alfredo Gaspar, e do candidato a governador Douglas Ruas, além da mãe, Rogéria, …"
+      },
+      {
+        "paragraph_id": "159-1",
+        "text": "o presidente",
+        "start": 220,
+        "end": 232,
+        "type": "IND",
+        "entity_id": "108563260302",
+        "fp_partial": true,
+        "context": "…para criticar seu principal adversário nas urnas, o presidente Lula (PT)."
+      },
+      {
+        "paragraph_id": "159-6",
+        "text": "o ex-presidente",
+        "start": 133,
+        "end": 148,
+        "type": "IND",
+        "entity_id": "108563260302",
+        "fp_partial": true,
+        "context": "…voca o discurso nacionalista que, em 2018, elegeu o ex-presidente Jair Bolsonaro. Seu filho mais velho foi anunciad…"
+      },
+      {
+        "paragraph_id": "159-7",
+        "text": "o presidente",
+        "start": 64,
+        "end": 76,
+        "type": "IND",
+        "entity_id": "016286701775",
+        "fp_partial": true,
+        "context": "…ara apoiadores cantarem \"volta, Bolsonaro\". \"Hoje o presidente Bolsonaro não pode estar aqui com a gente, mas co…"
+      },
+      {
+        "paragraph_id": "159-7",
+        "text": "o presidente",
+        "start": 221,
+        "end": 233,
+        "type": "IND",
+        "entity_id": "016286701775",
+        "fp_partial": true,
+        "context": "…ro junto com vocês mandar um recado: imaginem que o presidente Bolsonaro está nos vendo nesse momento, vamos hom…"
+      },
+      {
+        "paragraph_id": "159-8",
+        "text": "ele",
+        "start": 111,
+        "end": 114,
+        "type": "IND",
+        "entity_id": "22",
+        "fp_partial": true,
+        "context": "…a eleger, no estado, Douglas Ruas para o governo —ele está atrás do ex-prefeito Eduardo Paes (PSD) nas …"
+      },
+      {
+        "paragraph_id": "159-10",
+        "text": "do presidente",
+        "start": 134,
+        "end": 147,
+        "type": "IND",
+        "entity_id": "016286701775",
+        "fp_partial": true,
+        "context": "…INSS, uma vez que ele estava investigando o filho do presidente Lula. Gaspar diz que é inocente e alvo de uma arm…"
+      },
+      {
+        "paragraph_id": "159-11",
+        "text": "o ex-presidente",
+        "start": 22,
+        "end": 37,
+        "type": "IND",
+        "entity_id": "122418060191",
+        "fp_partial": true,
+        "context": "Bolsonaristas citaram o ex-presidente Jair Bolsonaro. Antes de Flávio discursar para o …"
+      },
+      {
+        "paragraph_id": "159-11",
+        "text": "do ex-presidente",
+        "start": 146,
+        "end": 162,
+        "type": "IND",
+        "entity_id": "122418060191",
+        "fp_partial": true,
+        "context": "…membros do PL relembraram inúmeras vezes a figura do ex-presidente, citando sua prisão e dizendo que foi ele quem es…"
+      },
+      {
+        "paragraph_id": "159-11",
+        "text": "ele",
+        "start": 201,
+        "end": 204,
+        "type": "IND",
+        "entity_id": "122418060191",
+        "fp_partial": true,
+        "context": "…-presidente, citando sua prisão e dizendo que foi ele quem escolheu seu filho mais velho para encabeçar…"
+      },
+      {
+        "paragraph_id": "146-3",
+        "text": "ele",
+        "start": 222,
+        "end": 225,
+        "type": "IND",
+        "entity_id": "122418060191",
+        "fp_partial": true,
+        "context": "…TJ-MA) em atividades particulares. Na publicação, ele aparece ao lado da traseira de uma SUV, em uma pr…"
+      },
+      {
+        "paragraph_id": "146-6",
+        "text": "O ex-presidente",
+        "start": 0,
+        "end": 15,
+        "type": "IND",
+        "entity_id": "122418060191",
+        "fp_partial": true,
+        "context": "O ex-presidente Jair Bolsonaro (PL) cumpre prisão domiciliar em B…"
+      },
+      {
+        "paragraph_id": "146-6",
+        "text": "o senador",
+        "start": 135,
+        "end": 144,
+        "type": "IND",
+        "entity_id": "122418060191",
+        "fp_partial": true,
+        "context": "…omparecer ao lançamento da campanha de seu filho, o senador Flávio Bolsonaro (PL), à Presidência da República…"
+      },
+      {
+        "paragraph_id": "160-5",
+        "text": "do ex-presidente",
+        "start": 148,
+        "end": 164,
+        "type": "IND",
+        "entity_id": "108563260302",
+        "fp_partial": true,
+        "context": "…ometeu alguma irregularidade ao utilizar um vídeo do ex-presidente Jair Bolsonaro (PL) produzido com inteligência ar…"
+      },
+      {
+        "paragraph_id": "160-10",
+        "text": "ele",
+        "start": 61,
+        "end": 64,
+        "type": "IND",
+        "entity_id": "108563260302",
+        "fp_partial": true,
+        "context": "…eira (26/7), a defesa de Jair Bolsonaro negou que ele tenha autorizado a produção e uso do vídeo exibid…"
+      },
+      {
+        "paragraph_id": "160-11",
+        "text": "O ex-presidente",
+        "start": 0,
+        "end": 15,
+        "type": "IND",
+        "entity_id": "108563260302",
+        "fp_partial": true,
+        "context": "O ex-presidente foi autorizado a cumprir pena em prisão domicilia…"
+      },
+      {
+        "paragraph_id": "160-12",
+        "text": "o ex-presidente",
+        "start": 86,
+        "end": 101,
+        "type": "IND",
+        "entity_id": "108563260302",
+        "fp_partial": true,
+        "context": "…o específico, a defesa disse, por outro lado, que o ex-presidente nunca se opôs ao uso de sua imagem pelos filhos."
+      },
+      {
+        "paragraph_id": "160-18",
+        "text": "do senador",
+        "start": 220,
+        "end": 230,
+        "type": "IND",
+        "entity_id": "108563260302",
+        "fp_partial": false,
+        "context": "…o para um público amplo nas redes sociais do PL e do senador."
+      },
+      {
+        "paragraph_id": "160-27",
+        "text": "ele",
+        "start": 49,
+        "end": 52,
+        "type": "IND",
+        "entity_id": "108563260302",
+        "fp_partial": true,
+        "context": "Sem citar diretamente o vídeo de Jair Bolsonaro, ele disse no dia 27 de julho, ao jornal Estado de São…"
+      },
+      {
+        "paragraph_id": "160-29",
+        "text": "Antonio Carlos",
+        "start": 306,
+        "end": 320,
+        "type": "DIR",
+        "entity_id": "214269110167",
+        "fp_partial": true,
+        "context": "…s Toffoli), dois do Superior Tribunal de Justiça (Antonio Carlos Ferreira e Ricardo Villas Bôas Cueva) e dois oriu…"
+      },
+      {
+        "paragraph_id": "160-31",
+        "text": "Ele",
+        "start": 0,
+        "end": 3,
+        "type": "IND",
+        "entity_id": "108563260302",
+        "fp_partial": true,
+        "context": "Ele não vê, porém, elementos para abertura de um proc…"
+      },
+      {
+        "paragraph_id": "160-33",
+        "text": "Ele",
+        "start": 0,
+        "end": 3,
+        "type": "IND",
+        "entity_id": "108563260302",
+        "fp_partial": true,
+        "context": "Ele ressalta que o aviso inicial que o avatar faz no …"
+      },
+      {
+        "paragraph_id": "160-35",
+        "text": "dela",
+        "start": 90,
+        "end": 94,
+        "type": "IND",
+        "entity_id": "108563260302",
+        "fp_partial": true,
+        "context": "…gras inerentes à inteligência artificial e ao uso dela. E há uma regra que proíbe taxativamente o uso da…"
+      },
+      {
+        "paragraph_id": "160-36",
+        "text": "Ele",
+        "start": 97,
+        "end": 100,
+        "type": "IND",
+        "entity_id": "108563260302",
+        "fp_partial": true,
+        "context": "…e não houve qualquer ilegalidade no uso do vídeo. Ele afirma que, de fato, o uso desse tipo de gravação…"
+      },
+      {
+        "paragraph_id": "175-2",
+        "text": "ao ex-presidente",
+        "start": 127,
+        "end": 143,
+        "type": "IND",
+        "entity_id": "108563260302",
+        "fp_partial": true,
+        "context": "…o Rio. Antes dos discursos, o evento teve menções ao ex-presidente Jair Bolsonaro e pedidos de apoiadores por seu re…"
+      }
+    ],
+    "teor_isolado_erros": [
+      {
+        "paragraph_id": "145-6",
+        "entity_id": "122418060191",
+        "reference": "negativo",
+        "predicted": "neutro",
+        "text": "Ao tratar do tema da segurança pública, avaliou que o País perdeu a ‘soberania’ e fez críticas ao governo Lula (PT) que, segundo ele, briga com todo mundo, mas …"
+      },
+      {
+        "paragraph_id": "159-1",
+        "entity_id": "122418060191",
+        "reference": "negativo",
+        "predicted": "neutro",
+        "text": "O senador e candidato à Presidência, Flávio Bolsonaro (PL), associou os temas soberania e segurança pública em seu primeiro ato de campanha, realizado no Rio de…"
+      },
+      {
+        "paragraph_id": "159-2",
+        "entity_id": "122418060191",
+        "reference": "negativo",
+        "predicted": "neutro",
+        "text": "Flávio disse que o governo petista briga com um país a 10 mil quilômetros de distância, em referência aos EUA, mas que não briga com traficante. A soberania nac…"
+      },
+      {
+        "paragraph_id": "159-10",
+        "entity_id": "016286701775",
+        "reference": "neutro",
+        "predicted": "negativo",
+        "text": "Flávio afirmou que Gaspar foi alvo da denúncia por causa de seu trabalho na CPMI do INSS, uma vez que ele estava investigando o filho do presidente Lula. Gaspar…"
+      },
+      {
+        "paragraph_id": "159-10",
+        "entity_id": "108563260302",
+        "reference": "neutro",
+        "predicted": "negativo",
+        "text": "Flávio afirmou que Gaspar foi alvo da denúncia por causa de seu trabalho na CPMI do INSS, uma vez que ele estava investigando o filho do presidente Lula. Gaspar…"
+      },
+      {
+        "paragraph_id": "159-10",
+        "entity_id": "122418060191",
+        "reference": "neutro",
+        "predicted": "negativo",
+        "text": "Flávio afirmou que Gaspar foi alvo da denúncia por causa de seu trabalho na CPMI do INSS, uma vez que ele estava investigando o filho do presidente Lula. Gaspar…"
+      },
+      {
+        "paragraph_id": "146-7",
+        "entity_id": "108563260302",
+        "reference": "negativo",
+        "predicted": "neutro",
+        "text": "O tom emocionado de lamentação pela ausência esteve presente nos discursos de todos os candidatos e teve auge quando Flávio interrompeu sua fala para que fosse …"
+      },
+      {
+        "paragraph_id": "146-9",
+        "entity_id": "317965770183",
+        "reference": "neutro",
+        "predicted": "negativo",
+        "text": "- RENAN SANTOS CRITICA FLÁVIO E LULA, FALA EM DESPERTAR BRASIL E MATAR “VAGABUNDOS”;"
+      },
+      {
+        "paragraph_id": "146-10",
+        "entity_id": "003087571031",
+        "reference": "neutro",
+        "predicted": "positivo",
+        "text": "- CAIADO LANÇA CAMPANHA SEM KASSAB APÓS RUÍDO SOBRE APOIO DO CENTRÃO A LULA;"
+      },
+      {
+        "paragraph_id": "146-10",
+        "entity_id": "086302290191",
+        "reference": "neutro",
+        "predicted": "positivo",
+        "text": "- CAIADO LANÇA CAMPANHA SEM KASSAB APÓS RUÍDO SOBRE APOIO DO CENTRÃO A LULA;"
+      },
+      {
+        "paragraph_id": "146-10",
+        "entity_id": "122418060191",
+        "reference": "neutro",
+        "predicted": "positivo",
+        "text": "- CAIADO LANÇA CAMPANHA SEM KASSAB APÓS RUÍDO SOBRE APOIO DO CENTRÃO A LULA;"
+      },
+      {
+        "paragraph_id": "160-7",
+        "entity_id": "108563260302",
+        "reference": "positivo",
+        "predicted": "neutro",
+        "text": "Na gravação que será analisada pelo TSE, o avatar de Bolsonaro começa avisando que se trata de conteúdo artificial. Depois, faz críticas à sua prisão, diz ter e…"
+      },
+      {
+        "paragraph_id": "160-18",
+        "entity_id": "108563260302",
+        "reference": "negativo",
+        "predicted": "neutro",
+        "text": "A federação liderada pelo PT também argumenta que ocorreu campanha eleitoral antecipada, já que o vídeo afirma que \"o futuro é Flávio Bolsonaro Presidente\" e fo…"
+      },
+      {
+        "paragraph_id": "160-20",
+        "entity_id": "108563260302",
+        "reference": "negativo",
+        "predicted": "neutro",
+        "text": "Além disso, solicita a aplicação de uma multa contra a campanha de Flávio Bolsonaro por propaganda antecipada. Segundo a legislação eleitoral, essa punição deve…"
+      },
+      {
+        "paragraph_id": "160-22",
+        "entity_id": "108563260302",
+        "reference": "neutro",
+        "predicted": "negativo",
+        "text": "Quanto à acusação de deep fake, sustentou que o vídeo não fere as restrições do TSE porque deixa claro sua natureza artificial."
+      },
+      {
+        "paragraph_id": "160-30",
+        "entity_id": "108563260302",
+        "reference": "negativo",
+        "predicted": "neutro",
+        "text": "Ouvido pela reportagem, o advogado eleitoral Guilherme Barcelos acredita que há elementos para condenar Flávio Bolsonaro por campanha antecipada e proibir a rep…"
+      },
+      {
+        "paragraph_id": "175-1",
+        "entity_id": "108563260302",
+        "reference": "neutro",
+        "predicted": "positivo",
+        "text": "Em discurso, Pazuello direcionou um apelo ao eleitorado feminino, que classificou como decisivo para o avanço do movimento conservador. Flávio Bolsonaro era agu…"
+      },
+      {
+        "paragraph_id": "175-5",
+        "entity_id": "108563260302",
+        "reference": "neutro",
+        "predicted": "negativo",
+        "text": "Flávio Bolsonaro (PL) afirmou que o governo Lula deixará um “legado” de “incompetência e corrupção”. A declaração foi feita neste domingo, durante o primeiro at…"
+      },
+      {
+        "paragraph_id": "175-6",
+        "entity_id": "122418060191",
+        "reference": "negativo",
+        "predicted": "neutro",
+        "text": "Ao criticar a atuação do governo na segurança, Flávio disse que a gestão federal “briga com país em outro continente”, mas não consegue combater crimes que afet…"
+      },
+      {
+        "paragraph_id": "175-9",
+        "entity_id": "108563260302",
+        "reference": "neutro",
+        "predicted": "negativo",
+        "text": "Flávio Bolsonaro (PL) prometeu promover um “tesouraço” caso seja eleito presidente, com cortes de impostos, burocracia, corrupção e cargos que atribuiu ao PT. A…"
+      }
+    ]
+  },
+  "limitations": [
+    "A referência tem só 5 notícias (92 parágrafos). O bootstrap reamostra notícias inteiras; com 5 unidades os intervalos são grosseiros e não permitem generalização.",
+    "Há um único par de teor positivo na referência: F1 positivo e F1 macro são instáveis e dependem de um acerto ou erro.",
+    "A referência vem de voto da maioria sobre planilhas revisadas, não de gabarito adjudicado (D17). As regras D10 a D12 foram formuladas olhando o piloto, o que tende a favorecer a heurística de menção mais recente.",
+    "O matcher de produção só prevê menções diretas; seus resultados de IND são zero por construção.",
+    "O tempo foi medido nesta máquina, não na VPS de produção; serve para comparar os sistemas entre si, não para estimar custo absoluto em produção."
+  ],
+  "outputs": {
+    "predicoes-matcher-lexico.jsonl": {
+      "sha256": "0a5710797088b672859acc8b467c8cdc163aa19a8d1becd0bf8a20a18554bd28"
+    },
+    "predicoes-recency-lexico.jsonl": {
+      "sha256": "a490387ca1fb1e092d7fb5f4b69e092df9e3532a09ba1fb68cba7f330e3b12b0"
+    },
+    "predicoes-lexico-pares-referencia.jsonl": {
+      "sha256": "96302629f8bbf260df46fe2f4e0e4b8a4696e1ef61bbd72e2b76e0e654e03676"
+    }
+  }
+}

@@ -1,0 +1,727 @@
+% Relatório de mudança de escopo e roteiro do artigo da disciplina
+% Compilar com: xelatex relatorio-artigo.tex (duas vezes)
+\documentclass[11pt,a4paper]{article}
+
+\usepackage{fontspec}
+\usepackage{polyglossia}
+\setmainlanguage[variant=brazilian]{portuguese}
+\usepackage[a4paper,margin=2.3cm]{geometry}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage{float}
+\usepackage{enumitem}
+\usepackage{csquotes}
+\usepackage{xcolor}
+\usepackage{xurl}
+\usepackage[hidelinks]{hyperref}
+\usepackage{caption}
+
+\captionsetup{font=small,labelfont=bf,skip=4pt}
+\setlist{itemsep=2pt,topsep=4pt}
+\setlength{\parskip}{4pt}
+\renewcommand{\arraystretch}{1.12}
+\newcolumntype{L}{>{\raggedright\arraybackslash}X}
+\newcolumntype{P}[1]{>{\raggedright\arraybackslash}p{#1}}
+\newcommand{\pend}[1]{\textcolor{red!60!black}{[PENDENTE: #1]}}
+\newcommand{\fonte}[1]{\par\smallskip{\footnotesize Fonte: #1}}
+
+\title{Classifier da plataforma Prisma\\[4pt]
+\large Mudança de escopo, dados e roteiro do artigo da disciplina}
+\author{Documento de trabalho da equipe}
+\date{19/11/2026 \quad·\quad dados do commit \texttt{414a41f} (branch \texttt{docs/artigo})}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+\noindent O artigo obrigatório da disciplina (entrega em 26/11/2026, sem publicação prevista) deixou de comparar modelos treinados e passou a ser um estudo exploratório sobre o piloto de anotação: 5 notícias e 92 parágrafos. Este documento registra o que mudou e por quê, reformula as perguntas de pesquisa, propõe a linha argumentativa do texto, reúne as tabelas de resultados já produzidas pelo repositório, lista limitações e trabalhos futuros e apresenta um esqueleto do artigo seção por seção. Nenhum número foi recalculado para este documento, salvo as contagens auxiliares sinalizadas como tal.
+\end{abstract}
+
+\tableofcontents
+
+%=====================================================================
+\section{Como usar este documento}
+
+O documento serve de base para quem vai redigir o artigo. Ele separa o que já está fixado do que a equipe ainda precisa decidir ou escrever.
+
+\paragraph{Fixo.} Os dados, as tabelas da Seção~\ref{sec:dados} e as limitações da Seção~\ref{sec:limitacoes} vêm de relatórios gerados pelo código do repositório no commit \texttt{414a41f}. Os valores não devem ser alterados no artigo; mudanças só se justificam se a avaliação for rodada de novo, e nesse caso o commit precisa ser atualizado. Cada tabela indica o arquivo de origem.
+
+\paragraph{Em aberto.} A revisão de literatura ainda não foi feita. As referências marcadas como \pend{\ldots} precisam ser buscadas, lidas e verificadas antes de entrar no texto. Também ficam com a equipe a escolha do título, a redação de cada seção, a decisão de anonimizar os anotadores e as pendências da Seção~\ref{sec:pendencias}.
+
+\paragraph{Como ler os números.} Os relatórios usam ponto decimal; aqui os valores aparecem com vírgula, sem outra mudança. Onde o relatório traz mais casas (por exemplo, o kappa), o valor foi arredondado para quatro casas, como nas demais tabelas. As contagens que não estão prontas nos relatórios e foram feitas diretamente nos arquivos de predição ou de referência para este documento aparecem marcadas como \emph{contagem auxiliar}, com o arquivo usado.
+
+\subsection{Termos e códigos internos}
+
+O repositório registra cada escolha de método como uma decisão numerada (D1, D2, \ldots) em \path{docs/decisoes-experimentos.md}. As que aparecem aqui estão na Tabela~\ref{tab:glossario}.
+
+\begin{table}[H]
+\centering\small
+\caption{Siglas, códigos e termos usados neste documento.}\label{tab:glossario}
+\begin{tabularx}{\textwidth}{@{}p{3.6cm}L@{}}
+\toprule
+Termo & Significado \\
+\midrule
+REM & Reconhecimento de menções: achar cada trecho que se refere a um candidato ou partido e dizer a qual deles se refere (detectar e ligar). \\
+DIR / IND & Menção direta (nome, apelido ou sigla de partido) e menção indireta (pronome \emph{ele, ela, dele, dela} ou descrição como \enquote{o senador}, \enquote{o candidato}). \\
+Teor & Avaliação do trecho sobre um candidato específico: positivo, negativo ou neutro (\emph{indeterminado} existe na anotação, mas fica fora das métricas). \\
+Matcher & \path{src/entity_matcher.py}, o reconhecedor em produção. Procura nomes e apelidos da lista de entidades, de forma exata ou aproximada. Não prevê menções indiretas. \\
+Léxico & \path{src/lexicon.py}, o classificador de teor em produção. Conta palavras positivas e negativas de uma lista e dá a mesma classe a todas as entidades do parágrafo. \\
+Menção mais recente & Heurística implementada em \path{experiments/mentions.py}: atribui pronomes e descrições de uma lista fixa à última entidade nomeada antes deles na mesma notícia. As menções diretas desse sistema vêm de um detector experimental que aplica as regras de partido (D10) e a normalização (D12), e não do matcher de produção. \\
+Sistema atual & Matcher + léxico, o que roda em produção hoje. \\
+Referência & Conjunto anotado do piloto, montado por voto da maioria de cinco anotadores (D17). Não é um gabarito adjudicado. \\
+Detecção & Acerto do trecho, sem exigir a entidade. \emph{Exato}: limites idênticos; \emph{parcial}: basta haver sobreposição. \\
+Ligação & Fração dos trechos detectados cuja entidade está correta. \\
+Joint (conjunto) & Métrica que exige trecho e entidade corretos ao mesmo tempo, sem exigir o tipo. \\
+Fim a fim & Menções previstas pelo sistema seguidas do léxico, avaliadas nos pares (entidade, teor) de cada parágrafo. \\
+IC 95\% & Intervalo de confiança por bootstrap percentil que reamostra notícias inteiras (1000 reamostragens, semente 42). \\
+D5 & Segmentação de produção sem mudanças (itens de lista viram parágrafos soltos). \\
+D7 & Escolha das cinco notícias do piloto (145, 159, 146, 160, 175). \\
+D10 & Regras de partido: sigla só conta com artigo antes (\enquote{do PT} vale), sigla entre parênteses é ignorada, nome que também é palavra comum exige \enquote{partido} antes. \\
+D11 & Pronome é ligado à entidade anterior mais próxima na notícia, inclusive partido. \\
+D12 & Normalização auxiliar (sem acentos, pontuação como separador) só para reconhecer entidades. \\
+D15 & \enquote{O partido}, \enquote{a legenda} e \enquote{a sigla} não são menção nem geram teor. \\
+D17 & Decisão de restringir o artigo ao piloto e montar a referência por voto da maioria. \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+%=====================================================================
+\section{Mudança de escopo}\label{sec:escopo}
+
+\paragraph{Plano original.} O plano (\texttt{PRISMA\_ plano de testes e assuntos para pesquisar.md}) previa anotar 60 notícias novas, com menções e teor, dividi-las por notícia em treino, validação e teste e comparar quatro sistemas: A (matcher + léxico, o atual), B (matcher + BERTimbau no teor), C (BERTimbau no REM + léxico) e D (BERTimbau nas duas etapas). TF-IDF com regressão logística e a heurística de menção mais recente entrariam como comparações de etapa. A pergunta central era se reconhecer menções indiretas e usar classificadores treinados melhora a análise de teor por candidato.
+
+\paragraph{Por que mudou.} Com a entrega em 26/11/2026, não houve tempo para anotar a amostra de 60 notícias. Sem essa anotação não existe conjunto de treino nem teste congelado, e os modelos treinados não podem ser avaliados de forma defensável. A coordenação (Bea) decidiu, em 19/11/2026, transformar o artigo num estudo exploratório sobre o piloto (D17).
+
+\paragraph{O que saiu.}
+\begin{itemize}
+\item Os modelos treinados (TF-IDF e os dois BERTimbau) e, com eles, os sistemas B, C e D. O TF-IDF está implementado (\path{experiments/tfidf.py}, D14), mas não foi avaliado.
+\item A anotação das 60 notícias, a divisão por notícia (39/6/15 notícias, conforme D3 e D6) e a amostra definitiva, que segue provisória (D13, D16).
+\item A hipótese original, que dependia dos modelos treinados.
+\end{itemize}
+
+\paragraph{O que ficou.}
+\begin{itemize}
+\item O piloto: 5 notícias, 92 parágrafos, anotados por seis pessoas com o protocolo v2 (\path{docs/protocolo-anotacao-v2.md}).
+\item A concordância entre anotadores, calculada sobre as versões originais das planilhas, anteriores a qualquer revisão.
+\item Uma referência consolidada por voto da maioria (3 de 5 anotadores), com 83 menções e 72 pares de teor.
+\item A avaliação das regras sem treino contra essa referência: matcher, menção mais recente e léxico, nas etapas de menção, teor isolado e fim a fim, com custo de execução.
+\end{itemize}
+
+O piloto tinha sido planejado para ajustar o protocolo e ficaria fora do gabarito. Usá-lo como base de avaliação é uma mudança de função, e isso precisa aparecer no artigo como limitação (Seção~\ref{sec:limitacoes}).
+
+%=====================================================================
+\section{Perguntas de pesquisa e hipótese}\label{sec:perguntas}
+
+\subsection{Antes e depois}
+
+A Tabela~\ref{tab:perguntas} compara as perguntas do plano com as reformuladas. A última coluna indica qual resultado da Seção~\ref{sec:dados} responde a cada uma.
+
+\begin{small}
+\begin{longtable}{@{}P{4.2cm}P{6.0cm}P{5.2cm}@{}}
+\caption{Perguntas de pesquisa: plano original e reformulação para o estudo exploratório.}\label{tab:perguntas}\\
+\toprule
+Plano original & Reformulação & Resultado que responde \\
+\midrule
+\endfirsthead
+\toprule
+Plano original & Reformulação & Resultado que responde \\
+\midrule
+\endhead
+\bottomrule
+\endfoot
+\textbf{Principal.} Em notícias políticas em português, reconhecer também as menções indiretas e usar classificadores treinados melhora a análise do teor sobre cada candidato, em comparação com o sistema atual? &
+\textbf{Principal.} Num piloto de cinco notícias políticas em português, com que consistência pessoas anotam menções diretas e indiretas a candidatos e o teor sobre cada um, que parcela dessas menções é indireta e quanto as regras sem treino (o sistema atual e a heurística de menção mais recente) deixam de capturar? &
+Conjunto das respostas P1 a P6. \\
+\midrule
+{}(Não era pergunta; a concordância aparecia só como teste.) &
+\textbf{P1.} Qual é a concordância entre anotadores na marcação de trechos, no geral e por tipo (DIR e IND), e no teor? &
+Tabs.~\ref{tab:conc}, \ref{tab:conc-tipo} e \ref{tab:cobertura}: F1 médio entre pares 0,7303 (exato) e 0,8196 (parcial); F1 de IND entre 0,1250 e 0,8750 (exato); kappa de Fleiss 0,6841 em 55 de 100 unidades. \\
+\midrule
+\textbf{1.} Que parcela das menções é indireta, e qual método as reconhece melhor? &
+\textbf{P2.} Que parcela das menções da referência é indireta, segundo a definição do protocolo? &
+Tab.~\ref{tab:ref}: 14 de 83 menções (cerca de 17\%); 19 menções descartadas sem maioria, quase todas descrições. \\
+\midrule
+{}(Parte da pergunta 1.) &
+\textbf{P3.} Quanto o matcher de produção deixa de reconhecer, por tipo de menção, e por quê? &
+Tabs.~\ref{tab:det} e \ref{tab:tipo}: revocação 0,4940 no geral, 0,5942 em DIR e zero em IND; análise de erros (aliases curtos ausentes, siglas fora da D10). \\
+\midrule
+{}(Parte da pergunta 1, sem o BERTimbau.) &
+\textbf{P4.} Quanto a heurística de menção mais recente recupera das menções indiretas, e a que custo em precisão e ligação? &
+Tabs.~\ref{tab:tipo} e \ref{tab:lig}: revocação IND 0,6429 (exato) com precisão 0,2647; 5 das 14 indiretas recuperadas com a entidade correta (modo parcial); joint F1 0,5660 contra 0,5775 do matcher. \\
+\midrule
+\textbf{2.} Qual forma de classificar o teor funciona melhor? &
+\textbf{P5.} Como o léxico de produção se sai no teor, isolado (com as menções da referência) e fim a fim, e em que classes erra? &
+Tabs.~\ref{tab:teor-dist}, \ref{tab:teor}, \ref{tab:teor-conf} e \ref{tab:fim}: F1 macro 0,3918 isolado; 0,2555 e 0,2713 fim a fim. \\
+\midrule
+\textbf{3.} Quanto o resultado por candidato muda quando as duas melhorias são combinadas? &
+\textbf{P5b.} Quanto o saldo de positivos, negativos e neutros por entidade se afasta da referência com cada sistema de menções, mantido o léxico? &
+Tab.~\ref{tab:saldo}: para Flávio Bolsonaro, referência 1/5/34, matcher 1/2/11, menção mais recente 1/2/23. \\
+\midrule
+{}(Teste de custo na VPS.) &
+\textbf{P6.} Qual é o custo relativo de execução de cada regra? &
+Tab.~\ref{tab:custo}: 0,1915 s e 4,1379 s por mil parágrafos (Apple M4, não a VPS). \\
+\end{longtable}
+\end{small}
+
+A comparação entre métodos de teor (pergunta 2 original) não tem resposta neste estudo: só um método foi avaliado. A P5 descreve o desempenho e os erros do léxico, que servirão de piso para a comparação futura.
+
+\subsection{Hipótese reformulada}
+
+A hipótese original (\enquote{os modelos treinados superam as abordagens simples nas duas etapas}) não pode ser testada sem modelos treinados e passa para os trabalhos futuros. Para o estudo exploratório, propõe-se a seguinte hipótese de trabalho:
+
+\begin{quote}
+\textbf{H.} No piloto, uma parte das menções a candidatos é indireta e fica, por construção, fora do alcance do sistema atual. A heurística de menção mais recente recupera parte dessas menções, mas perde precisão o bastante para que o ganho no acerto conjunto de trecho e entidade, e no fim a fim, seja pequeno e incerto. Na etapa de teor, o léxico erra sobretudo nos pares negativos.
+\end{quote}
+
+Dois cuidados acompanham essa formulação. Primeiro, os três componentes derivam de limitações já descritas no plano, antes dos dados (o matcher \enquote{não acha nenhuma menção indireta}; a heurística \enquote{erra quando a notícia alterna entre dois candidatos}; o léxico \enquote{não trata negação, ironia nem citação}), mas a redação acima foi feita depois de conhecidos os números. O artigo deve apresentá-la como expectativa descritiva de um estudo exploratório, sem teste estatístico confirmatório. Segundo, a classe positiva tem um único par na referência, por isso H não diz nada sobre ela.
+
+%=====================================================================
+\section{Linha argumentativa do artigo}\label{sec:linha}
+
+O artigo parte de um problema prático do Classifier: ele só reconhece um candidato quando o nome aparece no parágrafo. Em texto jornalístico, o nome costuma aparecer no início e os parágrafos seguintes falam da mesma pessoa por descrições (\enquote{o senador}, \enquote{o candidato}) ou pronomes. Se essas menções ficam de fora, parte do que se diz sobre cada candidato some da contagem de teor. A motivação já está registrada em \path{docs/pesquisa-correferencia.md}; o artigo precisa sustentá-la com literatura sobre correferência em notícias e sentimento orientado a entidade \pend{buscar referência sobre correferência em notícias e sobre sentimento por entidade}.
+
+Antes de medir sistemas, é preciso saber se pessoas concordam sobre o que é uma menção indireta e sobre o teor. O piloto responde a isso: os anotadores concordam bem nas menções diretas e bem menos nas indiretas, e o kappa do teor fica em 0,6841. A referência é montada por voto da maioria, e menções que só um ou dois anotadores viram ficam de fora. Por isso a parcela de indiretas medida (cerca de 17\%) descreve as menções mais evidentes, segundo a definição restrita do protocolo, e não o total de referências indiretas do texto.
+
+Contra essa referência, o sistema atual alcança menos de metade das menções. O motivo não é só a ausência das indiretas: os aliases da lista de entidades não incluem formas curtas como \enquote{Flávio}, e 28 menções diretas se perdem nos dois sistemas por isso. Na outra ponta, 17 dos 18 falsos positivos do matcher são siglas de partido que o protocolo manda ignorar. A heurística de menção mais recente acha trechos para 10 das 14 indiretas, mas liga corretamente só 5, e produz 25 falsos positivos em IND, a maior parte \enquote{o ex-presidente} (Jair Bolsonaro, fora do escopo) e pronomes sem correspondente na referência. No acerto conjunto de trecho e entidade os dois sistemas ficam praticamente empatados. No teor, o léxico acerta bem os neutros e erra a maioria dos negativos; no fim a fim, os erros de menção e de teor se somam e o F1 macro cai para cerca de 0,26 a 0,27.
+
+As limitações vêm logo depois e pesam na leitura: cinco notícias, uma referência não adjudicada, regras de anotação revistas olhando o próprio piloto, um único par positivo e custo medido fora da máquina de produção. O artigo deve evitar qualquer frase que generalize os números para notícias políticas em geral.
+
+O fecho aponta para o estudo completo: anotar a amostra ampliada com o protocolo revisto, adjudicar as divergências, congelar um teste e então comparar os modelos treinados (TF-IDF e BERTimbau) com as regras avaliadas aqui. O piloto também deixa recomendações concretas para a produção, como incluir aliases curtos e aplicar as regras de sigla, que podem ser testadas separadamente.
+
+%=====================================================================
+\section{Dados para o artigo}\label{sec:dados}
+
+Todas as tabelas desta seção copiam os relatórios em \path{experiments/results/}. Notícias: 145, 159, 146, 160, 175. Os intervalos de confiança reamostram as cinco notícias inteiras; com tão poucas unidades, eles são largos e servem para mostrar a incerteza, não para declarar diferenças.
+
+\subsection{Concordância entre anotadores}
+
+A concordância foi calculada sobre as versões originais das planilhas de cinco anotadores (backup identificado como \texttt{180337Z}), antes das revisões e da aplicação das regras D10 a D12 e D15. A planilha de um sexto anotador já tinha recebido edição manual quando foi copiada; ela aparece só numa análise adicional, sem ser tratada como independente. O F1 entre pares usa um anotador como referência e o outro como previsão.
+
+\begin{table}[H]
+\centering\small
+\caption{F1 de trechos entre pares de anotadores (cinco originais).}\label{tab:conc}
+\begin{tabular}{@{}lrlrl@{}}
+\toprule
+Par (referência / previsão) & F1 exato & IC 95\% & F1 parcial & IC 95\% \\
+\midrule
+Beatriz / Cristovam & 0,4528 & [0,3846; 0,5152] & 0,6541 & [0,6046; 0,7314] \\
+Beatriz / Gustavo & 0,4848 & [0,4324; 0,5645] & 0,6667 & [0,6143; 0,7363] \\
+Beatriz / Lucas & 0,4878 & [0,4384; 0,5556] & 0,6585 & [0,6143; 0,7111] \\
+Beatriz / Nicolas & 0,4920 & [0,4192; 0,5385] & 0,6631 & [0,6258; 0,6905] \\
+Cristovam / Gustavo & 0,9293 & [0,7724; 1,0000] & 0,9596 & [0,8929; 1,0000] \\
+Cristovam / Lucas & 0,9239 & [0,7722; 0,9859] & 0,9543 & [0,8928; 0,9859] \\
+Cristovam / Nicolas & 0,8182 & [0,6535; 0,9198] & 0,8727 & [0,7644; 0,9315] \\
+Gustavo / Lucas & 0,9754 & [0,9542; 0,9894] & 0,9754 & [0,9542; 0,9894] \\
+Gustavo / Nicolas & 0,8673 & [0,8040; 0,9198] & 0,8938 & [0,8302; 0,9360] \\
+Lucas / Nicolas & 0,8711 & [0,8018; 0,9299] & 0,8978 & [0,8468; 0,9393] \\
+\midrule
+Média dos 10 pares & 0,7303 & & 0,8196 & \\
+\bottomrule
+\end{tabular}
+\fonte{\path{experiments/results/piloto-concordancia/report.md}}
+\end{table}
+
+O relatório traz também o F1 conjunto (trecho e entidade), que coincide com o F1 de trecho em todos os pares, porque a entidade foi a mesma sempre que o trecho coincidiu; por isso as colunas foram omitidas. Os quatro pares com Beatriz ficam abaixo de 0,50 no modo exato. A causa registrada no relatório é técnica: a planilha original dela tinha 51 linhas de menção e 49 de teor com erro de validação e um trecho de parágrafo inteiro (Tabela~\ref{tab:cobertura}). Ao citar a média, convém informar também a faixa sem esses pares (0,8182 a 0,9754 no exato).
+
+\begin{table}[H]
+\centering\small
+\caption{F1 de trechos entre pares, separado por tipo de menção (cinco originais).}\label{tab:conc-tipo}
+\begin{tabular}{@{}lrrrr@{}}
+\toprule
+Par (referência / previsão) & DIR exato & DIR parcial & IND exato & IND parcial \\
+\midrule
+Beatriz / Cristovam & 0,5197 & 0,6772 & 0,1250 & 0,5000 \\
+Beatriz / Gustavo & 0,5077 & 0,6615 & 0,3429 & 0,5714 \\
+Beatriz / Lucas & 0,5116 & 0,6667 & 0,3429 & 0,5143 \\
+Beatriz / Nicolas & 0,5077 & 0,6615 & 0,4211 & 0,6316 \\
+Cristovam / Gustavo & 0,9822 & 0,9822 & 0,6207 & 0,8276 \\
+Cristovam / Lucas & 0,9762 & 0,9762 & 0,6207 & 0,8276 \\
+Cristovam / Nicolas & 0,9822 & 0,9822 & 0,2745 & 0,5098 \\
+Gustavo / Lucas & 0,9942 & 0,9942 & 0,8750 & 0,8750 \\
+Gustavo / Nicolas & 1,0000 & 1,0000 & 0,4444 & 0,5556 \\
+Lucas / Nicolas & 0,9942 & 0,9942 & 0,4815 & 0,5926 \\
+\bottomrule
+\end{tabular}
+\fonte{\path{experiments/results/piloto-concordancia/report.json} (campo \path{pairs[].exact|partial.by_type})}
+\end{table}
+
+Esta tabela não existe no relatório em Markdown; os valores foram lidos do JSON e arredondados para quatro casas. Fora dos pares com Beatriz, a concordância em DIR fica entre 0,9762 e 1,0000, enquanto em IND vai de 0,2745 a 0,8750 no modo exato. Os pares com Nicolas têm muitos falsos positivos em IND (por exemplo, 26 no par Gustavo / Nicolas), compatível com a lista de descrições marcadas só por ele na Tabela~\ref{tab:ref}. A média por tipo não foi calculada pelo relatório e não deve ser inventada no artigo \pend{decidir se a média por tipo entra; se entrar, gerar pelo script \texttt{experiments/agreement.py}}.
+
+\begin{table}[H]
+\centering\small
+\caption{Cobertura das planilhas originais usadas na concordância.}\label{tab:cobertura}
+\begin{tabular}{@{}lrrrr@{}}
+\toprule
+Anotador & \shortstack[r]{Menções\\válidas} & \shortstack[r]{Trechos de\\parágrafo inteiro} & \shortstack[r]{Pares de teor\\válidos} & \shortstack[r]{Linhas com erro\\(menções / teor)} \\
+\midrule
+Anderson & 106 & 0 & 88 & 0 / 0 \\
+Beatriz & 63 & 1 & 58 & 51 / 49 \\
+Cristovam & 96 & 0 & 86 & 0 / 0 \\
+Gustavo & 102 & 0 & 95 & 0 / 0 \\
+Lucas & 101 & 0 & 85 & 0 / 0 \\
+Nicolas & 124 & 0 & 91 & 39 / 39 \\
+\bottomrule
+\end{tabular}
+\fonte{\path{experiments/results/piloto-concordancia/report.md}}
+\end{table}
+
+\paragraph{Teor.} O kappa de Fleiss dos cinco originais, com quatro categorias (incluindo \emph{indeterminado}), é 0,6841. Ele usa só as 55 unidades (parágrafo, entidade) em que todos os cinco deram um rótulo válido; 45 das 100 unidades da união ficaram fora. Na análise adicional com Anderson, o kappa é 0,7294, também em 55 de 100 unidades, mas sem independência comprovada. Como quase metade das unidades ficou fora, o kappa não representa o conjunto inteiro. Rótulo ausente não foi tratado como neutro.
+
+\subsection{Composição da referência}
+
+A referência aceita uma menção quando pelo menos 3 dos 5 votantes (Beatriz, Cristovam, Gustavo, Lucas e Nicolas) marcaram exatamente o mesmo trecho com a mesma entidade; o tipo segue a maioria de quem marcou. O teor segue a mesma regra, contando quem deu o rótulo escolhido. Os votos vieram das planilhas atuais, já revisadas com a D10; por isso a unanimidade alta não mede concordância independente.
+
+\begin{table}[H]
+\centering\small
+\caption{Unidades aceitas na referência por número de votos e composição final.}\label{tab:ref}
+\begin{tabular}{@{}lrrrr@{}}
+\toprule
+Unidade & 5/5 & 4/5 & 3/5 & Total \\
+\midrule
+Menção (trecho + entidade) & 79 & 1 & 3 & 83 \\
+Teor (parágrafo + entidade), antes dos desempates & 60 & 12 & 1 & 73 \\
+\bottomrule
+\end{tabular}
+
+\medskip
+\begin{tabular}{@{}lr@{}}
+\toprule
+Referência final & Valor \\
+\midrule
+Parágrafos & 92 \\
+Menções DIR / IND & 69 / 14 \\
+Pares de teor (positivo / negativo / neutro / indeterminado) & 1 / 12 / 59 / 0 \\
+Menções descartadas sem maioria & 19 \\
+Pares de teor descartados com menos de 3 rótulos & 11 \\
+Exclusões antes da votação por referência genérica de partido (D15) & 10 \\
+Desempates da coordenação & 1 (T001, \enquote{fora}) \\
+Remoções de teor pela D15 & 1 (175-4 / PL) \\
+\bottomrule
+\end{tabular}
+\fonte{\path{experiments/results/piloto-referencia/report.md}; \path{experiments/results/piloto-referencia-final/decisoes-desempate.json}; \path{experiments/results/piloto-avaliacao/report.md}}
+\end{table}
+
+As 14 indiretas são cerca de 17\% das 83 menções. \emph{Contagem auxiliar} em \path{referencia.jsonl}: 5 são pronomes (\enquote{ele}/\enquote{Ele}) e 9 são descrições (\enquote{O senador} três vezes, \enquote{senador}, \enquote{O bolsonarista}, \enquote{o único candidato}, \enquote{Candidato}, \enquote{o seu candidato}, \enquote{O candidato}). Das 19 menções descartadas, a maioria são descrições marcadas por um ou dois votantes (\enquote{seu filho}, \enquote{o senador}, \enquote{o governo petista}, \enquote{seu vice}). A referência, portanto, tende a reter só as indiretas mais evidentes, e os 17\% devem ser lidos como a parcela sob essa regra de maioria e sob a definição restrita do protocolo, que exclui possessivos, clíticos e sujeito oculto.
+
+Os dois ajustes da coordenação (Bea) foram: retirar o teor de Flávio Bolsonaro no parágrafo 160-16 (empate 2 negativo, 1 neutro, 2 sem rótulo), porque a menção \enquote{seu filho} não teve maioria; e remover o teor do PL em 175-4, cuja única referência ao partido é \enquote{A sigla}, que pela D15 não gera teor. Três pares de teor sem menção (145-7, 160-22, 175-6) permaneceram por serem compatíveis com sujeito oculto.
+
+\subsection{Etapa de menções}
+
+\begin{table}[H]
+\centering\small
+\caption{Detecção de trechos, sem exigir entidade nem tipo.}\label{tab:det}
+\begin{tabular}{@{}llrrrrrrl@{}}
+\toprule
+Sistema & Modo & TP & FP & FN & P & R & F1 & IC 95\% F1 \\
+\midrule
+Matcher (produção) & exato & 41 & 18 & 42 & 0,6949 & 0,4940 & 0,5775 & [0,4949; 0,6515] \\
+Matcher (produção) & parcial & 41 & 18 & 42 & 0,6949 & 0,4940 & 0,5775 & [0,4949; 0,6515] \\
+Menção mais recente & exato & 50 & 26 & 33 & 0,6579 & 0,6024 & 0,6289 & [0,5745; 0,7290] \\
+Menção mais recente & parcial & 51 & 25 & 32 & 0,6711 & 0,6145 & 0,6415 & [0,5972; 0,7317] \\
+\bottomrule
+\end{tabular}
+\fonte{\path{experiments/results/piloto-avaliacao/report.md} (seção 1)}
+\end{table}
+
+A heurística tem revocação maior (0,6024 contra 0,4940 no exato), mas os intervalos de F1 se sobrepõem, e com cinco notícias não há base para afirmar que um sistema é melhor. A diferença também mistura duas mudanças: além de prever indiretas, o sistema da menção mais recente usa um detector de diretas que aplica as regras de partido (ver Tabela~\ref{tab:tipo}).
+
+\begin{table}[H]
+\centering\small
+\caption{Detecção por tipo de menção. Uma confusão DIR/IND conta como FP no tipo previsto e FN no tipo da referência.}\label{tab:tipo}
+\begin{tabular}{@{}lllrrrrrrl@{}}
+\toprule
+Sistema & Modo & Tipo & TP & FP & FN & P & R & F1 & IC 95\% F1 \\
+\midrule
+Matcher & exato & DIR & 41 & 18 & 28 & 0,6949 & 0,5942 & 0,6406 & -- \\
+Matcher & exato & IND & 0 & 0 & 14 & 0,0000 & 0,0000 & 0,0000 & [0,0000; 0,0000] \\
+Matcher & parcial & DIR & 41 & 18 & 28 & 0,6949 & 0,5942 & 0,6406 & -- \\
+Matcher & parcial & IND & 0 & 0 & 14 & 0,0000 & 0,0000 & 0,0000 & [0,0000; 0,0000] \\
+Mais recente & exato & DIR & 41 & 1 & 28 & 0,9762 & 0,5942 & 0,7387 & -- \\
+Mais recente & exato & IND & 9 & 25 & 5 & 0,2647 & 0,6429 & 0,3750 & [0,0645; 0,6061] \\
+Mais recente & parcial & DIR & 41 & 1 & 28 & 0,9762 & 0,5942 & 0,7387 & -- \\
+Mais recente & parcial & IND & 10 & 24 & 4 & 0,2941 & 0,7143 & 0,4167 & [0,1935; 0,6061] \\
+\bottomrule
+\end{tabular}
+\fonte{\path{experiments/results/piloto-avaliacao/report.md} (seção 1, \enquote{Por tipo})}
+\end{table}
+
+O relatório não calcula IC para DIR (marcado com --). O intervalo [0;0] do matcher em IND decorre da construção do sistema, que não prevê indiretas, e por isso não informa nada sobre incerteza. Os dois sistemas têm a mesma revocação em DIR (41 de 69): \emph{contagem auxiliar} nos arquivos de predição mostra que as 28 diretas perdidas são as mesmas nos dois e correspondem a formas curtas ausentes dos aliases (\enquote{Flávio} 21 vezes, \enquote{FLÁVIO} 1, \enquote{Gaspar} 3, \enquote{Caiado}/\enquote{CAIADO} 2, \enquote{KASSAB} 1). Os aliases não foram alterados, para não ajustar o sistema ao conjunto avaliado.
+
+A diferença de precisão em DIR (0,6949 contra 0,9762) se deve ao detector de diretas usado por cada sistema. \emph{Contagem auxiliar} em \path{predicoes-matcher-lexico.jsonl}: dos 18 FP do matcher, 16 são siglas entre parênteses, como \enquote{Flávio Bolsonaro (PL)}, e 1 é sigla sem artigo (\enquote{formada por PT, PV}); as 17 estão fora das condições de partido da D10, que o matcher de produção não aplica. O 18.\textsuperscript{o} é um homônimo (\enquote{Antonio Carlos} Ferreira, ministro do STJ, confundido com o candidato Antonio Carlos Silva), único FP em DIR também no outro sistema. Isso significa que parte do \enquote{erro} do matcher é divergência entre a regra da produção e a regra do protocolo, e o artigo deve deixar isso explícito.
+
+\begin{table}[H]
+\centering\small
+\caption{Ligação e acerto conjunto (joint) de trecho e entidade.}\label{tab:lig}
+\begin{tabular}{@{}llrrrrrr@{}}
+\toprule
+Sistema & Modo & \shortstack[r]{Trechos\\casados} & \shortstack[r]{Ligação\\correta} & \shortstack[r]{Acurácia\\da ligação} & Joint P & Joint R & Joint F1 \\
+\midrule
+Matcher & exato & 41 & 41 & 1,0000 & 0,6949 & 0,4940 & 0,5775 \\
+Matcher & parcial & 41 & 41 & 1,0000 & 0,6949 & 0,4940 & 0,5775 \\
+Mais recente & exato & 50 & 45 & 0,9000 & 0,5921 & 0,5422 & 0,5660 \\
+Mais recente & parcial & 51 & 46 & 0,9020 & 0,6053 & 0,5542 & 0,5786 \\
+\bottomrule
+\end{tabular}
+\fonte{\path{experiments/results/piloto-avaliacao/report.md} (seção 1, \enquote{Ligação e joint})}
+\end{table}
+
+Quando se exige a entidade correta, os dois sistemas ficam praticamente iguais (joint F1 0,5775 contra 0,5660 no exato). Os cinco erros de ligação da heurística estão todos em indiretas (\emph{contagem auxiliar}: nenhuma direta foi ligada à entidade errada). Das 14 indiretas da referência, a heurística detecta o trecho de 9 (exato) ou 10 (parcial), mas só 4 (exato) ou 5 (parcial) com a entidade certa; o relatório lista 9 indiretas \enquote{perdidas}, definidas como sem previsão sobreposta da mesma entidade. Esse é o número a usar para responder quanto a heurística recupera. A ligação de pronomes mede aderência à convenção da D11 (entidade anterior mais próxima); sozinha, não mostra resolução contextual de correferência.
+
+\paragraph{Onde a heurística erra.} Classificação feita para este documento a partir da listagem de 26 FP do modo exato (\path{report.md}, seção 5), que o relatório apresenta sem interpretação: 9 são \enquote{o ex-presidente} ou \enquote{do ex-presidente}, quase sempre Jair Bolsonaro, que está fora do escopo; 9 são pronomes sem correspondente na referência (pela leitura do contexto feita para este documento, vários retomam pessoas fora da lista, como Jair Bolsonaro, um candidato a governador e o advogado ouvido na notícia 160, e um deles, \enquote{dela}, retoma \enquote{inteligência artificial}); 4 são \enquote{o presidente} seguido de nome (\enquote{o presidente Lula}, \enquote{o presidente Bolsonaro}); 3 são outras descrições (\enquote{do candidato} a governador, \enquote{o senador} e \enquote{do senador}); 1 é o homônimo em DIR. A lista de descrições da heurística inclui \enquote{ex-presidente}, embora o protocolo diga que \enquote{o ex-presidente} quase sempre é o Jair e não deve ser marcado \pend{decisão da equipe: registrar como escolha de implementação a discutir, sem alterar a avaliação já rodada}. Entre as 4 indiretas sem nenhuma previsão estão \enquote{O bolsonarista} e \enquote{o seu candidato}, fora da lista fixa.
+
+\subsection{Etapa de teor isolado}
+
+Nesta etapa o léxico recebe os pares (parágrafo, entidade) da própria referência, o que isola o teor dos erros de menção.
+
+\begin{table}[H]
+\centering\small
+\caption{Distribuição das classes de teor na referência.}\label{tab:teor-dist}
+\begin{tabular}{@{}lr@{}}
+\toprule
+Classe & Pares \\
+\midrule
+positivo & 1 \\
+negativo & 12 \\
+neutro & 59 \\
+indeterminado & 0 \\
+\bottomrule
+\end{tabular}
+\fonte{\path{experiments/results/piloto-avaliacao/report.md} (seção 2)}
+\end{table}
+
+\begin{table}[H]
+\centering\small
+\caption{Léxico nos pares da referência, por classe.}\label{tab:teor}
+\begin{tabular}{@{}lrrrrrr@{}}
+\toprule
+Classe & TP & FP & FN & P & R & F1 \\
+\midrule
+positivo & 0 & 4 & 1 & 0,0000 & 0,0000 & 0,0000 \\
+negativo & 4 & 7 & 8 & 0,3636 & 0,3333 & 0,3478 \\
+neutro & 48 & 9 & 11 & 0,8421 & 0,8136 & 0,8276 \\
+\midrule
+F1 macro & \multicolumn{6}{l}{0,3918} \\
+\bottomrule
+\end{tabular}
+\fonte{\path{experiments/results/piloto-avaliacao/report.md} (seção 2)}
+\end{table}
+
+\begin{table}[H]
+\centering\small
+\caption{Matriz de confusão do léxico no teor isolado (linhas: referência; colunas: previsto).}\label{tab:teor-conf}
+\begin{tabular}{@{}lrrrr@{}}
+\toprule
+Referência \textbackslash{} Previsto & positivo & negativo & neutro & sem previsão \\
+\midrule
+positivo & 0 & 0 & 1 & 0 \\
+negativo & 0 & 4 & 8 & 0 \\
+neutro & 4 & 7 & 48 & 0 \\
+\bottomrule
+\end{tabular}
+\fonte{\path{experiments/results/piloto-avaliacao/report.md} (seção 2)}
+\end{table}
+
+Com um único par positivo, o F1 dessa classe depende de um acerto ou erro, e o F1 macro herda essa instabilidade; o artigo deve dizer isso junto do número. O dado mais informativo é o negativo: o léxico acerta 4 dos 12 e classifica 8 como neutros. Na listagem de erros do relatório aparecem críticas que o léxico não captou (\enquote{briga com todo mundo}, \enquote{o governo petista briga com um país\ldots}) e parágrafos em que a mesma classe vai para todas as entidades, como o 159-10, em que as três recebem negativo e a referência marca neutro. A acurácia não é reportada porque a função de métricas não a calcula. Cobertura: 72 pares avaliados, nenhum fora da referência, nenhuma abstenção.
+
+\subsection{Fim a fim}
+
+Aqui as menções vêm de cada sistema e o léxico classifica os pares resultantes. Pares previstos fora da referência contam como FP; pares da referência sem previsão, como FN.
+
+\begin{table}[H]
+\centering\small
+\caption{Fim a fim, por classe, para cada sistema de menções seguido do léxico.}\label{tab:fim}
+\begin{tabular}{@{}llrrrrrr@{}}
+\toprule
+Sistema & Classe & TP & FP & FN & P & R & F1 \\
+\midrule
+Matcher + léxico & positivo & 0 & 2 & 1 & 0,0000 & 0,0000 & 0,0000 \\
+ & negativo & 3 & 6 & 9 & 0,3333 & 0,2500 & 0,2857 \\
+ & neutro & 25 & 20 & 34 & 0,5556 & 0,4237 & 0,4808 \\
+ & F1 macro & \multicolumn{6}{l}{0,2555} \\
+\midrule
+Mais recente + léxico & positivo & 0 & 2 & 1 & 0,0000 & 0,0000 & 0,0000 \\
+ & negativo & 3 & 5 & 9 & 0,3750 & 0,2500 & 0,3000 \\
+ & neutro & 28 & 22 & 31 & 0,5600 & 0,4746 & 0,5138 \\
+ & F1 macro & \multicolumn{6}{l}{0,2713} \\
+\bottomrule
+\end{tabular}
+\fonte{\path{experiments/results/piloto-avaliacao/report.md} (seção 3)}
+\end{table}
+
+\begin{table}[H]
+\centering\small
+\caption{Matrizes de confusão fim a fim (linhas: referência; colunas: previsto).}\label{tab:fim-conf}
+\begin{tabular}{@{}llrrrr@{}}
+\toprule
+Sistema & Referência \textbackslash{} Previsto & positivo & negativo & neutro & sem previsão \\
+\midrule
+Matcher + léxico & positivo & 0 & 0 & 1 & 0 \\
+ & negativo & 0 & 3 & 6 & 3 \\
+ & neutro & 2 & 4 & 25 & 28 \\
+\midrule
+Mais recente + léxico & positivo & 0 & 0 & 1 & 0 \\
+ & negativo & 0 & 3 & 6 & 3 \\
+ & neutro & 2 & 5 & 28 & 24 \\
+\bottomrule
+\end{tabular}
+
+\medskip
+\begin{tabular}{@{}lrr@{}}
+\toprule
+Cobertura & Matcher + léxico & Mais recente + léxico \\
+\midrule
+Pares na referência & 72 & 72 \\
+Pares previstos avaliados & 56 & 60 \\
+Previstos fora da referência & 15 & 15 \\
+\bottomrule
+\end{tabular}
+\fonte{\path{experiments/results/piloto-avaliacao/report.md} (seção 3)}
+\end{table}
+
+O F1 macro fim a fim fica em 0,2555 e 0,2713, abaixo do teor isolado (0,3918), porque os erros de menção se somam aos de teor. A diferença entre os dois sistemas é pequena e não tem intervalo de confiança calculado; não deve ser apresentada como ganho. A coluna \enquote{sem previsão} mostra o efeito das menções perdidas: 28 e 24 pares neutros da referência ficam sem nenhuma previsão.
+
+\begin{table}[H]
+\centering\small
+\caption{Saldo por entidade: número de pares positivo/negativo/neutro na referência (Ref), com matcher + léxico (M) e com menção mais recente + léxico (R).}\label{tab:saldo}
+\begin{tabular}{@{}llll@{}}
+\toprule
+Entidade & Ref & M & R \\
+\midrule
+Alfredo Gaspar de Mendonça Neto & 0/0/4 & 0/0/3 & 0/1/5 \\
+Antonio Carlos Silva & 0/0/0 & 0/0/1 & 0/0/1 \\
+Flávio Nantes Bolsonaro & 1/5/34 & 1/2/11 & 1/2/23 \\
+Gilberto Kassab & 0/0/1 & 0/0/0 & 0/0/0 \\
+Luiz Inácio Lula da Silva & 0/6/6 & 1/3/7 & 1/3/10 \\
+Partido dos Trabalhadores & 0/1/2 & 0/1/5 & 0/1/2 \\
+Partido Liberal & 0/0/7 & 0/2/14 & 0/0/7 \\
+Partido Social Democrático & 0/0/0 & 0/0/2 & 0/0/0 \\
+Renan Antonio Ferreira dos Santos & 0/0/1 & 0/1/0 & 0/1/0 \\
+Romeu Zema Neto & 0/0/1 & 0/0/1 & 0/0/1 \\
+Ronaldo Ramos Caiado & 0/0/3 & 0/0/1 & 0/0/1 \\
+\bottomrule
+\end{tabular}
+\fonte{\path{experiments/results/piloto-avaliacao/report.md} (seção 3, \enquote{Saldo por entidade})}
+\end{table}
+
+Flávio Bolsonaro concentra 40 dos 72 pares da referência, então o saldo é quase todo dele. O matcher encontra 14 pares de Flávio e a heurística 26, contra 40 na referência, o que reflete os aliases curtos ausentes e as indiretas. No PL, o matcher dobra os neutros (14 contra 7) por causa das siglas entre parênteses. Para Lula, os dois sistemas veem metade dos negativos (3 de 6). Antonio Carlos Silva aparece só por causa do homônimo. As demais entidades têm de 1 a 4 pares, poucos para qualquer leitura.
+
+\subsection{Custo}
+
+\begin{table}[H]
+\centering\small
+\caption{Tempo de execução: mediana de 7 execuções sobre os 92 parágrafos, normalizada para mil parágrafos.}\label{tab:custo}
+\begin{tabular}{@{}lrr@{}}
+\toprule
+Sistema & Mediana (s, 92 parágrafos) & s / 1000 parágrafos \\
+\midrule
+Matcher (só menções) & 0,0152 & 0,1648 \\
+Menção mais recente (só menções) & 0,3781 & 4,1101 \\
+Léxico (pares da referência) & 0,0023 & 0,0248 \\
+Matcher + léxico & 0,0176 & 0,1915 \\
+Menção mais recente + léxico & 0,3807 & 4,1379 \\
+\bottomrule
+\end{tabular}
+\fonte{\path{experiments/results/piloto-avaliacao/report.md} (seção 4)}
+\end{table}
+
+As medições foram feitas num Apple M4 (10 núcleos lógicos), macOS 26.6.2, Python 3.14.3, com \texttt{time.perf\_counter}; o carregamento das entidades fica fora do tempo e o do léxico, dentro. Não foram feitas na VPS de produção (4 CPUs, 16 GB), que era o alvo do plano. Os números servem para comparar as regras entre si: a heurística é mais de vinte vezes mais lenta que o matcher, mas continua na casa de segundos por mil parágrafos. O custo absoluto em produção não pode ser inferido daqui.
+
+%=====================================================================
+\section{Limitações, ameaças à validade e trabalhos futuros}\label{sec:limitacoes}
+
+\subsection{Limitações e ameaças}
+
+\paragraph{Validade de conclusão (tamanho e incerteza).}
+\begin{itemize}
+\item Cinco notícias, 92 parágrafos, 83 menções e 72 pares de teor. O bootstrap reamostra notícias inteiras, e com cinco unidades os intervalos são grosseiros. Nenhuma diferença entre sistemas deve ser apresentada como significativa.
+\item Um único par positivo: F1 positivo e F1 macro dependem de um acerto ou erro.
+\item O kappa usa 55 das 100 unidades de teor; as outras 45 tinham algum rótulo ausente.
+\item Uma entidade (Flávio Bolsonaro) concentra 40 dos 72 pares.
+\end{itemize}
+
+\paragraph{Validade interna (como a referência foi construída).}
+\begin{itemize}
+\item A referência vem de voto da maioria sobre planilhas já revisadas, e não de um gabarito adjudicado nem de respostas independentes (D17). A unanimidade alta (79 de 83 menções com 5/5) reflete essa revisão.
+\item A planilha de um sexto anotador ficou fora da votação, porque recebeu edição manual da coordenação antes do primeiro backup e contaria o mesmo critério duas vezes.
+\item As regras D10 a D12 foram escritas olhando o piloto, e a lista fixa de descrições da heurística deriva dos exemplos do protocolo revisado. Isso tende a favorecer a heurística avaliada no mesmo piloto.
+\item O protocolo mudou depois do piloto (D15). A concordância foi medida nas versões originais, que ainda não seguiam D10 a D12 nem D15; a referência usa as versões revisadas. As duas medidas, portanto, se referem a versões diferentes do protocolo.
+\item A regra de maioria retém só as indiretas mais evidentes; a parcela de 17\% tende a subestimar as referências indiretas do texto.
+\item A ligação de pronomes mede aderência à convenção da D11, e não correferência contextual.
+\item O piloto foi planejado para ajustar o protocolo e acabou usado como conjunto de avaliação.
+\end{itemize}
+
+\paragraph{Validade de construto (o que as métricas medem).}
+\begin{itemize}
+\item O protocolo exclui possessivos, clíticos e sujeito oculto das menções. Pares de teor sem menção marcada, como os três da referência compatíveis com sujeito oculto, são erro para todos os sistemas.
+\item Parte dos FP do matcher é divergência entre a regra da produção e a regra de partido do protocolo (D10), e não erro de reconhecimento no sentido usual.
+\item A comparação entre matcher e heurística mistura dois fatores: o detector de diretas (produção contra experimental, com D10 e D12) e a previsão de indiretas.
+\item Os aliases da lista congelada não incluem formas curtas (\enquote{Flávio}, \enquote{Gaspar}, \enquote{Caiado}, \enquote{Kassab}), o que limita os dois sistemas a 41 de 69 em DIR.
+\item A segmentação de produção transforma itens de lista em parágrafos soltos (D5), como as manchetes em 146-9 e 146-10.
+\end{itemize}
+
+\paragraph{Validade externa.}
+\begin{itemize}
+\item As cinco notícias foram escolhidas por um membro da equipe no banco de desenvolvimento, sem sorteio (D7). Não há base para generalizar para outras notícias, veículos ou períodos.
+\item O custo foi medido num Apple M4, não na VPS de produção.
+\item Ainda está pendente confirmar que os IDs do banco de desenvolvimento correspondem às mesmas notícias do CSV usado (D7).
+\end{itemize}
+
+\subsection{Trabalhos futuros}
+
+\begin{itemize}
+\item Anotar a amostra ampliada (60 notícias planejadas, com 36 como mínimo previsto no plano) com o protocolo revisto, resolver divergências por adjudicação e congelar um conjunto de teste, separado por notícia.
+\item Avaliar o TF-IDF já implementado e treinar os dois BERTimbau (REM e teor), completando os sistemas A a D. A hipótese original passa para essa etapa.
+\item Testar um classificador de pares (trecho, candidato anterior) para a ligação das indiretas, apontado na D2 como alternativa à heurística.
+\item Recomendações para a produção, a testar separadamente do artigo: incluir aliases curtos e aplicar as regras de sigla da D10 no matcher.
+\item Medir o custo na VPS de produção.
+\item Avaliar alternativas deixadas de fora: a ferramenta CORP (PUCRS), LLM em modo zero-shot e few-shot, BiLSTM e CRF.
+\item Medir a concordância de trechos com uma métrica de unitização \pend{buscar referência sobre Krippendorff alpha para unitização}.
+\item Melhorar a qualidade dos dados de entrada (encoding, boilerplate, truncamentos), conforme D16.
+\end{itemize}
+
+%=====================================================================
+\section{Esqueleto do artigo}\label{sec:esqueleto}
+
+O esqueleto segue um procedimento em oito passos: títulos provisórios, tipo de artigo, seções proporcionais ao tipo, roteiro por seção, cobertura de 20 perguntas geradoras, matriz pergunta-seção-evidência, buracos de conhecimento e ordem de escrita.
+
+\subsection{Identificação}
+
+\begin{itemize}
+\item \textbf{Tema:} reconhecimento de menções diretas e indiretas a candidatos e classificação de teor em notícias políticas em português.
+\item \textbf{Tipo de artigo:} estudo empírico exploratório (piloto), com construção de um recurso pequeno (protocolo e referência anotada) e avaliação descritiva de regras sem treino.
+\item \textbf{Pergunta principal:} a reformulada na Tabela~\ref{tab:perguntas}.
+\item \textbf{Contribuição pretendida:} (i) protocolo de anotação de menções diretas e indiretas e de teor por entidade, com medida de concordância; (ii) caracterização, num piloto, da parcela de indiretas e de onde as regras atuais falham, com recomendações verificáveis para a produção. Não reivindicar ineditismo antes da revisão de literatura \pend{verificar lacuna: correferência em notícias políticas em português}.
+\item \textbf{Status:} avaliação do piloto concluída; revisão de literatura não iniciada.
+\end{itemize}
+
+\subsection{Títulos provisórios}
+
+\begin{enumerate}
+\item Menções indiretas a candidatos em notícias políticas em português: um estudo exploratório com regras sem treino.
+\item Anotação e avaliação de menções diretas e indiretas a candidatos em notícias eleitorais: resultados de um piloto.
+\item O que o reconhecimento por nome deixa de fora: menções indiretas e teor por candidato em um piloto de notícias políticas.
+\end{enumerate}
+
+\subsection{Roteiro por seção}
+
+\paragraph{Resumo.}
+Objetivo: apresentar problema, método e números efetivamente obtidos. Conteúdo: o problema das menções indiretas; o piloto (5 notícias, 92 parágrafos, cinco anotadores); a referência por maioria; os números principais (17\% de indiretas; revocação do sistema atual 0,4940; 5 de 14 indiretas recuperadas com a entidade certa pela heurística; F1 macro fim a fim 0,2555 e 0,2713); a ressalva de estudo exploratório. Perguntas geradoras: 2, 17. Completo quando todo número citado estiver numa tabela do corpo. Escrever por último.
+
+\paragraph{1. Introdução.}
+Objetivo: contextualizar e delimitar o problema. Conteúdo: o Classifier e a plataforma Prisma; por que o teor por candidato importa; o padrão jornalístico de nome no início e descrições depois (\path{docs/pesquisa-correferencia.md}); a pergunta reformulada e as subperguntas P1 a P6; as contribuições, sem inflar; a natureza exploratória. Números: nenhum resultado na introdução, apenas o tamanho do piloto. Perguntas: 1, 9, 11, 12, 13, 14, 17. Pendências: \pend{buscar referência sobre análise de sentimento em notícias eleitorais}, \pend{buscar dados ou referência que sustentem a frequência de menções indiretas em texto jornalístico}.
+
+\paragraph{2. Fundamentação e trabalhos relacionados.}
+Objetivo: situar o estudo e mostrar a lacuna. Subseções sugeridas: 2.1 Correferência e menções descritivas (Corref-PT, Summ-it++, CORP; heurística de recência, Hobbs, centering, sieves); 2.2 Menções a pessoas em notícias e atribuição de citações (Agarwal et al.); 2.3 Sentimento orientado a entidade em notícias (Rønningstad et al., NewsMTSC); 2.4 Léxicos e modelos para sentimento em português (OpLexicon, SentiLex-PT, BERTimbau); 2.5 Anotação e concordância (Fleiss, Krippendorff, diretrizes do OntoNotes); 2.6 Síntese e lacuna. Números: nenhum. Perguntas: 1, 5, 8, 10. Pendências: todas as referências desta seção, exceto as já indicadas nos documentos (Seção~\ref{sec:refs}), precisam ser buscadas; mesmo essas precisam de leitura e metadados completos.
+
+\paragraph{3. Método.}
+Objetivo: permitir que alguém reproduza o estudo. Subseções: 3.1 Corpus e piloto (CSV de 19/08/2026, notícias 145, 159, 146, 160, 175, segmentação de produção, lista congelada de 40 entidades: 26 pessoas e 14 partidos); 3.2 Protocolo de anotação (definições de DIR, IND e teor; regras de partido D10 e D15; convenção de pronomes D11; exclusões); 3.3 Anotação em planilha com validador (D1, D6); 3.4 Concordância (F1 de trechos exato e parcial, kappa de Fleiss com quatro categorias); 3.5 Referência por maioria (3 de 5, desempates, exclusões); 3.6 Sistemas avaliados (matcher, menção mais recente com seu detector de diretas, léxico; o que cada um faz e não faz); 3.7 Métricas e incerteza (P, R, F1, ligação, joint, F1 macro, matriz de confusão, bootstrap por notícia, custo). Tabelas: Tabela~\ref{tab:glossario} adaptada; uma figura opcional do fluxo menções $\rightarrow$ teor. Perguntas: 3, 12, 15. Pendências: \pend{tempo de anotação por notícia e por parágrafo, da aba \texttt{tempo} das planilhas, ainda não consolidado}; \pend{decidir se os anotadores serão anonimizados (A1 a A5)}; \pend{buscar referência para span-level F1 e modos exato e parcial}.
+
+\paragraph{4. Resultados.}
+Objetivo: apresentar os números sem interpretação extensa. Subseções e tabelas: 4.1 Concordância (Tabs.~\ref{tab:conc}, \ref{tab:conc-tipo}, kappa); 4.2 Referência (Tab.~\ref{tab:ref}); 4.3 Menções (Tabs.~\ref{tab:det}, \ref{tab:tipo}, \ref{tab:lig} e a análise de erros: aliases curtos, siglas, ex-presidente, pronomes); 4.4 Teor isolado (Tabs.~\ref{tab:teor-dist}, \ref{tab:teor}, \ref{tab:teor-conf}); 4.5 Fim a fim e saldo por entidade (Tabs.~\ref{tab:fim}, \ref{tab:saldo}); 4.6 Custo (Tab.~\ref{tab:custo}). Cada tabela leva junto o cuidado de interpretação descrito na Seção~\ref{sec:dados}. Perguntas: 2, 4, 15, 16. Completo quando cada subpergunta P1 a P6 tiver um número e uma tabela.
+
+\paragraph{5. Discussão.}
+Objetivo: interpretar com cautela e confrontar com a hipótese H. Conteúdo: o que H previu e o que os dados mostram, componente por componente; a diferença entre detectar e ligar indiretas; quanto do erro do sistema atual é escopo (siglas) e quanto é lista de aliases; por que o fim a fim não muda; o papel do negativo no teor; comparação com a literatura \pend{depende da Seção 2}; ameaças à validade (Seção~\ref{sec:limitacoes}). Perguntas: 3, 4, 5, 7, 8, 16, 18.
+
+\paragraph{6. Conclusão e trabalhos futuros.}
+Objetivo: responder à pergunta na medida das evidências. Conteúdo: respostas curtas a P1 a P6; contribuições; recomendações para a produção; o estudo completo com a amostra ampliada e os modelos treinados. Perguntas: 6, 17, 19, 20. Não usar \enquote{demonstra} nem \enquote{comprova}.
+
+\paragraph{Referências.} Somente fontes lidas e verificadas.
+
+\subsection{Matriz das 20 perguntas geradoras}
+
+\begin{small}
+\begin{longtable}{@{}P{0.5cm}P{3.3cm}P{2.0cm}P{4.2cm}P{1.6cm}P{2.6cm}@{}}
+\caption{Matriz pergunta, seção, evidência e situação.}\label{tab:matriz}\\
+\toprule
+N.\textsuperscript{o} & Pergunta & Seção & Evidência necessária & Situação & Próxima ação \\
+\midrule
+\endfirsthead
+\toprule
+N.\textsuperscript{o} & Pergunta & Seção & Evidência necessária & Situação & Próxima ação \\
+\midrule
+\endhead
+\bottomrule
+\endfoot
+1 & De onde vêm as ideias do trabalho? & Introd.; Relac. & Problema do Classifier (\path{docs/pesquisa-correferencia.md}) e literatura & parcial & Buscar referências \\
+2 & O que foi efetivamente obtido? & Resultados; Resumo & Tabelas da Seção~\ref{sec:dados} & atendida & Redigir \\
+3 & O que poderia ter sido feito de outro modo? & Método; Discussão & Alternativas registradas: Label Studio (D1), adjudicação, CORP, classificador de pares (D2) & atendida & Redigir \\
+4 & Se uma condição mudasse, os resultados mudariam? & Resultados; Discussão & Efeito dos aliases curtos e das regras de sigla (contagens auxiliares); a análise contrafactual não foi rodada & parcial & Descrever sem rodar de novo; marcar como hipótese \\
+5 & Como se relaciona com outros trabalhos? & Relac.; Discussão & Revisão de literatura & pendente & Buscar e ler \\
+6 & Qual o próximo passo razoável? & Discussão; Conclusão & Plano original e D17 & atendida & Redigir \\
+7 & Os resultados se aplicam a outras áreas? & Discussão & Nenhuma evidência no piloto & parcial & Limitar a uma frase especulativa marcada como tal, ou omitir \\
+8 & Que ideias de outras áreas podem ser aproveitadas? & Relac.; Discussão & Literatura de correferência e de atribuição de citações & pendente & Buscar \\
+9 & Contexto e motivação & Introdução & Classifier, Prisma, padrão jornalístico & parcial & Buscar referência sobre o padrão \\
+10 & Constatação da literatura & Relac. & Síntese da revisão & pendente & Depende de 5 \\
+11 & Definição do problema & Introdução & Plano e pesquisa de correferência & atendida & Redigir \\
+12 & Visão geral da proposta & Introd.; Método & Desenho do piloto, referência, sistemas & atendida & Redigir \\
+13 & Objetivos & Introdução & P1 a P6 & atendida & Redigir \\
+14 & Justificativa & Introdução & Impacto das menções perdidas no teor por candidato & parcial & Ligar ao saldo por entidade e à literatura \\
+15 & Experimentação & Método; Resultados & Relatórios de concordância, referência e avaliação & atendida & Redigir \\
+16 & Resultados e discussões & Resultados; Discussão & Seção~\ref{sec:dados} & atendida (resultados); parcial (discussão) & Discussão depende da literatura \\
+17 & Contribuições & Resumo; Introd.; Conclusão & Protocolo, concordância, caracterização de erros & parcial & Formular sem inflar; checar ineditismo \\
+18 & Limitações & Discussão & Seção~\ref{sec:limitacoes} & atendida & Redigir \\
+19 & Trabalhos futuros & Conclusão & Seção~\ref{sec:limitacoes} & atendida & Redigir \\
+20 & Observações gerais & Todas & Revisão final: números conferidos com os relatórios, tom exploratório, referências verificadas & pendente & Revisão final antes da entrega \\
+\end{longtable}
+\end{small}
+
+\subsection{Buracos de conhecimento}
+
+\begin{itemize}
+\item Toda a revisão de literatura (perguntas 5, 8 e 10).
+\item Tempo de anotação por notícia e por parágrafo, que o plano previa medir no piloto.
+\item Média de concordância por tipo de menção, que o relatório não calcula.
+\item IC para DIR e para o F1 macro fim a fim, que o relatório não calcula. O artigo pode seguir sem eles, desde que diga que não foram calculados.
+\item Qualquer efeito causal das regras de sigla ou dos aliases: as contagens auxiliares descrevem os erros, mas nenhum sistema foi rodado com essas mudanças.
+\end{itemize}
+
+\subsection{Ordem recomendada de escrita}
+
+Método $\rightarrow$ Resultados $\rightarrow$ Limitações $\rightarrow$ Trabalhos relacionados (depois da busca) $\rightarrow$ Discussão $\rightarrow$ Introdução $\rightarrow$ Conclusão $\rightarrow$ Resumo $\rightarrow$ Título. A ordem de leitura continua a do roteiro acima. Método e Resultados podem começar já, porque dependem só deste documento e dos relatórios.
+
+%=====================================================================
+\section{Referências e pendências}\label{sec:pendencias}
+
+\subsection{Fontes já indicadas nos documentos do projeto}\label{sec:refs}
+
+As fontes abaixo aparecem no plano ou em \path{docs/pesquisa-correferencia.md} apenas como ponto de partida, com link e sem metadados completos. Precisam ser lidas, e autoria, título, veículo e ano precisam ser conferidos antes de entrar no BibTeX.
+
+\begin{itemize}
+\item Corref-PT: \url{https://www.cys.cic.ipn.mx/index.php/CyS/article/view/3063} \pend{conferir metadados}.
+\item Agarwal et al.: \url{https://arxiv.org/abs/1810.11476} \pend{conferir título, ano e veículo}.
+\item Rønningstad et al. (2024): \url{https://arxiv.org/abs/2407.03916} \pend{conferir título e veículo}.
+\item CORP, ferramenta de correferência para português (PUCRS): \url{https://www.inf.pucrs.br/linatural/wordpress/recursos-e-ferramentas/corp-coreference-resolution-for-portuguese/} \pend{localizar publicação associada}.
+\item Summ-it++, citado sem link em \path{docs/pesquisa-correferencia.md} \pend{localizar referência}.
+\end{itemize}
+
+\subsection{Pendências marcadas}
+
+\paragraph{Referências a buscar} (guia: seção \enquote{Assuntos para pesquisar} do plano).
+\begin{enumerate}
+\item \pend{buscar referência sobre correferência em notícias políticas em português, para verificar a lacuna}.
+\item \pend{buscar referência sobre detecção de menções em notícias eleitorais}.
+\item \pend{buscar referência sobre sentimento orientado a alvo ou entidade em notícias} (ponto de partida: Rønningstad et al.; NewsMTSC).
+\item \pend{buscar referência sobre menções descritivas e anáfora associativa (definite descriptions, bridging)}.
+\item \pend{buscar referência sobre a heurística de recência (Hobbs, centering, sieves baseados em regras)}.
+\item \pend{buscar referência sobre avaliação de trechos (span-level F1, modos estrito e relaxado, CoNLL-2003, seqeval)}.
+\item \pend{buscar referência sobre léxicos de sentimento em português (OpLexicon, SentiLex-PT)}.
+\item \pend{buscar referência do BERTimbau}, para os trabalhos futuros.
+\item \pend{buscar referência sobre kappa de Fleiss e Krippendorff alpha para unitização}.
+\item \pend{buscar referência sobre diretrizes de anotação de correferência (OntoNotes)}.
+\item \pend{buscar referência sobre análise de sentimento em notícias eleitorais}, para a introdução.
+\item \pend{buscar dados ou referência sobre a frequência de menções indiretas em texto jornalístico}.
+\end{enumerate}
+
+\paragraph{Dados e decisões da equipe.}
+\begin{enumerate}[resume]
+\item \pend{tempo de anotação por notícia e por parágrafo (aba \texttt{tempo} das planilhas)}.
+\item \pend{decidir se a média de concordância por tipo entra; se entrar, gerar pelo script}.
+\item \pend{decidir se os anotadores serão anonimizados no artigo}.
+\item \pend{registrar a inclusão de \enquote{ex-presidente} na lista de descrições da heurística como escolha de implementação a discutir}.
+\item \pend{confirmar que os IDs do banco de desenvolvimento correspondem às notícias do CSV (D7)}.
+\item \pend{escolher o título entre os provisórios}.
+\end{enumerate}
+
+\end{document}

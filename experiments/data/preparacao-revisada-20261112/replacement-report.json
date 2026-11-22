@@ -1,0 +1,286 @@
+{
+  "base": "experiments/data/preparacao",
+  "replacements": [
+    {
+      "article_id": "178",
+      "canonical_link": "https://veronoticias.com/politica/flavio-diz-que-brasil-olha-para-brasilia-com-nojo/",
+      "is_shared": true,
+      "position": 1,
+      "removed_article_id": "438",
+      "reviewers": [
+        "anderson",
+        "beatriz",
+        "cristovam",
+        "gustavo",
+        "lucas",
+        "nicolas"
+      ],
+      "scope_review": "PENDENTE",
+      "source_name": "Vero Notícias",
+      "title": "Flávio diz que Brasil olha para Brasília “com nojo” - Vero Notícias"
+    },
+    {
+      "article_id": "445",
+      "canonical_link": "https://veronoticias.com/politica/tarcisio-abre-campanha-a-reeleicao-com-agenda-em-osasco/",
+      "is_shared": true,
+      "position": 4,
+      "removed_article_id": "129",
+      "reviewers": [
+        "anderson",
+        "beatriz",
+        "cristovam",
+        "gustavo",
+        "lucas",
+        "nicolas"
+      ],
+      "scope_review": "PENDENTE",
+      "source_name": "Vero Notícias",
+      "title": "Tarcísio abre campanha à reeleição com agenda em Osasco - Vero Notícias"
+    },
+    {
+      "article_id": "69",
+      "canonical_link": "https://platobr.com.br/em-plano-de-governo-pt-promete-manter-tudo-sem-explicar-como",
+      "is_shared": false,
+      "position": 6,
+      "removed_article_id": "297",
+      "reviewers": [
+        "anderson"
+      ],
+      "scope_review": "PENDENTE",
+      "source_name": "PlatôBR",
+      "title": "Lula promete manter tudo, mas não explica como pagar - PlatôBR"
+    },
+    {
+      "article_id": "266",
+      "canonical_link": "https://oglobo.globo.com/economia/noticia/2026/07/21/afetado-por-tarifaco-dos-eua-setor-de-maquinas-se-reune-com-alckmin-e-se-posiciona-contra-uso-da-reciprocidade.ghtml",
+      "is_shared": false,
+      "position": 10,
+      "removed_article_id": "530",
+      "reviewers": [
+        "lucas"
+      ],
+      "scope_review": "PENDENTE",
+      "source_name": "O GLOBO",
+      "title": "Afetado por tarifaço dos EUA, setor de máquinas se reúne com Alckmin e se posiciona contra uso da reciprocidade - O GLOBO"
+    },
+    {
+      "article_id": "110",
+      "canonical_link": "https://www.estadao.com.br/politica/vera-rosa/bolsonaro-diz-a-aliados-que-michelle-e-incontrolavel-e-ja-mediu-forcas-ate-com-ele/",
+      "is_shared": false,
+      "position": 13,
+      "removed_article_id": "364",
+      "reviewers": [
+        "beatriz"
+      ],
+      "scope_review": "PENDENTE",
+      "source_name": "Estadão",
+      "title": "Bolsonaro diz a aliados que Michelle é ‘incontrolável’ e já mediu forças até com ele - Estadão"
+    },
+    {
+      "article_id": "202",
+      "canonical_link": "https://horadopovo.com.br/com-lula-a-avibras-fechada-ha-5-anos-foi-reaberta-lembra-alckmin/",
+      "is_shared": false,
+      "position": 19,
+      "removed_article_id": "154",
+      "reviewers": [
+        "beatriz"
+      ],
+      "scope_review": "PENDENTE",
+      "source_name": "Hora do Povo",
+      "title": "Com Lula, a Avibrás, fechada há 5 anos, foi reaberta, lembra Alckmin - Hora do Povo"
+    },
+    {
+      "article_id": "325",
+      "canonical_link": "https://www.cnnbrasil.com.br/eleicoes/haddad-relata-que-motorista-foi-seguido-pela-pm-apos-deixa-lo-em-casa/",
+      "is_shared": false,
+      "position": 22,
+      "removed_article_id": "351",
+      "reviewers": [
+        "lucas"
+      ],
+      "scope_review": "PENDENTE",
+      "source_name": "CNN Brasil",
+      "title": "Haddad relata que motorista foi seguido pela PM após deixá-lo em casa - CNN Brasil"
+    },
+    {
+      "article_id": "306",
+      "canonical_link": "https://www.cnnbrasil.com.br/eleicoes/haddad-lanca-campanha-em-evento-exaltando-lula/",
+      "is_shared": false,
+      "position": 23,
+      "removed_article_id": "490",
+      "reviewers": [
+        "nicolas"
+      ],
+      "scope_review": "PENDENTE",
+      "source_name": "CNN Brasil",
+      "title": "Haddad lança campanha em evento exaltando Lula - CNN Brasil"
+    },
+    {
+      "article_id": "358",
+      "canonical_link": "https://www1.folha.uol.com.br/poder/2026/08/haddad-diz-que-vai-questionar-gestao-tarcisio-apos-pm-seguir-seu-motorista-de-forma-ostensiva.shtml",
+      "is_shared": false,
+      "position": 28,
+      "removed_article_id": "528",
+      "reviewers": [
+        "lucas"
+      ],
+      "scope_review": "PENDENTE",
+      "source_name": "Folha de S.Paulo",
+      "title": "Haddad diz que vai questionar gestão Tarcísio após PM seguir de forma 'ostensiva' seu motorista - Folha de S.Paulo"
+    },
+    {
+      "article_id": "191",
+      "canonical_link": "https://oglobo.globo.com/blogs/sonar-a-escuta-das-redes/post/2026/08/pronto-para-mais-lula-com-chuchu-diz-alckmin-em-post-no-primeiro-dia-da-campanha-reeleicao-do-petista.ghtml",
+      "is_shared": false,
+      "position": 30,
+      "removed_article_id": "538",
+      "reviewers": [
+        "anderson"
+      ],
+      "scope_review": "PENDENTE",
+      "source_name": "O GLOBO",
+      "title": "Alckmin posta meia com imagens de lulas e chuchus: 'Pronto para mais', diz vice-presidente no primeiro dia de campanha - O GLOBO"
+    },
+    {
+      "article_id": "94",
+      "canonical_link": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/08/15/quaest-decisao-voto-14-agosto.ghtml",
+      "is_shared": false,
+      "position": 35,
+      "removed_article_id": "117",
+      "reviewers": [
+        "nicolas"
+      ],
+      "scope_review": "PENDENTE",
+      "source_name": "G1",
+      "title": "Quaest: voto em Lula e Flávio Bolsonaro é o mais consolidado; Zema tem eleitorado menos convicto - G1"
+    },
+    {
+      "article_id": "501",
+      "canonical_link": "https://www1.folha.uol.com.br/poder/2026/08/kassio-e-criticado-no-tse-por-supostos-acenos-a-flavio-bolsonaro-ministro-nega.shtml",
+      "is_shared": false,
+      "position": 37,
+      "removed_article_id": "107",
+      "reviewers": [
+        "beatriz"
+      ],
+      "scope_review": "PENDENTE",
+      "source_name": "Folha de S.Paulo",
+      "title": "Kassio é criticado no TSE por supostos acenos a Flávio Bolsonaro; ministro nega - Folha de S.Paulo"
+    },
+    {
+      "article_id": "139",
+      "canonical_link": "https://jornalgrandebahia.com.br/2026/08/presidente-lula-aponta-apenas-ele-e-jair-bolsonaro-como-lideres-nacionais-e-lista-seis-aliados-com-potencial-para-2030/",
+      "is_shared": false,
+      "position": 39,
+      "removed_article_id": "394",
+      "reviewers": [
+        "gustavo"
+      ],
+      "scope_review": "PENDENTE",
+      "source_name": "Jornal Grande Bahia",
+      "title": "Presidente Lula aponta apenas ele e Jair Bolsonaro como líderes nacionais e lista seis aliados com potencial para 2030 - Jornal Grande Bahia"
+    },
+    {
+      "article_id": "57",
+      "canonical_link": "https://www1.folha.uol.com.br/poder/2026/08/lula-visitara-navio-da-petrobras-no-amapa-para-exaltar-indicios-de-petroleo-e-em-gesto-a-alcolumbre.shtml",
+      "is_shared": false,
+      "position": 40,
+      "removed_article_id": "341",
+      "reviewers": [
+        "lucas"
+      ],
+      "scope_review": "PENDENTE",
+      "source_name": "Folha de S.Paulo",
+      "title": "Lula visitará navio da Petrobras no Amapá para exaltar indícios de petróleo e em gesto a Alcolumbre - Folha de S.Paulo"
+    },
+    {
+      "article_id": "354",
+      "canonical_link": "https://valor.globo.com/politica/noticia/2026/08/12/haddad-relata-abordagem-policial-fora-do-padrao-e-secretaria-de-seguranca-determina-investigacao.ghtml",
+      "is_shared": false,
+      "position": 42,
+      "removed_article_id": "423",
+      "reviewers": [
+        "anderson"
+      ],
+      "scope_review": "PENDENTE",
+      "source_name": "Valor Econômico",
+      "title": "Haddad relata abordagem policial 'fora do padrão' e Secretaria de Segurança determina investigação - Valor Econômico"
+    },
+    {
+      "article_id": "278",
+      "canonical_link": "https://oglobo.globo.com/blogs/lauro-jardim/post/2026/07/magnatas-e-cotado-a-vaga-de-alckmin-doam-r-375-mil-a-partido-de-alckmin.ghtml",
+      "is_shared": false,
+      "position": 47,
+      "removed_article_id": "323",
+      "reviewers": [
+        "nicolas"
+      ],
+      "scope_review": "PENDENTE",
+      "source_name": "O GLOBO",
+      "title": "As doações para o PSB de Alckmin - O GLOBO"
+    },
+    {
+      "article_id": "203",
+      "canonical_link": "https://www.correiodamanha.com.br/nacional/sao-paulo/campinas/2026/08/311360-com-lula-e-alckmin-pesquisadores-da-unicamp-discutem-rumos-da-ia-e-soberania-digital.html",
+      "is_shared": false,
+      "position": 51,
+      "removed_article_id": "395",
+      "reviewers": [
+        "gustavo"
+      ],
+      "scope_review": "PENDENTE",
+      "source_name": "correiodamanha.com.br",
+      "title": "Com Lula e Alckmin, pesquisadores da Unicamp discutem rumos da IA e soberania digital - correiodamanha.com.br"
+    },
+    {
+      "article_id": "333",
+      "canonical_link": "https://oglobo.globo.com/politica/eleicoes-2026/noticia/2026/08/14/mpf-instaura-inquerito-para-apurar-caso-do-motorista-de-haddad-abordado-pela-pm-de-sp.ghtml",
+      "is_shared": false,
+      "position": 53,
+      "removed_article_id": "407",
+      "reviewers": [
+        "nicolas"
+      ],
+      "scope_review": "PENDENTE",
+      "source_name": "O GLOBO",
+      "title": "MPF instaura inquérito para apurar caso do motorista de Haddad seguido por viatura da PM de SP - O GLOBO"
+    },
+    {
+      "article_id": "220",
+      "canonical_link": "https://www.tribunadosertao.com.br/geral/2026/08/16/960893-lula-defende-soberania-sobre-minerais-criticos-e-alckmin-destaca-reindustrializacao-do-pais",
+      "is_shared": false,
+      "position": 58,
+      "removed_article_id": "290",
+      "reviewers": [
+        "lucas"
+      ],
+      "scope_review": "PENDENTE",
+      "source_name": "Tribuna do Sertão",
+      "title": "Lula defende soberania sobre minerais críticos e Alckmin destaca reindustrialização do país - Tribuna do Sertão"
+    },
+    {
+      "article_id": "390",
+      "canonical_link": "https://www1.folha.uol.com.br/poder/2026/08/protesto-com-rojoes-contra-tarcisio-atrasa-evento-de-lancamento-da-campanha-em-osasco.shtml",
+      "is_shared": false,
+      "position": 59,
+      "removed_article_id": "327",
+      "reviewers": [
+        "nicolas"
+      ],
+      "scope_review": "PENDENTE",
+      "source_name": "Folha de S.Paulo",
+      "title": "Tarcísio começa campanha em Osasco e diz que não houve perseguição de PMs a motorista de Haddad - Folha de S.Paulo"
+    }
+  ],
+  "scope_review": "PENDENTE: confirmar foco em entidade do snapshot e texto íntegro",
+  "seed": 42,
+  "selection_rule": "cauda da permutação histórica seed; pular selecionadas e exclusões",
+  "status": "PROVISORIA",
+  "validation": {
+    "assignments": 90,
+    "labels_generated": false,
+    "removed_ids_absent": true,
+    "split_generated": false,
+    "unique_articles": 60
+  }
+}

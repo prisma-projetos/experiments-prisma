@@ -1,0 +1,172 @@
+{
+  "anderson_sha256_inalterado": "877da2676d0f70afc3b6d64cf592896b7ed532a9ae6dfcc00d45e3ab574f4b5b",
+  "verificacoes": [
+    {
+      "arquivo": "Lucas - Planilha.xlsx",
+      "mencoes": 102,
+      "teores": 85,
+      "erros": 0,
+      "avisos_tempo": [],
+      "partes_xml_alteradas": [
+        "xl/worksheets/sheet4.xml",
+        "xl/worksheets/sheet6.xml"
+      ],
+      "sha256_antes": "ad6e74ba61f09ed0898dafb3f81279cf25cb3705ea08bc502608708b30ad1ef1",
+      "sha256_depois": "70010bf0b4b62b89bf8ee8f1ddab09bccfbc34adc3dd9c8d318ed8ffe506eb3c"
+    },
+    {
+      "arquivo": "beatriz.xlsx",
+      "mencoes": 109,
+      "teores": 88,
+      "erros": 0,
+      "avisos_tempo": [
+        {
+          "anotador": "beatriz.xlsx",
+          "nivel": "aviso",
+          "aba": "tempo",
+          "linha": 4,
+          "motivo": "tempo não informado no artigo 146"
+        },
+        {
+          "anotador": "beatriz.xlsx",
+          "nivel": "aviso",
+          "aba": "tempo",
+          "linha": 5,
+          "motivo": "tempo não informado no artigo 160"
+        },
+        {
+          "anotador": "beatriz.xlsx",
+          "nivel": "aviso",
+          "aba": "tempo",
+          "linha": 6,
+          "motivo": "tempo não informado no artigo 175"
+        }
+      ],
+      "partes_xml_alteradas": [
+        "xl/worksheets/sheet2.xml",
+        "xl/worksheets/sheet4.xml",
+        "xl/worksheets/sheet5.xml",
+        "xl/worksheets/sheet6.xml"
+      ],
+      "sha256_antes": "6fa4231b6078e410d6bf5d842e62b49bb5bdface6e11d090833528fde6808e2d",
+      "sha256_depois": "a91e2650f6700038e117e3cb454021845059e666226062eee63b0a985e5ff815"
+    },
+    {
+      "arquivo": "cristovam (1).xlsx",
+      "mencoes": 100,
+      "teores": 89,
+      "erros": 0,
+      "avisos_tempo": [
+        {
+          "anotador": "cristovam (1).xlsx",
+          "nivel": "aviso",
+          "aba": "tempo",
+          "linha": 2,
+          "motivo": "tempo não informado no artigo 145"
+        },
+        {
+          "anotador": "cristovam (1).xlsx",
+          "nivel": "aviso",
+          "aba": "tempo",
+          "linha": 3,
+          "motivo": "tempo não informado no artigo 159"
+        },
+        {
+          "anotador": "cristovam (1).xlsx",
+          "nivel": "aviso",
+          "aba": "tempo",
+          "linha": 4,
+          "motivo": "tempo não informado no artigo 146"
+        },
+        {
+          "anotador": "cristovam (1).xlsx",
+          "nivel": "aviso",
+          "aba": "tempo",
+          "linha": 5,
+          "motivo": "tempo não informado no artigo 160"
+        },
+        {
+          "anotador": "cristovam (1).xlsx",
+          "nivel": "aviso",
+          "aba": "tempo",
+          "linha": 6,
+          "motivo": "tempo não informado no artigo 175"
+        }
+      ],
+      "partes_xml_alteradas": [
+        "xl/worksheets/sheet3.xml",
+        "xl/worksheets/sheet5.xml",
+        "xl/workbook.xml",
+        "xl/_rels/workbook.xml.rels",
+        "[Content_Types].xml"
+      ],
+      "sha256_antes": "3664b758c69247f09d34b4c74605ec3e32d07dde564ac046d506dae05af5b66f",
+      "sha256_depois": "82aae13450710808167c74115d56ce0d91df995e407e844d465f73f4387f71dc"
+    },
+    {
+      "arquivo": "gustavo - Planilha.xlsx",
+      "mencoes": 102,
+      "teores": 95,
+      "erros": 0,
+      "avisos_tempo": [],
+      "partes_xml_alteradas": [
+        "xl/worksheets/sheet6.xml"
+      ],
+      "sha256_antes": "e515bd14bb406e6b4b1525da5e544d3b1c0a84713edbf7e4d77ae61575b8696a",
+      "sha256_depois": "383c2c1907e7639c327f7054ebf9e3faacafb6e7e9aa197f47284882b393e51b"
+    },
+    {
+      "arquivo": "nicolas.xlsx",
+      "mencoes": 118,
+      "teores": 91,
+      "erros": 0,
+      "avisos_tempo": [
+        {
+          "anotador": "nicolas.xlsx",
+          "nivel": "aviso",
+          "aba": "tempo",
+          "linha": 2,
+          "motivo": "tempo não informado no artigo 145"
+        },
+        {
+          "anotador": "nicolas.xlsx",
+          "nivel": "aviso",
+          "aba": "tempo",
+          "linha": 3,
+          "motivo": "tempo não informado no artigo 159"
+        },
+        {
+          "anotador": "nicolas.xlsx",
+          "nivel": "aviso",
+          "aba": "tempo",
+          "linha": 4,
+          "motivo": "tempo não informado no artigo 146"
+        },
+        {
+          "anotador": "nicolas.xlsx",
+          "nivel": "aviso",
+          "aba": "tempo",
+          "linha": 5,
+          "motivo": "tempo não informado no artigo 160"
+        },
+        {
+          "anotador": "nicolas.xlsx",
+          "nivel": "aviso",
+          "aba": "tempo",
+          "linha": 6,
+          "motivo": "tempo não informado no artigo 175"
+        }
+      ],
+      "partes_xml_alteradas": [
+        "xl/worksheets/sheet4.xml",
+        "xl/worksheets/sheet5.xml",
+        "xl/workbook.xml",
+        "xl/_rels/workbook.xml.rels",
+        "[Content_Types].xml"
+      ],
+      "sha256_antes": "c2c38e66c9bad6f405f5569114582d77fc711c1d395a8cd2b9eb3b11075363f7",
+      "sha256_depois": "7acc6b200a9e54902a1e4197c4adb4d8e9ca4e589717052986be4d5cc672e62d"
+    }
+  ],
+  "limite": "Validação estrutural concluída; decisões semânticas ambíguas preservadas para adjudicação humana."
+}

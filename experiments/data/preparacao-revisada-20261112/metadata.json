@@ -1,0 +1,212 @@
+{
+  "assignment": {
+    "exclusive_per_reviewer": 9,
+    "rows": 90,
+    "shared_articles": 6,
+    "unique_articles": 60
+  },
+  "duplicate_components": [
+    [
+      "1",
+      "243"
+    ],
+    [
+      "190",
+      "200"
+    ],
+    [
+      "301",
+      "308"
+    ]
+  ],
+  "exclusions": 27,
+  "historical_eligibility": {
+    "commit": "fb85d8d933d7d42edac287af98a6b951f041884f",
+    "eligible_count": 471,
+    "files_sha256": {
+      "config/entities.yaml": "3f653f381b30ac4847f021b66db0e34386f2013321b1301e75a970e513456e14",
+      "config/settings.yaml": "8859d710e9403b7db77542e9f87bc7bb76fa5fa24632dc2b4e6d81665115e4e7",
+      "scripts/build_annotation_batches.py": "55a84086abb59154509a99b4c4549b176244a39b174c5de3b33381c39c5f5290",
+      "src/entities_store.py": "d7cca17cce431a0965121fae1fd5748344a7ea72e4f0924300d3c612994b462c",
+      "src/entity_matcher.py": "04e29e318d2d2b19fe8c9e75c70e100bf8769b28fafccc44907de15d57e8eede",
+      "src/segmentation.py": "cc69b4a063829b9188b5d5e0f6420954461175b2419f4064ac561a228c0befd1"
+    },
+    "method": "load_units() do commit histórico com CSV bruto atual; primeira amostra150 reproduzida exatamente",
+    "round1_reproduced": true
+  },
+  "historical_eligible": 471,
+  "inputs_sha256": {
+    "data/annotation/manifest.csv": "6a50af400f87e78732e67dd1265925c23b6a24e312ed9895646a800959de9d66",
+    "data/raw/articles_202608191040.csv": "0b96e39e31337d36963914335143c69cdf84619ad8a716beafe0c938fef821d2",
+    "experiments/data/entidades.yaml": "6af23c0f0330a9b84a79cdb8be3b48dca9f2d2d94d799c56caa4c7bb0529c905",
+    "experiments/data/piloto_ids.txt": "32a9dcf03c95254468b231fab4e831e12cf0c72f50757e20f10106a389b87466",
+    "experiments/data/preparacao/assignments.csv": "f2323271a613e8515eb312dc7fa3e9a2ea0ec95ad1cac42635bff7ccc1a2b080",
+    "experiments/data/preparacao/candidate_ids.txt": "61c7c499d7aec3f4b3049cbf94d1962190cd800a583e571ce2a9d179bedf6e27",
+    "experiments/data/preparacao/exclusions.csv": "15c9abcdfbb751b0e007b7a1529874d64f7c3c2f4fea75363c52a56e9eabbb04",
+    "experiments/data/preparacao/historical_eligibility.json": "7863ee21e992662e3e483eecbdb22f1dea95e9dbd2119ee394f2467b59561904",
+    "experiments/data/preparacao/historical_eligible_ids.txt": "0db93bafbf36b0f1824772ed9d138efecd6314c406a89aae137834eb1640fc79",
+    "experiments/data/preparacao/metadata.json": "024d1673105d63e80a541fdc4f3be789a49e94fa457f22d72eb710365d747c8f",
+    "experiments/data/preparacao/pool_ids.txt": "9f6f77221fe508790ba5439bd80c79dc83fc2311e5444706632bd61ff710f27b",
+    "experiments/data/preparacao/substituicoes-solicitadas-20261112.txt": "c80f64007eeaf9e80db7544c079248e6a1adb7cb56ad36cbbc3d0a33d5d9463b"
+  },
+  "outputs_sha256": {
+    "assignments.csv": "cb72f4a40b74796fda7e8b54c7abed3bfd7a5214d0a0fb4afb5c5b64aaa2ea6a",
+    "candidate_ids.txt": "2107196b35ea9d8e09550c3a75a2ffb697ccf85b2cb35f9254b7786a42f04429",
+    "candidates.csv": "5c548af53f4dba393958dbf5ff991738e4ad800e082e4a4610f84d61f57bea67",
+    "exclusions.csv": "a2547f539cfbc7d72aec0fba14eb381e89c6dd6093c198701bd52f92c2b0078c",
+    "ids_anderson.txt": "f3982f0b8137e26665bff11607792896e295ebf7e0bb27602815569e3fa068c3",
+    "ids_beatriz.txt": "7a3e21e4affb3a51e704900e7c13bc482ff71cfbfc7d0e03616a4da12db47cda",
+    "ids_cristovam.txt": "7f3ee39dc30faaf5840deb36c740c17676638311005b1dbdccf6a5c5768a1187",
+    "ids_gustavo.txt": "79f5f7640e4c712b638ce7911eee760717dc127f3225c76d235483fef8d44151",
+    "ids_lucas.txt": "2c21205f3c9cac217e140a04d4644a978e4a8276d0974fd5ce6ee54c3c107abd",
+    "ids_nicolas.txt": "2fb6d26033cc17dc45f9401e82f1e8a2b1496ca01e81629bf1cfdd4928393342",
+    "pool_ids.txt": "e83e33add7c38e8911677f44d6a9df0deceaff42eab27593fcf590de3b6f7c39"
+  },
+  "pending": [
+    "revisar foco e escopo das substitutas",
+    "confirmar amostra definitiva"
+  ],
+  "pilot": [
+    "145",
+    "146",
+    "159",
+    "160",
+    "175"
+  ],
+  "pool": {
+    "articles": 294,
+    "by_source": {
+      "A Crítica de Campo Grande": 1,
+      "ABC Repórter": 1,
+      "Agência Pública": 3,
+      "Assine o Meio": 1,
+      "BBC": 4,
+      "BPMoney": 1,
+      "Brasil 247": 1,
+      "Brasil de Fato": 10,
+      "Brazil Journal": 1,
+      "CBN": 5,
+      "CNN Brasil": 24,
+      "CNseg": 1,
+      "CartaCapital": 2,
+      "Congresso em Foco": 3,
+      "Diário do Grande ABC": 1,
+      "Diário do Poder": 1,
+      "Diário do Sudoeste": 1,
+      "Estadão": 21,
+      "Folha de S.Paulo": 19,
+      "G1": 14,
+      "GZH": 2,
+      "Gazeta do Povo": 8,
+      "Giro S/A": 2,
+      "Hora do Povo": 1,
+      "ICL Notícias": 1,
+      "InfoMoney": 5,
+      "Jornal Grande Bahia": 2,
+      "Jornal do Brasil": 2,
+      "Jovem Pan": 2,
+      "Metrópoles": 3,
+      "Money Times": 1,
+      "O GLOBO": 40,
+      "O POVO+": 1,
+      "Partido dos Trabalhadores": 2,
+      "PlatôBR": 3,
+      "Poder360": 15,
+      "Portal Diário do RN": 1,
+      "Prefeitura de Caraguatatuba": 1,
+      "R7": 1,
+      "Republicanos 10": 1,
+      "Revista Fórum": 2,
+      "Revista Oeste": 2,
+      "Rádio Itatiaia": 1,
+      "Rádio Pampa": 1,
+      "SBT News": 1,
+      "Sul 21": 1,
+      "Tempo Real": 1,
+      "Terra": 3,
+      "Times Brasil | CNBC": 1,
+      "Tribuna do Sertão": 1,
+      "VEJA": 12,
+      "Valor Econômico": 14,
+      "Vero Notícias": 7,
+      "band.com.br": 3,
+      "berlinda.com.br": 1,
+      "cartacapital.com.br": 5,
+      "correiodamanha.com.br": 4,
+      "dpontanews.com.br": 1,
+      "dw.com": 1,
+      "exame.com": 1,
+      "folhape.com.br": 1,
+      "g1.globo.com": 16,
+      "lula.com.br": 1,
+      "metalurgicos.org.br": 1,
+      "ofator.com.br": 1,
+      "tmc.com.br": 1,
+      "tribunadosertao.com.br": 1
+    },
+    "characters": {
+      "max": 24513,
+      "median": 3129.5,
+      "min": 539
+    }
+  },
+  "replacement": {
+    "base": "experiments/data/preparacao",
+    "code_sha256": "7c2820db27f95b92a81dc859596f1e5d9c01bd595d72694dd74b7dd10773f00b",
+    "count": 20,
+    "report": "replacement-report.json",
+    "scope_review": "PENDENTE"
+  },
+  "reserved_before_pilot_and_duplicates": 321,
+  "round1": 150,
+  "sample": {
+    "articles": 60,
+    "by_source": {
+      "BBC": 1,
+      "Brasil de Fato": 4,
+      "CNN Brasil": 6,
+      "CNseg": 1,
+      "Congresso em Foco": 2,
+      "Estadão": 4,
+      "Folha de S.Paulo": 7,
+      "G1": 2,
+      "Hora do Povo": 1,
+      "Jornal Grande Bahia": 1,
+      "Jornal do Brasil": 1,
+      "Metrópoles": 1,
+      "O GLOBO": 8,
+      "PlatôBR": 1,
+      "Poder360": 4,
+      "Prefeitura de Caraguatatuba": 1,
+      "Rádio Itatiaia": 1,
+      "Tribuna do Sertão": 1,
+      "VEJA": 1,
+      "Valor Econômico": 4,
+      "Vero Notícias": 2,
+      "cartacapital.com.br": 2,
+      "correiodamanha.com.br": 2,
+      "g1.globo.com": 1,
+      "ofator.com.br": 1
+    },
+    "characters": {
+      "max": 14004,
+      "median": 3670.5,
+      "min": 618
+    }
+  },
+  "sampling": "amostra de origem preservada por posição; continuação da permutação histórica após as 60 originais, pulando selecionadas e exclusões",
+  "scope": "elegibilidade histórica rodada1; excluir rodada1, piloto e duplicatas por URL/texto",
+  "seed": 42,
+  "snapshot": {
+    "aliases": 73,
+    "definitive": false,
+    "entities": 40,
+    "entity_types": {
+      "partido": 14,
+      "politico": 26
+    },
+    "generated_at": "2026-11-10T19:49:31Z",
+    "path": "experiments/data/entidades.yaml"
+  },
+  "status": "PROVISORIA"
+}

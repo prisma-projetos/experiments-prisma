@@ -1,0 +1,22 @@
+{
+  "aliases": 73,
+  "entities": 40,
+  "entity_types": {
+    "partido": 14,
+    "politico": 26
+  },
+  "generated_at": "2026-11-10T19:49:31Z",
+  "integrity": {
+    "party_scope": "partidos ativos vinculados às candidaturas pelo loader de produção",
+    "unique_ids": true,
+    "valid_cargos": true
+  },
+  "read_only": true,
+  "scope_cargos": [
+    "PRESIDENTE",
+    "VICE-PRESIDENTE"
+  ],
+  "snapshot": "experiments/data/entidades.yaml",
+  "snapshot_sha256": "6af23c0f0330a9b84a79cdb8be3b48dca9f2d2d94d799c56caa4c7bb0529c905",
+  "source_database": "prisma-dev"
+}

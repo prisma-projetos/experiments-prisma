@@ -1,0 +1,111 @@
+[
+  {
+    "arquivo": "Anderson - Planilha.xlsx",
+    "mencoes_antes": 106,
+    "mencoes_depois": 89,
+    "siglas_removidas": 17,
+    "pronomes_reatribuidos": 1,
+    "teores_antes": 88,
+    "teores_depois": 74,
+    "teores_removidos": 14,
+    "teores_adicionados": 0,
+    "avisos_tempo": 0,
+    "sha256_antes": "877da2676d0f70afc3b6d64cf592896b7ed532a9ae6dfcc00d45e3ab574f4b5b",
+    "sha256_depois": "fb93a69231951285e1eaaa5e6f4ff8685511f46e3221376ee45e0ccb74a9cea1",
+    "partes_xml_alteradas": [
+      "xl/worksheets/sheet4.xml",
+      "xl/worksheets/sheet5.xml",
+      "xl/worksheets/sheet6.xml"
+    ]
+  },
+  {
+    "arquivo": "Lucas - Planilha.xlsx",
+    "mencoes_antes": 102,
+    "mencoes_depois": 85,
+    "siglas_removidas": 17,
+    "pronomes_reatribuidos": 1,
+    "teores_antes": 85,
+    "teores_depois": 71,
+    "teores_removidos": 14,
+    "teores_adicionados": 0,
+    "avisos_tempo": 0,
+    "sha256_antes": "70010bf0b4b62b89bf8ee8f1ddab09bccfbc34adc3dd9c8d318ed8ffe506eb3c",
+    "sha256_depois": "36757c077a3abef4aedd6619f1dc2c54e1f31b336180704fba61e1dc5af4c3de",
+    "partes_xml_alteradas": [
+      "xl/worksheets/sheet4.xml",
+      "xl/worksheets/sheet5.xml"
+    ]
+  },
+  {
+    "arquivo": "beatriz.xlsx",
+    "mencoes_antes": 109,
+    "mencoes_depois": 92,
+    "siglas_removidas": 17,
+    "pronomes_reatribuidos": 1,
+    "teores_antes": 88,
+    "teores_depois": 74,
+    "teores_removidos": 14,
+    "teores_adicionados": 0,
+    "avisos_tempo": 3,
+    "sha256_antes": "a91e2650f6700038e117e3cb454021845059e666226062eee63b0a985e5ff815",
+    "sha256_depois": "dd360e73ce0219f5a53643a44d23ab048c1b7f24b68fec0a79014011d19fbaa4",
+    "partes_xml_alteradas": [
+      "xl/worksheets/sheet4.xml",
+      "xl/worksheets/sheet5.xml"
+    ]
+  },
+  {
+    "arquivo": "cristovam (1).xlsx",
+    "mencoes_antes": 100,
+    "mencoes_depois": 83,
+    "siglas_removidas": 17,
+    "pronomes_reatribuidos": 1,
+    "teores_antes": 89,
+    "teores_depois": 75,
+    "teores_removidos": 14,
+    "teores_adicionados": 0,
+    "avisos_tempo": 5,
+    "sha256_antes": "82aae13450710808167c74115d56ce0d91df995e407e844d465f73f4387f71dc",
+    "sha256_depois": "a0041fbf51ad8da54d515caf433da6c9a7672b1cd1e3eb9b47e00aa4c7be363e",
+    "partes_xml_alteradas": [
+      "xl/worksheets/sheet3.xml",
+      "xl/worksheets/sheet5.xml"
+    ]
+  },
+  {
+    "arquivo": "gustavo - Planilha.xlsx",
+    "mencoes_antes": 102,
+    "mencoes_depois": 85,
+    "siglas_removidas": 17,
+    "pronomes_reatribuidos": 1,
+    "teores_antes": 95,
+    "teores_depois": 81,
+    "teores_removidos": 14,
+    "teores_adicionados": 0,
+    "avisos_tempo": 0,
+    "sha256_antes": "383c2c1907e7639c327f7054ebf9e3faacafb6e7e9aa197f47284882b393e51b",
+    "sha256_depois": "a58930c0b315c0e4c8df827f352ea22b5d90992858affb49f050615d481a8dbf",
+    "partes_xml_alteradas": [
+      "xl/worksheets/sheet3.xml",
+      "xl/worksheets/sheet4.xml"
+    ]
+  },
+  {
+    "arquivo": "nicolas.xlsx",
+    "mencoes_antes": 118,
+    "mencoes_depois": 101,
+    "siglas_removidas": 17,
+    "pronomes_reatribuidos": 1,
+    "teores_antes": 91,
+    "teores_depois": 77,
+    "teores_removidos": 14,
+    "teores_adicionados": 0,
+    "avisos_tempo": 5,
+    "sha256_antes": "7acc6b200a9e54902a1e4197c4adb4d8e9ca4e589717052986be4d5cc672e62d",
+    "sha256_depois": "3b7f460934406be015e78a2838a9beeb6d1387df08c656223f2d46fba254f542",
+    "partes_xml_alteradas": [
+      "xl/worksheets/sheet4.xml",
+      "xl/worksheets/sheet5.xml"
+    ]
+  }
+]

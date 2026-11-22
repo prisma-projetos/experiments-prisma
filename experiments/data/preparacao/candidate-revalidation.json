@@ -1,0 +1,907 @@
+{
+  "articles": [
+    {
+      "article_id": "5",
+      "direct_mentions": 17,
+      "eligible_by_direct_match": true,
+      "entity_ids": [
+        "122418060191"
+      ],
+      "requires_review": false
+    },
+    {
+      "article_id": "438",
+      "direct_mentions": 1,
+      "eligible_by_direct_match": true,
+      "entity_ids": [
+        "13"
+      ],
+      "requires_review": false
+    },
+    {
+      "article_id": "498",
+      "direct_mentions": 13,
+      "eligible_by_direct_match": true,
+      "entity_ids": [
+        "003087571031",
+        "032101610299",
+        "108563260302",
+        "122418060191",
+        "22",
+        "317965770183"
+      ],
+      "requires_review": false
+    },
+    {
+      "article_id": "408",
+      "direct_mentions": 14,
+      "eligible_by_direct_match": true,
+      "entity_ids": [
+        "003087571031",
+        "086302290191",
+        "108563260302",
+        "122418060191",
+        "13",
+        "22",
+        "55"
+      ],
+      "requires_review": false
+    },
+    {
+      "article_id": "129",
+      "direct_mentions": 0,
+      "eligible_by_direct_match": false,
+      "entity_ids": [],
+      "requires_review": true
+    },
+    {
+      "article_id": "73",
+      "direct_mentions": 26,
+      "eligible_by_direct_match": true,
+      "entity_ids": [
+        "032101610299",
+        "035204110175",
+        "122418060191",
+        "13"
+      ],
+      "requires_review": false
+    },
+    {
+      "article_id": "297",
+      "direct_mentions": 0,
+      "eligible_by_direct_match": false,
+      "entity_ids": [],
+      "requires_review": true
+    },
+    {
+      "article_id": "183",
+      "direct_mentions": 17,
+      "eligible_by_direct_match": true,
+      "entity_ids": [
+        "003087571031",
+        "032101610299",
+        "108563260302",
+        "122418060191",
+        "13",
+        "317965770183"
+      ],
+      "requires_review": false
+    },
+    {
+      "article_id": "95",
+      "direct_mentions": 15,
+      "eligible_by_direct_match": true,
+      "entity_ids": [
+        "108563260302",
+        "122418060191",
+        "13"
+      ],
+      "requires_review": false
+    },
+    {
+      "article_id": "406",
+      "direct_mentions": 4,
+      "eligible_by_direct_match": true,
+      "entity_ids": [
+        "108563260302",
+        "122418060191"
+      ],
+      "requires_review": false
+    },
+    {
+      "article_id": "530",
+      "direct_mentions": 1,
+      "eligible_by_direct_match": true,
+      "entity_ids": [
+        "22"
+      ],
+      "requires_review": false
+    },
+    {
+      "article_id": "344",
+      "direct_mentions": 16,
+      "eligible_by_direct_match": true,
+      "entity_ids": [
+        "035204110175",
+        "122418060191",
+        "13"
+      ],
+      "requires_review": false
+    },
+    {
+      "article_id": "219",
+      "direct_mentions": 16,
+      "eligible_by_direct_match": true,
+      "entity_ids": [
+        "003087571031",
+        "035204110175",
+        "122418060191"
+      ],
+      "requires_review": false
+    },
+    {
+      "article_id": "364",
+      "direct_mentions": 0,
+      "eligible_by_direct_match": false,
+      "entity_ids": [],
+      "requires_review": true
+    },
+    {
+      "article_id": "63",
+      "direct_mentions": 22,
+      "eligible_by_direct_match": true,
+      "entity_ids": [
+        "003087571031",
+        "032101610299",
+        "108563260302",
+        "122418060191",
+        "317965770183"
+      ],
+      "requires_review": false
+    },
+    {
+      "article_id": "52",
+      "direct_mentions": 38,
+      "eligible_by_direct_match": true,
+      "entity_ids": [
+        "003087571031",
+        "016286701775",
+        "032101610299",
+        "035204110175",
+        "108563260302",
+        "122418060191",
+        "13",
+        "22",
+        "317965770183",
+        "40",
+        "55"
+      ],
+      "requires_review": false
+    },
+    {
+      "article_id": "91",
+      "direct_mentions": 13,
+      "eligible_by_direct_match": true,
+      "entity_ids": [
+        "016286701775",
+        "108563260302",
+        "122418060191",
+        "13",
+        "22"
+      ],
+      "requires_review": false
+    },
+    {
+      "article_id": "435",
+      "direct_mentions": 8,
+      "eligible_by_direct_match": true,
+      "entity_ids": [
+        "108563260302",
+        "122418060191",
+        "13"
+      ],
+      "requires_review": false
+    },
+    {
+      "article_id": "6",
+      "direct_mentions": 31,
+      "eligible_by_direct_match": true,
+      "entity_ids": [
+        "003087571031",
+        "032101610299",
+        "108563260302",
+        "122418060191",
+        "317965770183"
+      ],
+      "requires_review": false
+    },
+    {
+      "article_id": "154",
+      "direct_mentions": 1,
+      "eligible_by_direct_match": true,
+      "entity_ids": [
+        "108563260302"
+      ],
+      "requires_review": false
+    },
+    {
+      "article_id": "240",
+      "direct_mentions": 20,
+      "eligible_by_direct_match": true,
+      "entity_ids": [
+        "035204110175",
+        "122418060191",
+        "13",
+        "40"
+      ],
+      "requires_review": false
+    },
+    {
+      "article_id": "373",
+      "direct_mentions": 17,
+      "eligible_by_direct_match": true,
+      "entity_ids": [
+        "035204110175",
+        "108563260302",
+        "122418060191",
+        "13"
+      ],
+      "requires_review": false
+    },
+    {
+      "article_id": "351",
+      "direct_mentions": 1,
+      "eligible_by_direct_match": true,
+      "entity_ids": [
+        "13"
+      ],
+      "requires_review": false
+    },
+    {
+      "article_id": "490",
+      "direct_mentions": 1,
+      "eligible_by_direct_match": true,
+      "entity_ids": [
+        "108563260302"
+      ],
+      "requires_review": false
+    },
+    {
+      "article_id": "163",
+      "direct_mentions": 10,
+      "eligible_by_direct_match": true,
+      "entity_ids": [
+        "016286701775",
+        "108563260302",
+        "122418060191",
+        "22"
+      ],
+      "requires_review": false
+    },
+    {
+      "article_id": "221",
+      "direct_mentions": 9,
+      "eligible_by_direct_match": true,
+      "entity_ids": [
+        "035204110175",
+        "13",
+        "40"
+      ],
+      "requires_review": false
+    },
+    {
+      "article_id": "16",
+      "direct_mentions": 3,
+      "eligible_by_direct_match": true,
+      "entity_ids": [
+        "122418060191",
+        "13"
+      ],
+      "requires_review": false
+    },
+    {
+      "article_id": "10",
+      "direct_mentions": 9,
+      "eligible_by_direct_match": true,
+      "entity_ids": [
+        "108563260302",
+        "122418060191",
+        "13"
+      ],
+      "requires_review": false
+    },
+    {
+      "article_id": "528",
+      "direct_mentions": 0,
+      "eligible_by_direct_match": false,
+      "entity_ids": [],
+      "requires_review": true
+    },
+    {
+      "article_id": "506",
+      "direct_mentions": 10,
+      "eligible_by_direct_match": true,
+      "entity_ids": [
+        "016286701775",
+        "108563260302",
+        "122418060191",
+        "13",
+        "22"
+      ],
+      "requires_review": false
+    },
+    {
+      "article_id": "538",
+      "direct_mentions": 0,
+      "eligible_by_direct_match": false,
+      "entity_ids": [],
+      "requires_review": true
+    },
+    {
+      "article_id": "81",
+      "direct_mentions": 3,
+      "eligible_by_direct_match": true,
+      "entity_ids": [
+        "122418060191"
+      ],
+      "requires_review": false
+    },
+    {
+      "article_id": "235",
+      "direct_mentions": 11,
+      "eligible_by_direct_match": true,
+      "entity_ids": [
+        "035204110175",
+        "122418060191",
+        "13",
+        "40"
+      ],
+      "requires_review": false
+    },
+    {
+      "article_id": "510",
+      "direct_mentions": 12,
+      "eligible_by_direct_match": true,
+      "entity_ids": [
+        "032101610299",
+        "108563260302",
+        "122418060191",
+        "14",
+        "22"
+      ],
+      "requires_review": false
+    },
+    {
+      "article_id": "142",
+      "direct_mentions": 5,
+      "eligible_by_direct_match": true,
+      "entity_ids": [
+        "016286701775",
+        "122418060191"
+      ],
+      "requires_review": false
+    },
+    {
+      "article_id": "117",
+      "direct_mentions": 6,
+      "eligible_by_direct_match": true,
+      "entity_ids": [
+        "22"
+      ],
+      "requires_review": false
+    },
+    {
+      "article_id": "457",
+      "direct_mentions": 5,
+      "eligible_by_direct_match": true,
+      "entity_ids": [
+        "108563260302",
+        "22"
+      ],
+      "requires_review": false
+    },
+    {
+      "article_id": "107",
+      "direct_mentions": 2,
+      "eligible_by_direct_match": true,
+      "entity_ids": [
+        "108563260302",
+        "22"
+      ],
+      "requires_review": false
+    },
+    {
+      "article_id": "82",
+      "direct_mentions": 14,
+      "eligible_by_direct_match": true,
+      "entity_ids": [
+        "003087571031",
+        "086302290191",
+        "108563260302",
+        "122418060191",
+        "13",
+        "55"
+      ],
+      "requires_review": false
+    },
+    {
+      "article_id": "394",
+      "direct_mentions": 0,
+      "eligible_by_direct_match": false,
+      "entity_ids": [],
+      "requires_review": true
+    },
+    {
+      "article_id": "341",
+      "direct_mentions": 0,
+      "eligible_by_direct_match": false,
+      "entity_ids": [],
+      "requires_review": true
+    },
+    {
+      "article_id": "418",
+      "direct_mentions": 5,
+      "eligible_by_direct_match": true,
+      "entity_ids": [
+        "122418060191",
+        "13",
+        "22"
+      ],
+      "requires_review": false
+    },
+    {
+      "article_id": "423",
+      "direct_mentions": 0,
+      "eligible_by_direct_match": false,
+      "entity_ids": [],
+      "requires_review": true
+    },
+    {
+      "article_id": "458",
+      "direct_mentions": 5,
+      "eligible_by_direct_match": true,
+      "entity_ids": [
+        "108563260302",
+        "22"
+      ],
+      "requires_review": false
+    },
+    {
+      "article_id": "455",
+      "direct_mentions": 6,
+      "eligible_by_direct_match": true,
+      "entity_ids": [
+        "108563260302",
+        "122418060191",
+        "13",
+        "22"
+      ],
+      "requires_review": false
+    },
+    {
+      "article_id": "281",
+      "direct_mentions": 2,
+      "eligible_by_direct_match": true,
+      "entity_ids": [
+        "035204110175"
+      ],
+      "requires_review": false
+    },
+    {
+      "article_id": "72",
+      "direct_mentions": 13,
+      "eligible_by_direct_match": true,
+      "entity_ids": [
+        "122418060191",
+        "13"
+      ],
+      "requires_review": false
+    },
+    {
+      "article_id": "323",
+      "direct_mentions": 1,
+      "eligible_by_direct_match": true,
+      "entity_ids": [
+        "13"
+      ],
+      "requires_review": false
+    },
+    {
+      "article_id": "118",
+      "direct_mentions": 9,
+      "eligible_by_direct_match": true,
+      "entity_ids": [
+        "016286701775",
+        "108563260302",
+        "122418060191",
+        "13",
+        "22"
+      ],
+      "requires_review": false
+    },
+    {
+      "article_id": "8",
+      "direct_mentions": 5,
+      "eligible_by_direct_match": true,
+      "entity_ids": [
+        "108563260302",
+        "122418060191"
+      ],
+      "requires_review": false
+    },
+    {
+      "article_id": "244",
+      "direct_mentions": 3,
+      "eligible_by_direct_match": true,
+      "entity_ids": [
+        "035204110175"
+      ],
+      "requires_review": false
+    },
+    {
+      "article_id": "395",
+      "direct_mentions": 0,
+      "eligible_by_direct_match": false,
+      "entity_ids": [],
+      "requires_review": true
+    },
+    {
+      "article_id": "155",
+      "direct_mentions": 7,
+      "eligible_by_direct_match": true,
+      "entity_ids": [
+        "016286701775",
+        "122418060191",
+        "22"
+      ],
+      "requires_review": false
+    },
+    {
+      "article_id": "407",
+      "direct_mentions": 0,
+      "eligible_by_direct_match": false,
+      "entity_ids": [],
+      "requires_review": true
+    },
+    {
+      "article_id": "431",
+      "direct_mentions": 9,
+      "eligible_by_direct_match": true,
+      "entity_ids": [
+        "108563260302",
+        "122418060191",
+        "22"
+      ],
+      "requires_review": false
+    },
+    {
+      "article_id": "280",
+      "direct_mentions": 11,
+      "eligible_by_direct_match": true,
+      "entity_ids": [
+        "035204110175",
+        "122418060191",
+        "40",
+        "55"
+      ],
+      "requires_review": false
+    },
+    {
+      "article_id": "58",
+      "direct_mentions": 21,
+      "eligible_by_direct_match": true,
+      "entity_ids": [
+        "108563260302",
+        "122418060191",
+        "13",
+        "22"
+      ],
+      "requires_review": false
+    },
+    {
+      "article_id": "97",
+      "direct_mentions": 9,
+      "eligible_by_direct_match": true,
+      "entity_ids": [
+        "108563260302",
+        "122418060191",
+        "13"
+      ],
+      "requires_review": false
+    },
+    {
+      "article_id": "290",
+      "direct_mentions": 0,
+      "eligible_by_direct_match": false,
+      "entity_ids": [],
+      "requires_review": true
+    },
+    {
+      "article_id": "327",
+      "direct_mentions": 6,
+      "eligible_by_direct_match": true,
+      "entity_ids": [
+        "035204110175",
+        "108563260302",
+        "122418060191",
+        "13",
+        "22"
+      ],
+      "requires_review": false
+    }
+  ],
+  "entity_coverage": [
+    {
+      "articles": 0,
+      "entity_id": "70",
+      "name": "AVANTE",
+      "new_since_previous_snapshot": false
+    },
+    {
+      "articles": 0,
+      "entity_id": "27",
+      "name": "DEMOCRACIA CRISTÃ",
+      "new_since_previous_snapshot": false
+    },
+    {
+      "articles": 0,
+      "entity_id": "35",
+      "name": "DEMOCRATA",
+      "new_since_previous_snapshot": false
+    },
+    {
+      "articles": 0,
+      "entity_id": "21",
+      "name": "PARTIDO COMUNISTA BRASILEIRO",
+      "new_since_previous_snapshot": false
+    },
+    {
+      "articles": 0,
+      "entity_id": "29",
+      "name": "PARTIDO DA CAUSA OPERÁRIA",
+      "new_since_previous_snapshot": false
+    },
+    {
+      "articles": 26,
+      "entity_id": "13",
+      "name": "PARTIDO DOS TRABALHADORES",
+      "new_since_previous_snapshot": false
+    },
+    {
+      "articles": 19,
+      "entity_id": "22",
+      "name": "PARTIDO LIBERAL",
+      "new_since_previous_snapshot": false
+    },
+    {
+      "articles": 1,
+      "entity_id": "14",
+      "name": "PARTIDO MISSÃO",
+      "new_since_previous_snapshot": false
+    },
+    {
+      "articles": 0,
+      "entity_id": "30",
+      "name": "PARTIDO NOVO",
+      "new_since_previous_snapshot": false
+    },
+    {
+      "articles": 0,
+      "entity_id": "28",
+      "name": "PARTIDO RENOVADOR TRABALHISTA BRASILEIRO",
+      "new_since_previous_snapshot": false
+    },
+    {
+      "articles": 4,
+      "entity_id": "55",
+      "name": "PARTIDO SOCIAL DEMOCRÁTICO",
+      "new_since_previous_snapshot": false
+    },
+    {
+      "articles": 0,
+      "entity_id": "16",
+      "name": "PARTIDO SOCIALISTA  DOS TRABALHADORES UNIFICADO",
+      "new_since_previous_snapshot": false
+    },
+    {
+      "articles": 5,
+      "entity_id": "40",
+      "name": "PARTIDO SOCIALISTA BRASILEIRO",
+      "new_since_previous_snapshot": false
+    },
+    {
+      "articles": 0,
+      "entity_id": "80",
+      "name": "UNIDADE POPULAR",
+      "new_since_previous_snapshot": false
+    },
+    {
+      "articles": 7,
+      "entity_id": "016286701775",
+      "name": "ALFREDO GASPAR DE MENDONÇA NETO",
+      "new_since_previous_snapshot": false
+    },
+    {
+      "articles": 0,
+      "entity_id": "214269110167",
+      "name": "ANTONIO CARLOS SILVA",
+      "new_since_previous_snapshot": false
+    },
+    {
+      "articles": 0,
+      "entity_id": "040815250400",
+      "name": "AROLDO MEDINA",
+      "new_since_previous_snapshot": false
+    },
+    {
+      "articles": 0,
+      "entity_id": "098853820116",
+      "name": "AUGUSTO JORGE CURY",
+      "new_since_previous_snapshot": false
+    },
+    {
+      "articles": 0,
+      "entity_id": "028390471848",
+      "name": "CLARIANA ZACARKIM BARAO",
+      "new_since_previous_snapshot": false
+    },
+    {
+      "articles": 0,
+      "entity_id": "101707320116",
+      "name": "CLEUSA DOS SANTOS",
+      "new_since_previous_snapshot": false
+    },
+    {
+      "articles": 0,
+      "entity_id": "000221640132",
+      "name": "EDMILSON SILVA COSTA",
+      "new_since_previous_snapshot": false
+    },
+    {
+      "articles": 0,
+      "entity_id": "071627330620",
+      "name": "FABIANA CRISTINA TAVARES TORQUATO",
+      "new_since_previous_snapshot": false
+    },
+    {
+      "articles": 28,
+      "entity_id": "108563260302",
+      "name": "FLAVIO NANTES BOLSONARO",
+      "new_since_previous_snapshot": false
+    },
+    {
+      "articles": 12,
+      "entity_id": "035204110175",
+      "name": "GERALDO JOSE RODRIGUES ALCKMIN FILHO",
+      "new_since_previous_snapshot": false
+    },
+    {
+      "articles": 2,
+      "entity_id": "086302290191",
+      "name": "GILBERTO KASSAB",
+      "new_since_previous_snapshot": false
+    },
+    {
+      "articles": 0,
+      "entity_id": "020750351180",
+      "name": "HERTZ DA CONCEICAO DIAS",
+      "new_since_previous_snapshot": false
+    },
+    {
+      "articles": 0,
+      "entity_id": "045237680299",
+      "name": "JULIO CESAR DELGADO",
+      "new_since_previous_snapshot": false
+    },
+    {
+      "articles": 0,
+      "entity_id": "032488231082",
+      "name": "LEONARDO ALVES DE ARAUJO",
+      "new_since_previous_snapshot": false
+    },
+    {
+      "articles": 0,
+      "entity_id": "033294250795",
+      "name": "LUIS EDUARDO GRANGEIRO GIRÃO",
+      "new_since_previous_snapshot": false
+    },
+    {
+      "articles": 36,
+      "entity_id": "122418060191",
+      "name": "LUIZ INÁCIO LULA DA SILVA",
+      "new_since_previous_snapshot": false
+    },
+    {
+      "articles": 0,
+      "entity_id": "049143831023",
+      "name": "PABLO HENRIQUE COSTA MARCAL",
+      "new_since_previous_snapshot": false
+    },
+    {
+      "articles": 0,
+      "entity_id": "059412101309",
+      "name": "RAQUEL NONATO DE BRICIO",
+      "new_since_previous_snapshot": false
+    },
+    {
+      "articles": 5,
+      "entity_id": "317965770183",
+      "name": "RENAN ANTONIO FERREIRA DOS SANTOS",
+      "new_since_previous_snapshot": false
+    },
+    {
+      "articles": 7,
+      "entity_id": "032101610299",
+      "name": "ROMEU ZEMA NETO",
+      "new_since_previous_snapshot": false
+    },
+    {
+      "articles": 8,
+      "entity_id": "003087571031",
+      "name": "RONALDO RAMOS CAIADO",
+      "new_since_previous_snapshot": false
+    },
+    {
+      "articles": 0,
+      "entity_id": "099286850183",
+      "name": "RUI COSTA PIMENTA",
+      "new_since_previous_snapshot": false
+    },
+    {
+      "articles": 0,
+      "entity_id": "167724820272",
+      "name": "SAMARA MARTINS DA SILVA FEITOSA",
+      "new_since_previous_snapshot": false
+    },
+    {
+      "articles": 0,
+      "entity_id": "026613890310",
+      "name": "SUÊD HAIDAR NOGUEIRA",
+      "new_since_previous_snapshot": false
+    },
+    {
+      "articles": 0,
+      "entity_id": "084338920205",
+      "name": "VANESSA PORTUGAL BARBOSA",
+      "new_since_previous_snapshot": false
+    },
+    {
+      "articles": 0,
+      "entity_id": "167826450108",
+      "name": "WILSON GRASSI JUNIOR",
+      "new_since_previous_snapshot": false
+    }
+  ],
+  "inputs_sha256": {
+    "/Users/bea/workspace/Lab-inovação/classifier-prisma/data/exports/target_entities.yaml": "ff74cfb3c03cdee4889d85430007f14721360b0eb62f8ca747f18caa7595431e",
+    "/Users/bea/workspace/Lab-inovação/classifier-prisma/data/raw/articles_202608191040.csv": "0b96e39e31337d36963914335143c69cdf84619ad8a716beafe0c938fef821d2",
+    "/Users/bea/workspace/Lab-inovação/classifier-prisma/experiments/data/entidades.yaml": "6af23c0f0330a9b84a79cdb8be3b48dca9f2d2d94d799c56caa4c7bb0529c905",
+    "/Users/bea/workspace/Lab-inovação/classifier-prisma/experiments/data/preparacao/candidate_ids.txt": "61c7c499d7aec3f4b3049cbf94d1962190cd800a583e571ce2a9d179bedf6e27"
+  },
+  "new_entity_ids": [],
+  "scenario": {
+    "D10": "pendente; cenário sem descrições de partido",
+    "include_party_descriptions": false,
+    "system": "recency"
+  },
+  "selection_modified": false,
+  "status": "REVALIDACAO_AUTOMATICA_PROVISORIA",
+  "summary": {
+    "articles": 60,
+    "entities_covered": 13,
+    "with_direct_match": 49,
+    "without_direct_match": [
+      "129",
+      "297",
+      "364",
+      "528",
+      "538",
+      "394",
+      "341",
+      "423",
+      "395",
+      "407",
+      "290"
+    ]
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "python": "3.14.3",
+  "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+  "machine": "arm64",
+  "scikit_learn": "1.9.1",
+  "numpy": "2.5.4",
+  "scipy": "1.18.1",
+  "lock_sha256": "bc8be649a20d5bfff270835057f07cb11238ef976fa73943a5f408a6b4987bf5"
+}

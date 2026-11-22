@@ -1,0 +1,206 @@
+{
+  "assignment": {
+    "exclusive_per_reviewer": 9,
+    "rows": 90,
+    "shared_articles": 6,
+    "unique_articles": 60
+  },
+  "duplicate_components": [
+    [
+      "1",
+      "243"
+    ],
+    [
+      "190",
+      "200"
+    ],
+    [
+      "301",
+      "308"
+    ]
+  ],
+  "exclusions": 7,
+  "historical_eligibility": {
+    "commit": "fb85d8d933d7d42edac287af98a6b951f041884f",
+    "eligible_count": 471,
+    "files_sha256": {
+      "config/entities.yaml": "3f653f381b30ac4847f021b66db0e34386f2013321b1301e75a970e513456e14",
+      "config/settings.yaml": "8859d710e9403b7db77542e9f87bc7bb76fa5fa24632dc2b4e6d81665115e4e7",
+      "scripts/build_annotation_batches.py": "55a84086abb59154509a99b4c4549b176244a39b174c5de3b33381c39c5f5290",
+      "src/entities_store.py": "d7cca17cce431a0965121fae1fd5748344a7ea72e4f0924300d3c612994b462c",
+      "src/entity_matcher.py": "04e29e318d2d2b19fe8c9e75c70e100bf8769b28fafccc44907de15d57e8eede",
+      "src/segmentation.py": "cc69b4a063829b9188b5d5e0f6420954461175b2419f4064ac561a228c0befd1"
+    },
+    "method": "load_units() do commit histórico com CSV bruto atual; primeira amostra150 reproduzida exatamente",
+    "round1_reproduced": true
+  },
+  "historical_eligible": 471,
+  "inputs_sha256": {
+    "data/annotation/manifest.csv": "6a50af400f87e78732e67dd1265925c23b6a24e312ed9895646a800959de9d66",
+    "data/exports/target_entities.yaml": "ff74cfb3c03cdee4889d85430007f14721360b0eb62f8ca747f18caa7595431e",
+    "data/raw/articles_202608191040.csv": "0b96e39e31337d36963914335143c69cdf84619ad8a716beafe0c938fef821d2",
+    "experiments/data/piloto_ids.txt": "32a9dcf03c95254468b231fab4e831e12cf0c72f50757e20f10106a389b87466",
+    "experiments/data/preparacao/historical_eligibility.json": "7863ee21e992662e3e483eecbdb22f1dea95e9dbd2119ee394f2467b59561904",
+    "experiments/data/preparacao/historical_eligible_ids.txt": "0db93bafbf36b0f1824772ed9d138efecd6314c406a89aae137834eb1640fc79"
+  },
+  "outputs_sha256": {
+    "assignments.csv": "f2323271a613e8515eb312dc7fa3e9a2ea0ec95ad1cac42635bff7ccc1a2b080",
+    "candidate_ids.txt": "61c7c499d7aec3f4b3049cbf94d1962190cd800a583e571ce2a9d179bedf6e27",
+    "candidates.csv": "d6f25cad633d17637f7d6c05ddb3e0fb7217ca834a7935a8b5b9bfadf3970ad6",
+    "exclusions.csv": "15c9abcdfbb751b0e007b7a1529874d64f7c3c2f4fea75363c52a56e9eabbb04",
+    "ids_anderson.txt": "37fc28110fb1c56c4c3b38ac1a7759e3c4529f788e4b0f5a890b4b9170cad64b",
+    "ids_beatriz.txt": "96de2d055e63dcac2793776d33b31f9434336fd03728b03a1267c763066fd8ba",
+    "ids_cristovam.txt": "2e8943b7a675575b0ca1c2df7320ea0e7d08499acfc93b72d5c61cb398829c69",
+    "ids_gustavo.txt": "4e90cb6d4694f9a598ddac5b0561d77f05ae23c836c252e84c3a0a482c8a19e1",
+    "ids_lucas.txt": "e25cd3574179733bf2668d33627f47dc9914a83ab3ba1703dc47e227e5b1b680",
+    "ids_nicolas.txt": "ca47c4c3c252375818aa06efe53be731e905184a14b15d1bbc86f0f94bcf1ce4",
+    "pool_ids.txt": "9f6f77221fe508790ba5439bd80c79dc83fc2311e5444706632bd61ff710f27b"
+  },
+  "pending": [
+    "export novo de entidades",
+    "fechar protocolo",
+    "revalidar escopo da amostra"
+  ],
+  "pilot": [
+    "145",
+    "146",
+    "159",
+    "160",
+    "175"
+  ],
+  "pool": {
+    "articles": 314,
+    "by_source": {
+      "A Crítica de Campo Grande": 1,
+      "ABC Repórter": 1,
+      "Agência Pública": 3,
+      "Assine o Meio": 1,
+      "BBC": 4,
+      "BPMoney": 1,
+      "Brasil 247": 1,
+      "Brasil de Fato": 11,
+      "Brazil Journal": 1,
+      "CBN": 5,
+      "CNN Brasil": 25,
+      "CNseg": 1,
+      "CartaCapital": 2,
+      "Congresso em Foco": 3,
+      "Correio Braziliense": 1,
+      "Diário do Grande ABC": 1,
+      "Diário do Poder": 1,
+      "Diário do Sudoeste": 1,
+      "Estadão": 21,
+      "Folha de S.Paulo": 22,
+      "G1": 14,
+      "GZH": 2,
+      "Gazeta do Povo": 8,
+      "Giro S/A": 2,
+      "Hora do Povo": 1,
+      "ICL Notícias": 1,
+      "InfoMoney": 6,
+      "Jornal Grande Bahia": 2,
+      "Jornal do Brasil": 2,
+      "Jovem Pan": 2,
+      "Metrópoles": 4,
+      "Money Times": 1,
+      "O GLOBO": 41,
+      "O POVO+": 1,
+      "Partido dos Trabalhadores": 2,
+      "PlatôBR": 3,
+      "Pleno.News": 1,
+      "Poder360": 16,
+      "Portal Diário do RN": 1,
+      "Prefeitura de Caraguatatuba": 1,
+      "R7": 1,
+      "Republicanos 10": 1,
+      "Revista Fórum": 2,
+      "Revista Oeste": 3,
+      "Rádio Itatiaia": 2,
+      "Rádio Pampa": 1,
+      "SBT News": 1,
+      "Sul 21": 1,
+      "Tempo Real": 1,
+      "Terra": 4,
+      "Times Brasil | CNBC": 1,
+      "Tribuna do Sertão": 1,
+      "UOL": 1,
+      "VEJA": 15,
+      "Valor Econômico": 14,
+      "Vero Notícias": 7,
+      "band.com.br": 3,
+      "berlinda.com.br": 1,
+      "cartacapital.com.br": 5,
+      "correiodamanha.com.br": 4,
+      "dpontanews.com.br": 1,
+      "dw.com": 1,
+      "exame.com": 1,
+      "folhape.com.br": 1,
+      "g1.globo.com": 17,
+      "lula.com.br": 1,
+      "metalurgicos.org.br": 1,
+      "ofator.com.br": 1,
+      "tmc.com.br": 1,
+      "tribunadosertao.com.br": 1,
+      "viva.com.br": 1
+    },
+    "characters": {
+      "max": 24513,
+      "median": 2958.5,
+      "min": 539
+    }
+  },
+  "reserved_before_pilot_and_duplicates": 321,
+  "round1": 150,
+  "sample": {
+    "articles": 60,
+    "by_source": {
+      "BBC": 1,
+      "Brasil de Fato": 5,
+      "CNN Brasil": 5,
+      "CNseg": 1,
+      "Congresso em Foco": 2,
+      "Correio Braziliense": 1,
+      "Estadão": 3,
+      "Folha de S.Paulo": 6,
+      "G1": 1,
+      "InfoMoney": 1,
+      "Jornal do Brasil": 1,
+      "Metrópoles": 2,
+      "O GLOBO": 5,
+      "Pleno.News": 1,
+      "Poder360": 5,
+      "Prefeitura de Caraguatatuba": 1,
+      "Revista Oeste": 1,
+      "Rádio Itatiaia": 2,
+      "Terra": 1,
+      "UOL": 1,
+      "VEJA": 4,
+      "Valor Econômico": 3,
+      "cartacapital.com.br": 2,
+      "correiodamanha.com.br": 1,
+      "g1.globo.com": 2,
+      "ofator.com.br": 1,
+      "viva.com.br": 1
+    },
+    "characters": {
+      "max": 8505,
+      "median": 3059.0,
+      "min": 555
+    }
+  },
+  "sampling": "aleatória simples sobre representantes de componentes deduplicados; sem cotas",
+  "scope": "elegibilidade histórica rodada1; excluir rodada1, piloto e duplicatas por URL/texto",
+  "seed": 42,
+  "snapshot": {
+    "aliases": 73,
+    "definitive": false,
+    "entities": 40,
+    "entity_types": {
+      "partido": 14,
+      "politico": 26
+    },
+    "generated_at": "2026-08-29T19:29:23Z",
+    "path": "data/exports/target_entities.yaml"
+  },
+  "status": "PROVISORIA"
+}

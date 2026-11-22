@@ -1,0 +1,7 @@
+# Dependências dos experimentos ALÉM do requirements.txt da raiz.
+# Instalar com: .venv-experiments/bin/python -m pip install -r requirements.txt -r experiments/requirements.txt
+#
+# openpyxl: gerar e ler as planilhas de anotação (.xlsx) com listas
+# suspensas -- o csv da stdlib não tem validação de célula.
+openpyxl
+scikit-learn==1.9.1

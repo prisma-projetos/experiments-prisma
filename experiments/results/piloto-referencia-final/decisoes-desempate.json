@@ -1,0 +1,81 @@
+{
+  "schema_version": 1,
+  "purpose": "desempates de Bea sobre a referência provisória do piloto (D17)",
+  "inputs": {
+    "report": {
+      "path": "experiments/results/piloto-referencia/report.json",
+      "sha256": "29ae8a6ed0fbe083bc8ee5c67babd3faf69463623e8380f6f7098ae4a3cee044"
+    },
+    "referencia_provisoria": {
+      "path": "experiments/results/piloto-referencia/referencia-provisoria.jsonl",
+      "sha256": "8e9568970147b83ecb58a26bef5980e3b52b8d51792e1b775425c6812f643b1a"
+    },
+    "pendencias": {
+      "path": "experiments/results/piloto-referencia/pendencias.xlsx",
+      "sha256": "a694479a2b91e1eb27fa09528015841b09355a8cb0cafb9e1f586b5ead6434b5"
+    }
+  },
+  "inputs_unchanged": true,
+  "consolidate_code_sha256": "37e3bb7ca596706df85b831aaa7b98574af858906270027d9db1b670aea94667",
+  "decisoes": [
+    {
+      "id": "T001",
+      "tipo": "teor_empate",
+      "paragraph_id": "160-16",
+      "linha_planilha": 2,
+      "decisao": "fora",
+      "observacao": "Decisão de Bea (19/11): a menção \"seu filho\" não teve maioria; teor sem menção na referência.",
+      "aplicado": []
+    }
+  ],
+  "remocoes_teor": [
+    {
+      "paragraph_id": "175-4",
+      "entity_id": "22",
+      "teor": "neutro",
+      "motivo": "D15: a única menção ao PL no parágrafo é 'A sigla', referência genérica que não gera teor; decisão da Bea (19/11/2026)"
+    }
+  ],
+  "contagens": {
+    "decisoes": 1,
+    "por_tipo": {
+      "mencao_tipo": 0,
+      "mencao_limites": 0,
+      "mencao_entidades": 0,
+      "teor_empate": 1
+    },
+    "fora": 1,
+    "remocoes_teor": 1,
+    "mencoes": 83,
+    "pares_de_teor": 72
+  },
+  "alertas": {
+    "mencao_sem_teor": [],
+    "teor_sem_mencao": [
+      {
+        "paragraph_id": "145-7",
+        "entity_id": "108563260302",
+        "teor": "neutro",
+        "referencia_generica_d15_no_paragrafo": false
+      },
+      {
+        "paragraph_id": "160-22",
+        "entity_id": "108563260302",
+        "teor": "neutro",
+        "referencia_generica_d15_no_paragrafo": false
+      },
+      {
+        "paragraph_id": "175-6",
+        "entity_id": "122418060191",
+        "teor": "negativo",
+        "referencia_generica_d15_no_paragrafo": false
+      }
+    ],
+    "mencoes_sobrepostas": []
+  },
+  "outputs": {
+    "referencia.jsonl": {
+      "sha256": "73c164be653b04ef4e08eae5ec57dbc0f4bd7ece9bddb9bd34e5fb9240ee3f78"
+    }
+  }
+}

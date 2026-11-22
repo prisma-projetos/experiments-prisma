@@ -1,0 +1,14 @@
+{
+  "commit": "fb85d8d933d7d42edac287af98a6b951f041884f",
+  "method": "load_units() do commit histórico com CSV bruto atual; primeira amostra150 reproduzida exatamente",
+  "files_sha256": {
+    "src/segmentation.py": "cc69b4a063829b9188b5d5e0f6420954461175b2419f4064ac561a228c0befd1",
+    "src/entity_matcher.py": "04e29e318d2d2b19fe8c9e75c70e100bf8769b28fafccc44907de15d57e8eede",
+    "src/entities_store.py": "d7cca17cce431a0965121fae1fd5748344a7ea72e4f0924300d3c612994b462c",
+    "config/entities.yaml": "3f653f381b30ac4847f021b66db0e34386f2013321b1301e75a970e513456e14",
+    "config/settings.yaml": "8859d710e9403b7db77542e9f87bc7bb76fa5fa24632dc2b4e6d81665115e4e7",
+    "scripts/build_annotation_batches.py": "55a84086abb59154509a99b4c4549b176244a39b174c5de3b33381c39c5f5290"
+  },
+  "eligible_count": 471,
+  "round1_reproduced": true
+}

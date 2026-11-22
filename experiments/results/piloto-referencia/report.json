@@ -1,0 +1,883 @@
+{
+  "schema_version": 1,
+  "purpose": "referência provisória do piloto por voto da maioria (D17)",
+  "inputs": {
+    "Beatriz": {
+      "path": "experiments/data/anotacao/piloto/beatriz.xlsx",
+      "sha256": "ec758f1901da0761107a99c7c094f5fd199478358ab80e1e373fd473580bc50c"
+    },
+    "Cristovam": {
+      "path": "experiments/data/anotacao/piloto/cristovam (1).xlsx",
+      "sha256": "d960e2878ff07be580ace8065a1f80d18a198b5d2cf41c7d11f9507f6afcb00a"
+    },
+    "Gustavo": {
+      "path": "experiments/data/anotacao/piloto/gustavo - Planilha.xlsx",
+      "sha256": "a90690a83a79aa524de4e2e18bba0573c3e837b785bc7ac809070c33163e8751"
+    },
+    "Lucas": {
+      "path": "experiments/data/anotacao/piloto/Lucas - Planilha.xlsx",
+      "sha256": "dd23828164eded9def096f492508d14815520a301ef12987197532c175874a9e"
+    },
+    "Nicolas": {
+      "path": "experiments/data/anotacao/piloto/nicolas.xlsx",
+      "sha256": "7ca3daa38d0735d491444e5288d57fb63858d7b84b196891490a83a0d138a486"
+    },
+    "raw_csv": {
+      "path": "data/raw/articles_202608191040.csv",
+      "sha256": "0b96e39e31337d36963914335143c69cdf84619ad8a716beafe0c938fef821d2"
+    },
+    "entities": {
+      "path": "data/exports/target_entities.yaml",
+      "sha256": "ff74cfb3c03cdee4889d85430007f14721360b0eb62f8ca747f18caa7595431e"
+    },
+    "pilot_ids": {
+      "path": "experiments/data/piloto_ids.txt",
+      "sha256": "32a9dcf03c95254468b231fab4e831e12cf0c72f50757e20f10106a389b87466"
+    },
+    "gold_code": {
+      "path": "experiments/gold.py",
+      "sha256": "e534066c94e5fcb45631288f47c862d082b31deca990db9690699bb92450c34a"
+    },
+    "agreement_code": {
+      "path": "experiments/agreement.py",
+      "sha256": "7a78261bd622e4c9e52e6a1ce1a603ebeef8413688b9752cffae515f6ec89833"
+    },
+    "consolidate_code": {
+      "path": "experiments/consolidate.py",
+      "sha256": "258668f766e9d872a37532d94283404be245a3ac7b3dc996a86b974d0976737d"
+    }
+  },
+  "inputs_unchanged": true,
+  "settings": {
+    "votantes": [
+      "Beatriz",
+      "Cristovam",
+      "Gustavo",
+      "Lucas",
+      "Nicolas"
+    ],
+    "n_votantes": 5,
+    "min_votos": 3,
+    "fora_da_votacao": {
+      "Anderson": "D17: planilha editada por Bea antes do primeiro backup; contaria o critério dela duas vezes."
+    }
+  },
+  "article_ids": [
+    "145",
+    "159",
+    "146",
+    "160",
+    "175"
+  ],
+  "entities": {
+    "70": "AVANTE",
+    "27": "DEMOCRACIA CRISTÃ",
+    "35": "DEMOCRATA",
+    "21": "PARTIDO COMUNISTA BRASILEIRO",
+    "29": "PARTIDO DA CAUSA OPERÁRIA",
+    "13": "PARTIDO DOS TRABALHADORES",
+    "22": "PARTIDO LIBERAL",
+    "14": "PARTIDO MISSÃO",
+    "30": "PARTIDO NOVO",
+    "28": "PARTIDO RENOVADOR TRABALHISTA BRASILEIRO",
+    "55": "PARTIDO SOCIAL DEMOCRÁTICO",
+    "16": "PARTIDO SOCIALISTA  DOS TRABALHADORES UNIFICADO",
+    "40": "PARTIDO SOCIALISTA BRASILEIRO",
+    "80": "UNIDADE POPULAR",
+    "016286701775": "ALFREDO GASPAR DE MENDONÇA NETO",
+    "214269110167": "ANTONIO CARLOS SILVA",
+    "040815250400": "AROLDO MEDINA",
+    "098853820116": "AUGUSTO JORGE CURY",
+    "028390471848": "CLARIANA ZACARKIM BARAO",
+    "101707320116": "CLEUSA DOS SANTOS",
+    "000221640132": "EDMILSON SILVA COSTA",
+    "071627330620": "FABIANA CRISTINA TAVARES TORQUATO",
+    "108563260302": "FLAVIO NANTES BOLSONARO",
+    "035204110175": "GERALDO JOSE RODRIGUES ALCKMIN FILHO",
+    "086302290191": "GILBERTO KASSAB",
+    "020750351180": "HERTZ DA CONCEICAO DIAS",
+    "045237680299": "JULIO CESAR DELGADO",
+    "032488231082": "LEONARDO ALVES DE ARAUJO",
+    "033294250795": "LUIS EDUARDO GRANGEIRO GIRÃO",
+    "122418060191": "LUIZ INÁCIO LULA DA SILVA",
+    "049143831023": "PABLO HENRIQUE COSTA MARCAL",
+    "059412101309": "RAQUEL NONATO DE BRICIO",
+    "317965770183": "RENAN ANTONIO FERREIRA DOS SANTOS",
+    "032101610299": "ROMEU ZEMA NETO",
+    "003087571031": "RONALDO RAMOS CAIADO",
+    "099286850183": "RUI COSTA PIMENTA",
+    "167724820272": "SAMARA MARTINS DA SILVA FEITOSA",
+    "026613890310": "SUÊD HAIDAR NOGUEIRA",
+    "084338920205": "VANESSA PORTUGAL BARBOSA",
+    "167826450108": "WILSON GRASSI JUNIOR"
+  },
+  "coverage": {
+    "Beatriz": {
+      "paragraph_headers": [
+        "paragraph_id",
+        "article_id",
+        "paragraph_index",
+        "titulo",
+        "texto",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "paragraphs": 92,
+      "source_nonempty_rows": {
+        "mencoes": 92,
+        "teor": 74
+      },
+      "mentions": 92,
+      "teor_pairs": 74,
+      "whole_paragraph_mentions": 0,
+      "issue_counts": {},
+      "issues": [],
+      "excluded_rows": {
+        "mencoes": [],
+        "teor": []
+      },
+      "duplicate_teor_units_excluded": []
+    },
+    "Cristovam": {
+      "paragraph_headers": [
+        "paragraph_id",
+        "article_id",
+        "paragraph_index",
+        "titulo",
+        "texto"
+      ],
+      "paragraphs": 92,
+      "source_nonempty_rows": {
+        "mencoes": 83,
+        "teor": 75
+      },
+      "mentions": 83,
+      "teor_pairs": 75,
+      "whole_paragraph_mentions": 0,
+      "issue_counts": {},
+      "issues": [],
+      "excluded_rows": {
+        "mencoes": [],
+        "teor": []
+      },
+      "duplicate_teor_units_excluded": []
+    },
+    "Gustavo": {
+      "paragraph_headers": [
+        "paragraph_id",
+        "article_id",
+        "paragraph_index",
+        "titulo",
+        "texto",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "paragraphs": 92,
+      "source_nonempty_rows": {
+        "mencoes": 85,
+        "teor": 81
+      },
+      "mentions": 85,
+      "teor_pairs": 81,
+      "whole_paragraph_mentions": 0,
+      "issue_counts": {},
+      "issues": [],
+      "excluded_rows": {
+        "mencoes": [],
+        "teor": []
+      },
+      "duplicate_teor_units_excluded": []
+    },
+    "Lucas": {
+      "paragraph_headers": [
+        "paragraph_id",
+        "article_id",
+        "paragraph_index",
+        "titulo",
+        "texto"
+      ],
+      "paragraphs": 92,
+      "source_nonempty_rows": {
+        "mencoes": 85,
+        "teor": 71
+      },
+      "mentions": 85,
+      "teor_pairs": 71,
+      "whole_paragraph_mentions": 0,
+      "issue_counts": {},
+      "issues": [],
+      "excluded_rows": {
+        "mencoes": [],
+        "teor": []
+      },
+      "duplicate_teor_units_excluded": []
+    },
+    "Nicolas": {
+      "paragraph_headers": [
+        "paragraph_id",
+        "article_id",
+        "paragraph_index",
+        "titulo",
+        "texto",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "paragraphs": 92,
+      "source_nonempty_rows": {
+        "mencoes": 101,
+        "teor": 77
+      },
+      "mentions": 101,
+      "teor_pairs": 77,
+      "whole_paragraph_mentions": 0,
+      "issue_counts": {},
+      "issues": [],
+      "excluded_rows": {
+        "mencoes": [],
+        "teor": []
+      },
+      "duplicate_teor_units_excluded": []
+    }
+  },
+  "pendencias": [
+    {
+      "id": "T001",
+      "tipo": "teor_empate",
+      "paragraph_id": "160-16",
+      "entity_id": "108563260302",
+      "opcoes": [
+        {
+          "n": 1,
+          "label": "negativo",
+          "votantes": [
+            "Beatriz",
+            "Cristovam"
+          ]
+        },
+        {
+          "n": 2,
+          "label": "neutro",
+          "votantes": [
+            "Nicolas"
+          ]
+        }
+      ],
+      "sem_rotulo": [
+        "Gustavo",
+        "Lucas"
+      ],
+      "decisoes_validas": [
+        "positivo",
+        "negativo",
+        "neutro",
+        "indeterminado",
+        "fora"
+      ]
+    }
+  ],
+  "contagens": {
+    "mencoes_aceitas_por_votos": {
+      "5": 79,
+      "4": 1,
+      "3": 3
+    },
+    "teor_aceito_por_votos": {
+      "5": 60,
+      "4": 12,
+      "3": 1
+    },
+    "pendencias_por_tipo": {
+      "mencao_tipo": 0,
+      "mencao_limites": 0,
+      "mencao_entidades": 0,
+      "teor_empate": 1
+    },
+    "mencoes_descartadas": 19,
+    "teor_descartado": 11,
+    "exclusoes_d15": 10,
+    "exclusoes_paragrafo_inteiro": 0,
+    "mencoes_repetidas": 0,
+    "tipos_conflitantes": 0
+  },
+  "descartes": {
+    "mencoes": [
+      {
+        "paragraph_id": "145-2",
+        "start": 0,
+        "end": 11,
+        "text": "O candidato",
+        "entity_id": "108563260302",
+        "votantes": [
+          "Lucas",
+          "Nicolas"
+        ],
+        "motivo": "sem maioria, descartado"
+      },
+      {
+        "paragraph_id": "145-4",
+        "start": 115,
+        "end": 123,
+        "text": "seu vice",
+        "entity_id": "016286701775",
+        "votantes": [
+          "Nicolas"
+        ],
+        "motivo": "sem maioria, descartado"
+      },
+      {
+        "paragraph_id": "145-10",
+        "start": 2,
+        "end": 21,
+        "text": "ameaça bolsonarista",
+        "entity_id": "108563260302",
+        "votantes": [
+          "Nicolas"
+        ],
+        "motivo": "sem maioria, descartado"
+      },
+      {
+        "paragraph_id": "159-1",
+        "start": 12,
+        "end": 21,
+        "text": "candidato",
+        "entity_id": "108563260302",
+        "votantes": [
+          "Nicolas"
+        ],
+        "motivo": "sem maioria, descartado"
+      },
+      {
+        "paragraph_id": "159-1",
+        "start": 184,
+        "end": 208,
+        "text": "seu principal adversário",
+        "entity_id": "122418060191",
+        "votantes": [
+          "Gustavo",
+          "Nicolas"
+        ],
+        "motivo": "sem maioria, descartado"
+      },
+      {
+        "paragraph_id": "159-2",
+        "start": 17,
+        "end": 34,
+        "text": "o governo petista",
+        "entity_id": "122418060191",
+        "votantes": [
+          "Beatriz",
+          "Nicolas"
+        ],
+        "motivo": "sem maioria, descartado"
+      },
+      {
+        "paragraph_id": "159-6",
+        "start": 165,
+        "end": 185,
+        "text": "Seu filho mais velho",
+        "entity_id": "108563260302",
+        "votantes": [
+          "Beatriz",
+          "Nicolas"
+        ],
+        "motivo": "sem maioria, descartado"
+      },
+      {
+        "paragraph_id": "159-6",
+        "start": 241,
+        "end": 249,
+        "text": "seu vice",
+        "entity_id": "016286701775",
+        "votantes": [
+          "Beatriz",
+          "Nicolas"
+        ],
+        "motivo": "sem maioria, descartado"
+      },
+      {
+        "paragraph_id": "159-11",
+        "start": 219,
+        "end": 239,
+        "text": "seu filho mais velho",
+        "entity_id": "108563260302",
+        "votantes": [
+          "Beatriz",
+          "Nicolas"
+        ],
+        "motivo": "sem maioria, descartado"
+      },
+      {
+        "paragraph_id": "146-6",
+        "start": 121,
+        "end": 133,
+        "text": "de seu filho",
+        "entity_id": "108563260302",
+        "votantes": [
+          "Beatriz"
+        ],
+        "motivo": "sem maioria, descartado"
+      },
+      {
+        "paragraph_id": "146-6",
+        "start": 124,
+        "end": 133,
+        "text": "seu filho",
+        "entity_id": "108563260302",
+        "votantes": [
+          "Nicolas"
+        ],
+        "motivo": "sem maioria, descartado"
+      },
+      {
+        "paragraph_id": "146-6",
+        "start": 135,
+        "end": 144,
+        "text": "o senador",
+        "entity_id": "108563260302",
+        "votantes": [
+          "Lucas",
+          "Nicolas"
+        ],
+        "motivo": "sem maioria, descartado"
+      },
+      {
+        "paragraph_id": "160-16",
+        "start": 9,
+        "end": 24,
+        "text": "desses partidos",
+        "entity_id": "13",
+        "votantes": [
+          "Nicolas"
+        ],
+        "motivo": "sem maioria, descartado"
+      },
+      {
+        "paragraph_id": "160-16",
+        "start": 57,
+        "end": 69,
+        "text": "do seu filho",
+        "entity_id": "108563260302",
+        "votantes": [
+          "Beatriz"
+        ],
+        "motivo": "sem maioria, descartado"
+      },
+      {
+        "paragraph_id": "160-16",
+        "start": 60,
+        "end": 69,
+        "text": "seu filho",
+        "entity_id": "108563260302",
+        "votantes": [
+          "Nicolas"
+        ],
+        "motivo": "sem maioria, descartado"
+      },
+      {
+        "paragraph_id": "160-18",
+        "start": 220,
+        "end": 230,
+        "text": "do senador",
+        "entity_id": "108563260302",
+        "votantes": [
+          "Beatriz",
+          "Nicolas"
+        ],
+        "motivo": "sem maioria, descartado (sobrepõe trecho aceito)"
+      },
+      {
+        "paragraph_id": "160-21",
+        "start": 35,
+        "end": 54,
+        "text": "argumentos petistas",
+        "entity_id": "13",
+        "votantes": [
+          "Nicolas"
+        ],
+        "motivo": "sem maioria, descartado"
+      },
+      {
+        "paragraph_id": "175-6",
+        "start": 22,
+        "end": 32,
+        "text": "do governo",
+        "entity_id": "122418060191",
+        "votantes": [
+          "Beatriz",
+          "Nicolas"
+        ],
+        "motivo": "sem maioria, descartado"
+      },
+      {
+        "paragraph_id": "175-6",
+        "start": 64,
+        "end": 80,
+        "text": "a gestão federal",
+        "entity_id": "122418060191",
+        "votantes": [
+          "Nicolas"
+        ],
+        "motivo": "sem maioria, descartado"
+      }
+    ],
+    "teor": [
+      {
+        "paragraph_id": "145-10",
+        "entity_id": "108563260302",
+        "rotulos": {
+          "Nicolas": "negativo"
+        },
+        "sem_rotulo": [
+          "Beatriz",
+          "Cristovam",
+          "Gustavo",
+          "Lucas"
+        ],
+        "motivo": "sem maioria, descartado (menos de 3 votantes deram rótulo)"
+      },
+      {
+        "paragraph_id": "160-16",
+        "entity_id": "13",
+        "rotulos": {
+          "Cristovam": "neutro",
+          "Nicolas": "neutro"
+        },
+        "sem_rotulo": [
+          "Beatriz",
+          "Gustavo",
+          "Lucas"
+        ],
+        "motivo": "sem maioria, descartado (menos de 3 votantes deram rótulo)"
+      },
+      {
+        "paragraph_id": "160-21",
+        "entity_id": "13",
+        "rotulos": {
+          "Nicolas": "neutro"
+        },
+        "sem_rotulo": [
+          "Beatriz",
+          "Cristovam",
+          "Gustavo",
+          "Lucas"
+        ],
+        "motivo": "sem maioria, descartado (menos de 3 votantes deram rótulo)"
+      },
+      {
+        "paragraph_id": "160-31",
+        "entity_id": "108563260302",
+        "rotulos": {
+          "Gustavo": "neutro"
+        },
+        "sem_rotulo": [
+          "Beatriz",
+          "Cristovam",
+          "Lucas",
+          "Nicolas"
+        ],
+        "motivo": "sem maioria, descartado (menos de 3 votantes deram rótulo)"
+      },
+      {
+        "paragraph_id": "160-32",
+        "entity_id": "108563260302",
+        "rotulos": {
+          "Gustavo": "negativo"
+        },
+        "sem_rotulo": [
+          "Beatriz",
+          "Cristovam",
+          "Lucas",
+          "Nicolas"
+        ],
+        "motivo": "sem maioria, descartado (menos de 3 votantes deram rótulo)"
+      },
+      {
+        "paragraph_id": "160-33",
+        "entity_id": "108563260302",
+        "rotulos": {
+          "Gustavo": "neutro"
+        },
+        "sem_rotulo": [
+          "Beatriz",
+          "Cristovam",
+          "Lucas",
+          "Nicolas"
+        ],
+        "motivo": "sem maioria, descartado (menos de 3 votantes deram rótulo)"
+      },
+      {
+        "paragraph_id": "160-34",
+        "entity_id": "108563260302",
+        "rotulos": {
+          "Gustavo": "neutro"
+        },
+        "sem_rotulo": [
+          "Beatriz",
+          "Cristovam",
+          "Lucas",
+          "Nicolas"
+        ],
+        "motivo": "sem maioria, descartado (menos de 3 votantes deram rótulo)"
+      },
+      {
+        "paragraph_id": "160-35",
+        "entity_id": "108563260302",
+        "rotulos": {
+          "Gustavo": "negativo"
+        },
+        "sem_rotulo": [
+          "Beatriz",
+          "Cristovam",
+          "Lucas",
+          "Nicolas"
+        ],
+        "motivo": "sem maioria, descartado (menos de 3 votantes deram rótulo)"
+      },
+      {
+        "paragraph_id": "160-36",
+        "entity_id": "108563260302",
+        "rotulos": {
+          "Gustavo": "neutro"
+        },
+        "sem_rotulo": [
+          "Beatriz",
+          "Cristovam",
+          "Lucas",
+          "Nicolas"
+        ],
+        "motivo": "sem maioria, descartado (menos de 3 votantes deram rótulo)"
+      },
+      {
+        "paragraph_id": "160-37",
+        "entity_id": "108563260302",
+        "rotulos": {
+          "Gustavo": "neutro"
+        },
+        "sem_rotulo": [
+          "Beatriz",
+          "Cristovam",
+          "Lucas",
+          "Nicolas"
+        ],
+        "motivo": "sem maioria, descartado (menos de 3 votantes deram rótulo)"
+      },
+      {
+        "paragraph_id": "160-38",
+        "entity_id": "108563260302",
+        "rotulos": {
+          "Gustavo": "neutro"
+        },
+        "sem_rotulo": [
+          "Beatriz",
+          "Cristovam",
+          "Lucas",
+          "Nicolas"
+        ],
+        "motivo": "sem maioria, descartado (menos de 3 votantes deram rótulo)"
+      }
+    ]
+  },
+  "exclusoes": {
+    "d15_partido_generico": [
+      {
+        "paragraph_id": "175-3",
+        "votante": "Beatriz",
+        "start": 97,
+        "end": 106,
+        "text": "A legenda",
+        "type": "IND",
+        "entity_id": "22"
+      },
+      {
+        "paragraph_id": "175-4",
+        "votante": "Beatriz",
+        "start": 0,
+        "end": 7,
+        "text": "A sigla",
+        "type": "IND",
+        "entity_id": "22"
+      },
+      {
+        "paragraph_id": "175-3",
+        "votante": "Cristovam",
+        "start": 97,
+        "end": 106,
+        "text": "A legenda",
+        "type": "IND",
+        "entity_id": "22"
+      },
+      {
+        "paragraph_id": "175-4",
+        "votante": "Cristovam",
+        "start": 0,
+        "end": 7,
+        "text": "A sigla",
+        "type": "IND",
+        "entity_id": "22"
+      },
+      {
+        "paragraph_id": "175-3",
+        "votante": "Gustavo",
+        "start": 97,
+        "end": 106,
+        "text": "A legenda",
+        "type": "IND",
+        "entity_id": "22"
+      },
+      {
+        "paragraph_id": "175-4",
+        "votante": "Gustavo",
+        "start": 0,
+        "end": 7,
+        "text": "A sigla",
+        "type": "IND",
+        "entity_id": "22"
+      },
+      {
+        "paragraph_id": "175-3",
+        "votante": "Lucas",
+        "start": 97,
+        "end": 106,
+        "text": "A legenda",
+        "type": "IND",
+        "entity_id": "22"
+      },
+      {
+        "paragraph_id": "175-4",
+        "votante": "Lucas",
+        "start": 0,
+        "end": 7,
+        "text": "A sigla",
+        "type": "IND",
+        "entity_id": "22"
+      },
+      {
+        "paragraph_id": "175-3",
+        "votante": "Nicolas",
+        "start": 97,
+        "end": 106,
+        "text": "A legenda",
+        "type": "IND",
+        "entity_id": "22"
+      },
+      {
+        "paragraph_id": "175-4",
+        "votante": "Nicolas",
+        "start": 0,
+        "end": 7,
+        "text": "A sigla",
+        "type": "IND",
+        "entity_id": "22"
+      }
+    ],
+    "paragrafo_inteiro": []
+  },
+  "duplicatas": {
+    "mencoes_repetidas": [],
+    "tipos_conflitantes": []
+  },
+  "alertas": {
+    "mencao_sem_teor": [],
+    "teor_sem_mencao": [
+      {
+        "paragraph_id": "145-7",
+        "entity_id": "108563260302",
+        "teor": "neutro",
+        "referencia_generica_d15_no_paragrafo": false
+      },
+      {
+        "paragraph_id": "160-22",
+        "entity_id": "108563260302",
+        "teor": "neutro",
+        "referencia_generica_d15_no_paragrafo": false
+      },
+      {
+        "paragraph_id": "175-4",
+        "entity_id": "22",
+        "teor": "neutro",
+        "referencia_generica_d15_no_paragrafo": true
+      },
+      {
+        "paragraph_id": "175-6",
+        "entity_id": "122418060191",
+        "teor": "negativo",
+        "referencia_generica_d15_no_paragrafo": false
+      }
+    ],
+    "mencoes_sobrepostas": []
+  },
+  "em_aberto": [
+    "A aba de teor não diz qual trecho motivou a linha. Um teor de partido gerado só por referência genérica (D15) não é detectável automaticamente; ele aparece como alerta de teor sem menção, marcado quando houve exclusão D15 da mesma entidade no parágrafo.",
+    "Trechos minoritários sobrepostos a um trecho aceito da mesma entidade são descartados, porque a regra exige o trecho exato. Se outra entidade sem trecho aceito somar 3 votantes no grupo, vira pendência.",
+    "Menção repetida pelo mesmo votante com tipos diferentes: o trecho conta um voto, mas o voto de tipo desse votante não conta. Não havia regra para isso.",
+    "A exclusão D15 só reconhece o trecho inteiro igual a artigo/contração + partido, legenda ou sigla (singular ou plural). Trechos maiores, como \"o partido do presidente\", passam pela votação normal."
+  ],
+  "limitations": [
+    "A referência não é um gabarito adjudicado nem vem de respostas totalmente independentes: as planilhas atuais passaram por revisão (D17).",
+    "As regras D10 a D12 foram formuladas olhando o piloto, o que tende a favorecer a heurística avaliada nele.",
+    "O protocolo mudou depois do piloto (D15). As respostas originais não foram alteradas; a exclusão de referências genéricas acontece só aqui.",
+    "Cinco notícias não permitem generalização."
+  ],
+  "outputs": {
+    "referencia-provisoria.jsonl": {
+      "sha256": "8e9568970147b83ecb58a26bef5980e3b52b8d51792e1b775425c6812f643b1a"
+    }
+  }
+}

@@ -1,0 +1,66 @@
+{
+  "root": "/Users/bea/workspace/Lab-inovação/classifier-prisma",
+  "backup_dir": "/Users/bea/workspace/Lab-inovação/classifier-prisma/experiments/data/anotacao/backups/20261102T183900Z",
+  "changes": [
+    {
+      "name": "Anderson - Planilha.xlsx",
+      "sheet": "mencoes",
+      "cell": "E16",
+      "before": "LUIZ INÁCIO LULA DA SILVA",
+      "after": "FLAVIO NANTES BOLSONARO",
+      "sha256_before": "fb93a69231951285e1eaaa5e6f4ff8685511f46e3221376ee45e0ccb74a9cea1",
+      "source": "/Users/bea/workspace/Lab-inovação/classifier-prisma/experiments/data/anotacao/backups/20261102T183539Z/Anderson - Planilha.xlsx",
+      "reason": "Pedido explícito de Bea: preservar resposta do anotador no pronome ele145-6, sem aplicar a revisão automática D11 nessa célula"
+    },
+    {
+      "name": "Lucas - Planilha.xlsx",
+      "sheet": "mencoes",
+      "cell": "E15",
+      "before": "LUIZ INÁCIO LULA DA SILVA",
+      "after": "FLAVIO NANTES BOLSONARO",
+      "sha256_before": "36757c077a3abef4aedd6619f1dc2c54e1f31b336180704fba61e1dc5af4c3de",
+      "source": "/Users/bea/workspace/Lab-inovação/classifier-prisma/experiments/data/anotacao/backups/20261102T183539Z/Lucas - Planilha.xlsx",
+      "reason": "Pedido explícito de Bea: preservar resposta do anotador no pronome ele145-6, sem aplicar a revisão automática D11 nessa célula"
+    },
+    {
+      "name": "beatriz.xlsx",
+      "sheet": "mencoes",
+      "cell": "E10",
+      "before": "LUIZ INÁCIO LULA DA SILVA",
+      "after": "FLAVIO NANTES BOLSONARO",
+      "sha256_before": "dd360e73ce0219f5a53643a44d23ab048c1b7f24b68fec0a79014011d19fbaa4",
+      "source": "/Users/bea/workspace/Lab-inovação/classifier-prisma/experiments/data/anotacao/backups/20261102T183539Z/beatriz.xlsx",
+      "reason": "Pedido explícito de Bea: preservar resposta do anotador no pronome ele145-6, sem aplicar a revisão automática D11 nessa célula"
+    },
+    {
+      "name": "cristovam (1).xlsx",
+      "sheet": "mencoes",
+      "cell": "E10",
+      "before": "LUIZ INÁCIO LULA DA SILVA",
+      "after": "FLAVIO NANTES BOLSONARO",
+      "sha256_before": "a0041fbf51ad8da54d515caf433da6c9a7672b1cd1e3eb9b47e00aa4c7be363e",
+      "source": "/Users/bea/workspace/Lab-inovação/classifier-prisma/experiments/data/anotacao/backups/20261102T183539Z/cristovam (1).xlsx",
+      "reason": "Pedido explícito de Bea: preservar resposta do anotador no pronome ele145-6, sem aplicar a revisão automática D11 nessa célula"
+    },
+    {
+      "name": "gustavo - Planilha.xlsx",
+      "sheet": "mencoes",
+      "cell": "E12",
+      "before": "LUIZ INÁCIO LULA DA SILVA",
+      "after": "FLAVIO NANTES BOLSONARO",
+      "sha256_before": "a58930c0b315c0e4c8df827f352ea22b5d90992858affb49f050615d481a8dbf",
+      "source": "/Users/bea/workspace/Lab-inovação/classifier-prisma/experiments/data/anotacao/backups/20261102T183539Z/gustavo - Planilha.xlsx",
+      "reason": "Pedido explícito de Bea: preservar resposta do anotador no pronome ele145-6, sem aplicar a revisão automática D11 nessa célula"
+    },
+    {
+      "name": "nicolas.xlsx",
+      "sheet": "mencoes",
+      "cell": "E18",
+      "before": "LUIZ INÁCIO LULA DA SILVA",
+      "after": "FLAVIO NANTES BOLSONARO",
+      "sha256_before": "3b7f460934406be015e78a2838a9beeb6d1387df08c656223f2d46fba254f542",
+      "source": "/Users/bea/workspace/Lab-inovação/classifier-prisma/experiments/data/anotacao/backups/20261102T183539Z/nicolas.xlsx",
+      "reason": "Pedido explícito de Bea: preservar resposta do anotador no pronome ele145-6, sem aplicar a revisão automática D11 nessa célula"
+    }
+  ]
+}

@@ -1,0 +1,74 @@
+[
+  {
+    "arquivo": "Anderson - Planilha.xlsx",
+    "celula": "mencoes!E16",
+    "valor_final": "FLAVIO NANTES BOLSONARO",
+    "sha256_antes": "fb93a69231951285e1eaaa5e6f4ff8685511f46e3221376ee45e0ccb74a9cea1",
+    "sha256_depois": "b3e739d68e8d977e1162c0a48b1cbdb4972d26c6ecaab989cbde3e55e18aa91c",
+    "celulas_alteradas": 1,
+    "partes_zip_alteradas": [
+      "xl/worksheets/sheet4.xml"
+    ],
+    "erros": 0
+  },
+  {
+    "arquivo": "Lucas - Planilha.xlsx",
+    "celula": "mencoes!E15",
+    "valor_final": "FLAVIO NANTES BOLSONARO",
+    "sha256_antes": "36757c077a3abef4aedd6619f1dc2c54e1f31b336180704fba61e1dc5af4c3de",
+    "sha256_depois": "dd23828164eded9def096f492508d14815520a301ef12987197532c175874a9e",
+    "celulas_alteradas": 1,
+    "partes_zip_alteradas": [
+      "xl/worksheets/sheet4.xml"
+    ],
+    "erros": 0
+  },
+  {
+    "arquivo": "beatriz.xlsx",
+    "celula": "mencoes!E10",
+    "valor_final": "FLAVIO NANTES BOLSONARO",
+    "sha256_antes": "dd360e73ce0219f5a53643a44d23ab048c1b7f24b68fec0a79014011d19fbaa4",
+    "sha256_depois": "ec758f1901da0761107a99c7c094f5fd199478358ab80e1e373fd473580bc50c",
+    "celulas_alteradas": 1,
+    "partes_zip_alteradas": [
+      "xl/worksheets/sheet4.xml"
+    ],
+    "erros": 0
+  },
+  {
+    "arquivo": "cristovam (1).xlsx",
+    "celula": "mencoes!E10",
+    "valor_final": "FLAVIO NANTES BOLSONARO",
+    "sha256_antes": "a0041fbf51ad8da54d515caf433da6c9a7672b1cd1e3eb9b47e00aa4c7be363e",
+    "sha256_depois": "d960e2878ff07be580ace8065a1f80d18a198b5d2cf41c7d11f9507f6afcb00a",
+    "celulas_alteradas": 1,
+    "partes_zip_alteradas": [
+      "xl/worksheets/sheet3.xml"
+    ],
+    "erros": 0
+  },
+  {
+    "arquivo": "gustavo - Planilha.xlsx",
+    "celula": "mencoes!E12",
+    "valor_final": "FLAVIO NANTES BOLSONARO",
+    "sha256_antes": "a58930c0b315c0e4c8df827f352ea22b5d90992858affb49f050615d481a8dbf",
+    "sha256_depois": "a90690a83a79aa524de4e2e18bba0573c3e837b785bc7ac809070c33163e8751",
+    "celulas_alteradas": 1,
+    "partes_zip_alteradas": [
+      "xl/worksheets/sheet3.xml"
+    ],
+    "erros": 0
+  },
+  {
+    "arquivo": "nicolas.xlsx",
+    "celula": "mencoes!E18",
+    "valor_final": "FLAVIO NANTES BOLSONARO",
+    "sha256_antes": "3b7f460934406be015e78a2838a9beeb6d1387df08c656223f2d46fba254f542",
+    "sha256_depois": "7ca3daa38d0735d491444e5288d57fb63858d7b84b196891490a83a0d138a486",
+    "celulas_alteradas": 1,
+    "partes_zip_alteradas": [
+      "xl/worksheets/sheet4.xml"
+    ],
+    "erros": 0
+  }
+]
