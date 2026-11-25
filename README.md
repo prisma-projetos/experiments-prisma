@@ -15,6 +15,8 @@
 
 ---
 
+> **Aviso sobre textos de notícias.** Este repositório inclui o texto integral de cinco notícias (92 parágrafos), usado apenas para fins de pesquisa acadêmica. Ele aparece nas planilhas de anotação (`experiments/data/anotacao/`) e nos arquivos de resultados (`experiments/results/`). Os direitos sobre esses textos pertencem aos respectivos veículos e autores, e eles não fazem parte de nenhuma licença deste projeto. Se você representa um veículo ou autor e deseja a retirada, abra uma *issue* neste repositório e os arquivos serão removidos.
+
 ## O que é este repositório
 
 Este repositório reúne o **material de pesquisa** do PRISMA, separado dos módulos de código. Ele espelha as pastas `docs/` e `experiments/` do [`classifier-prisma`](https://github.com/prisma-projetos/classifier-prisma), onde os experimentos foram desenvolvidos, para que o artigo e as decisões de projeto possam ser consultados sem navegar pelo código de produção.
